@@ -1,79 +1,55 @@
 <!doctype html>
 <html lang="en" class="h-full">
   <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-site-verification" content="xHQMXeonHcUZ-NTHCrtvjlR9bojEkpwc8CzKChP7I9o" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="xHQMXeonHcUZ-NTHCrtvjlR9bojEkpwc8CzKChP7I9o" />
 
-  <title>FAIDE® | Luxury Streetwear Brand</title>
-  <meta
-    name="description"
-    content="FAIDE® luxury streetwear. New drops, exclusive releases, and curated essentials. Designed with intention. Worn with purpose."
-  />
-<!-- Open Graph / Social Preview -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="FAIDE® | Luxury Streetwear Brand" />
-<meta property="og:site_name" content="FAIDE®" />
-<meta
-  property="og:description"
-  content="Luxury streetwear designed with intention. New drops, exclusive releases, and curated essentials."
-/>
-<meta property="og:url" content="https://faide-website.vercel.app/" />
-<meta
-  property="og:image"
-  content="https://faide-website.vercel.app/images/hero.png"
-/>
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<!-- Canonical URL -->
-<link rel="canonical" href="https://faide-website.vercel.app/" />
+    <!-- ✅ CHANGE THIS if your final domain differs -->
+    <meta name="faide:site" content="https://faideclothing.com" />
+    <script>
+      // Single source of truth for domain (used by meta + schema)
+      window.__FAIDE_SITE_URL__ = document.querySelector('meta[name="faide:site"]')?.content || "https://faideclothing.com";
+    </script>
 
-<!-- Mobile browser color -->
-<meta name="theme-color" content="#000000" />
+    <title>FAIDE® | Luxury Streetwear Brand</title>
+    <meta
+      name="description"
+      content="FAIDE® luxury streetwear. New drops, exclusive releases, and curated essentials. Designed with intention. Worn with purpose."
+    />
 
-<!-- OG image safety -->
-<meta property="og:image:secure_url" content="https://faide-website.vercel.app/images/hero.png" />
-<meta property="og:image:alt" content="FAIDE luxury streetwear hero image" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="en_US" />
+    <!-- ✅ Canonical (real domain) -->
+    <link rel="canonical" href="https://faideclothing.com/" />
 
-<!-- Twitter / X Preview -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@faideclothing" />
-<meta name="twitter:title" content="FAIDE® | Luxury Streetwear Brand" />
-<meta
-  name="twitter:description"
-  content="Luxury streetwear designed with intention. New drops, exclusive releases, and curated essentials."
-/>
-<meta
-  name="twitter:image"
-  content="https://faide-website.vercel.app/images/hero.png"
-/>
+    <!-- Mobile browser color -->
+    <meta name="theme-color" content="#000000" />
+    <meta name="robots" content="index, follow" />
 
-  <!-- Brand Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ClothingBrand",
-    "name": "FAIDE",
-    "url": "https://faide-website.vercel.app",
-    "logo": "https://faide-website.vercel.app/images/faide-wordmark.png",
-    "description": "FAIDE is a luxury streetwear brand designed with intention and worn with purpose.",
-    "sameAs": [
-      "https://www.facebook.com/faideclothing",
-      "https://www.instagram.com/faideclothing",
-      "https://www.tiktok.com/@faideclothing",
-      "https://x.com/faideclothing"
-    ]
-  }
-  </script>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FAIDE®" />
+    <meta property="og:title" content="FAIDE® | Luxury Streetwear Brand" />
+    <meta
+      property="og:description"
+      content="Luxury streetwear designed with intention. New drops, exclusive releases, and curated essentials."
+    />
+    <meta property="og:url" content="https://faideclothing.com/" />
+    <meta property="og:image" content="https://faideclothing.com/images/hero.png" />
+    <meta property="og:image:secure_url" content="https://faideclothing.com/images/hero.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="FAIDE luxury streetwear hero image" />
+    <meta property="og:locale" content="en_US" />
 
-  <!-- Element SDK -->
-  <script src="/_sdk/element_sdk.js"></script>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@faideclothing" />
+    <meta name="twitter:title" content="FAIDE® | Luxury Streetwear Brand" />
+    <meta
+      name="twitter:description"
+      content="Luxury streetwear designed with intention. New drops, exclusive releases, and curated essentials."
+    />
+    <meta name="twitter:image" content="https://faideclothing.com/images/hero.png" />
 
     <!-- Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -82,6 +58,92 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
+    <!-- ⚠️ Tailwind CDN is OK for now. For production speed: compile Tailwind locally -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Element SDK -->
+    <script src="/_sdk/element_sdk.js"></script>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+
+    <!-- ✅ Brand Structured Data -->
+    <script type="application/ld+json" id="brand-schema">
+      {
+        "@context": "https://schema.org",
+        "@type": "ClothingBrand",
+        "name": "FAIDE",
+        "url": "https://faideclothing.com",
+        "logo": "https://faideclothing.com/images/faide-wordmark.png",
+        "description": "FAIDE is a luxury streetwear brand designed with intention and worn with purpose.",
+        "sameAs": [
+          "https://www.facebook.com/faideclothing",
+          "https://www.instagram.com/faideclothing",
+          "https://www.tiktok.com/@faideclothing",
+          "https://x.com/faideclothing"
+        ]
+      }
+    </script>
+
+    <!-- ✅ Product Structured Data -->
+    <script type="application/ld+json" id="product-schema">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Product",
+            "name": "FAIDE Essentials Tank",
+            "image": ["https://faideclothing.com/images/tank-top.png"],
+            "brand": {"@type": "Brand", "name": "FAIDE"},
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "ZAR",
+              "price": "199.99",
+              "availability": "https://schema.org/InStock",
+              "url": "https://faideclothing.com/#shop"
+            }
+          },
+          {
+            "@type": "Product",
+            "name": "FAIDE Signature Tee",
+            "image": ["https://faideclothing.com/images/tshirt.png"],
+            "brand": {"@type": "Brand", "name": "FAIDE"},
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "ZAR",
+              "price": "349.99",
+              "availability": "https://schema.org/InStock",
+              "url": "https://faideclothing.com/#shop"
+            }
+          },
+          {
+            "@type": "Product",
+            "name": "FAIDE Long Sleeve",
+            "image": ["https://faideclothing.com/images/longsleeve.png"],
+            "brand": {"@type": "Brand", "name": "FAIDE"},
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "ZAR",
+              "price": "549.99",
+              "availability": "https://schema.org/InStock",
+              "url": "https://faideclothing.com/#shop"
+            }
+          },
+          {
+            "@type": "Product",
+            "name": "FAIDE Luxury Hoodie",
+            "image": ["https://faideclothing.com/images/hoodie.png"],
+            "brand": {"@type": "Brand", "name": "FAIDE"},
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "ZAR",
+              "price": "699.99",
+              "availability": "https://schema.org/InStock",
+              "url": "https://faideclothing.com/#shop"
+            }
+          }
+        ]
+      }
+    </script>
 
     <style>
       :root{
@@ -104,9 +166,6 @@
 
         --h1: clamp(2.2rem, 6vw, 3.8rem);
         --h2: clamp(1.7rem, 4.4vw, 2.5rem);
-
-        --card-radius: 18px;
-        --img-radius: 14px;
       }
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -121,6 +180,13 @@
       }
       body.lock-scroll { overflow: hidden; }
 
+      /* ✅ Accessibility: keep focus visible */
+      :focus-visible {
+        outline: 2px solid rgba(168,85,247,0.95);
+        outline-offset: 2px;
+        border-radius: 10px;
+      }
+
       @media (max-width: 768px){
         html{ font-size: 15px; }
       }
@@ -134,9 +200,7 @@
       .delay-2 { animation-delay: 0.6s; opacity: 0; }
       .delay-3 { animation-delay: 0.9s; opacity: 0; }
 
-      /* =========================================================
-         NAVBAR
-      ========================================================= */
+      /* NAVBAR */
       .navbar {
         position: fixed;
         top: 0; left: 0; right: 0;
@@ -163,10 +227,9 @@
       .nav-links {
         display: flex;
         align-items: center;
-        gap: 18px; /* keep spacing */
+        gap: 18px;
       }
 
-      /* ✅ Navbar: increase "button" size keeping existing space */
       .nav-links a {
         font-size: 0.7rem;
         letter-spacing: 1px;
@@ -176,7 +239,7 @@
         transition: all 0.25s ease;
         position: relative;
         white-space: nowrap;
-        padding: 12px 0; /* bigger tap target without changing gap */
+        padding: 12px 0;
         line-height: 1;
       }
 
@@ -219,9 +282,7 @@
         .nav-links a { font-size: 0.62rem; letter-spacing: 0.8px; color: #777; padding: 12px 0; }
       }
 
-      /* =========================================================
-         SECTION SPACING
-      ========================================================= */
+      /* SECTION SPACING */
       .hero,
       .lookbook,
       .shop,
@@ -246,9 +307,7 @@
         }
       }
 
-      /* =========================================================
-         HERO
-      ========================================================= */
+      /* HERO */
       .hero {
         min-height: 80%;
         display: flex;
@@ -262,7 +321,6 @@
         padding-right: var(--px);
       }
 
-      /* ✅ Hero: full image background hero.png */
       .hero-bg {
         position: absolute;
         inset: 0;
@@ -349,9 +407,7 @@
         .hero-title{ font-size: 2rem; }
       }
 
-      /* =========================================================
-         TITLES
-      ========================================================= */
+      /* TITLES */
       .section-title {
         font-size: var(--h2);
         margin-bottom: 22px;
@@ -373,12 +429,8 @@
         .aligned-title{ padding-left: var(--px-sm); padding-right: var(--px-sm); }
       }
 
-      /* =========================================================
-         LOOKBOOK
-      ========================================================= */
+      /* LOOKBOOK */
       .lookbook { padding-left: 0; padding-right: 0; }
-
-      /* ✅ Lookbook: edge-to-edge width */
       .vertical-list {
         max-width: none;
         margin: 26px 0 0;
@@ -388,14 +440,13 @@
         gap: 26px;
       }
 
-      /* ✅ Lookbook: remove rounded edges + remove glow/lift hover */
       .lookbook-card {
         border-radius: 0;
         overflow: hidden;
         position: relative;
         cursor: pointer;
         background: #000;
-        height: 440px;
+        height: clamp(280px, 55vh, 520px); /* ✅ responsive height */
         box-shadow: none;
         transition: none;
         width: 100%;
@@ -418,32 +469,20 @@
         font-weight: 700;
         color: var(--primary);
         z-index: 2;
-        opacity: 1;
-        transform: none;
-        transition: none;
       }
-
-      /* remove hover animations */
-      .lookbook-card:hover .lookbook-card-title { opacity: 1; transform: none; }
-      .lookbook-card:hover { transform: none; box-shadow: none; }
 
       .lookbook-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
-        filter: none;
-        border-radius: 0;
       }
 
       @media (max-width: 768px) {
         .vertical-list { padding: 0; gap: 18px; }
-        .lookbook-card { height: 320px; }
       }
 
-      /* =========================================================
-         FULLSCREEN GALLERY (LOOKBOOK + PRODUCT MODAL SHARED)
-      ========================================================= */
+      /* FULLSCREEN MODALS */
       .gallery-modal{
         position: fixed;
         inset: 0;
@@ -518,7 +557,6 @@
         transform: translateY(-1px);
       }
 
-      /* ✅ Lookbook modal: fullscreen image, no rounded, no arrows */
       .gallery-stage{
         position: relative;
         display: flex;
@@ -526,8 +564,6 @@
         justify-content: center;
         padding: 0;
       }
-
-      .gallery-nav{ display:none !important; } /* remove switch arrows */
 
       .gallery-viewport{
         width: 100vw;
@@ -538,12 +574,6 @@
         border-radius: 0;
         border: none;
         background: transparent;
-      }
-
-      @media (max-width: 768px){
-        .gallery-viewport{
-          height: calc(100vh - 72px - 56px);
-        }
       }
 
       .gallery-zoom-img{
@@ -571,11 +601,7 @@
         font-size: 0.85rem;
       }
 
-      /* =========================================================
-         ✅ SHOP
-      ========================================================= */
-      .shop { margin: 0; }
-
+      /* SHOP */
       .horizontal-scroll {
         max-width: var(--container);
         margin: 0 auto;
@@ -588,12 +614,10 @@
         scrollbar-width: thin;
         scrollbar-color: rgba(255,255,255,0.10) transparent;
       }
-
       .horizontal-scroll::-webkit-scrollbar { height: 6px; }
       .horizontal-scroll::-webkit-scrollbar-track { background: transparent; }
       .horizontal-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.10); border-radius: 999px; }
 
-      /* ✅ Shop: 2-column grid on mobile, keep horizontal scroll for tablet/desktop */
       @media (max-width: 768px){
         .horizontal-scroll{
           display: grid;
@@ -605,7 +629,6 @@
         }
       }
 
-      /* ✅ Shop cards: remove rounded edges + remove borders + use actual image */
       .product {
         min-width: 420px;
         padding: 0;
@@ -623,10 +646,8 @@
         transition: none;
       }
 
-      @media (hover: hover) and (pointer: fine) {
-        .product:hover{ transform: none; border-color: transparent; box-shadow: none; }
-        .product:hover .product-img{ transform: none; filter: none; }
-        .product:hover .options{ opacity: 1; max-height: 520px; transform: translateY(0); }
+      @media (max-width: 768px){
+        .product{ min-width: 0; }
       }
 
       .product-img-container {
@@ -641,96 +662,43 @@
         border-radius: 0;
         border: none;
         background: transparent;
-        touch-action: pan-y;
       }
-
-      .product-img-container::after{ content:none !important; }
 
       .product-img {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* actual image fill */
+        object-fit: cover;
         display: block;
-        padding: 0;
         transition: opacity 160ms ease;
-        filter: none;
         user-select: none;
         -webkit-user-drag: none;
       }
 
-      .img-pager{ display:none !important; }
-      .img-dot{ display:none !important; }
-      .product [data-thumb-row]{ display: none !important; }
-
       @media (max-width: 768px){
-        .product{ min-width: 0; }
         .product-img-container{ height: 220px; }
       }
 
-      /* =========================================================
-         ✅ THUMBNAILS (used in product modal only)
-      ========================================================= */
-      .thumb-row{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
-        margin-top: 10px;
-        margin-bottom: 6px;
+      /* ✅ Mobile CTA visible (tells customer to open product modal) */
+      .mobile-view-btn{
+        display: none;
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        padding: 14px 14px;
+        border-radius: 999px;
+        background: rgba(0,0,0,0.60);
+        border: 1px solid rgba(255,255,255,0.18);
+        color: #fff;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        backdrop-filter: blur(10px);
       }
-
-      .thumb{
-        height: 74px;
-        border-radius: 0; /* keep modal clean */
-        overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.12);
-        background: rgba(255,255,255,0.02);
-        cursor: pointer;
-        transition: border-color 0.18s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
+      @media (hover: none) and (pointer: coarse){
+        .mobile-view-btn{ display: inline-flex; align-items:center; justify-content:center; gap:10px; }
       }
-
-      .thumb img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        user-select: none;
-        -webkit-user-drag: none;
-        pointer-events: none;
-      }
-
-      .thumb.active{
-        border-color: rgba(168,85,247,0.95);
-      }
-
-      .pm-media{
-        display: grid;
-        grid-template-rows: 1fr auto;
-        gap: 14px;
-        width: 100%;
-        height: 100%;
-        min-height: 0;
-      }
-      .pm-image-shell{
-        position: relative;
-        overflow: hidden;
-        border-radius: 0; /* no rounded edges */
-        border: none;
-        background: #000;
-        padding: 0;
-        min-height: 0;
-      }
-      .pm-image-shell img{
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        display: block;
-        cursor: default;
-      }
-      #pm-thumbs{ align-content: start; }
 
       .product-info { padding: 10px 0 6px; }
 
@@ -752,8 +720,6 @@
         margin-bottom: 10px;
         gap: 12px;
       }
-
-      .product-name-wrapper { flex: 1; }
 
       .product h3 {
         font-size: 1.05rem;
@@ -780,6 +746,7 @@
         opacity: 0.95;
       }
 
+      /* Keep hover options for desktop only */
       .options {
         margin: 16px 0 0 0;
         opacity: 0;
@@ -797,7 +764,6 @@
 
       @media (hover: none) and (pointer: coarse) {
         .options { display: none !important; }
-        .product { cursor: default; }
       }
 
       .option-label {
@@ -879,9 +845,6 @@
       .color.white::after { color: #000; }
       .color.grey { background: #666; }
 
-      /* =========================================================
-         ✅ Quantity Stepper — PILL (no glow)
-      ========================================================= */
       .qty-stepper-ui{
         display: flex;
         align-items: center;
@@ -931,8 +894,6 @@
         margin-bottom: 18px;
       }
 
-      .quantity{ display:none !important; }
-
       .secondary-btn {
         background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
         border: 1px solid rgba(255,255,255,0.10);
@@ -967,9 +928,6 @@
         border-color: rgba(255,255,255,0.08) !important;
       }
 
-      /* =========================================================
-         DIVIDER (between Shop and About)
-      ========================================================= */
       .section-divider{
         height: 1px;
         background: rgba(255,255,255,0.10);
@@ -980,32 +938,25 @@
         .section-divider{ margin: 0 var(--px-sm); }
       }
 
-      /* =========================================================
-         ABOUT
-      ========================================================= */
+      /* ABOUT */
       .about {
         max-width: 900px;
         margin: 0 auto;
         padding-left: var(--px);
         padding-right: var(--px);
       }
-
       .about p {
         color: #aaa;
         line-height: 1.8;
         font-size: 1.05rem;
         max-width: 70ch;
       }
-
       .about-contact {
         margin-top: 18px;
-        padding-top: 0;
-        border-top: none;
         display: grid;
         gap: 10px;
         max-width: 720px;
       }
-
       .about-contact h4{
         color: var(--primary);
         font-size: 0.95rem;
@@ -1013,9 +964,7 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         margin: 0 0 6px 0;
-        text-shadow: 0 0 18px rgba(168, 85, 247, 0.45);
       }
-
       .about-contact a{
         color: var(--muted);
         text-decoration:none;
@@ -1028,21 +977,15 @@
         .about{ padding-left: var(--px-sm); padding-right: var(--px-sm); }
       }
 
-      /* =========================================================
-         FOOTER
-      ========================================================= */
+      /* FOOTER */
       footer a { transition: color 0.25s ease; }
       footer a:hover { color: var(--secondary); }
-
       .footer-legal {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 16px;
-        padding-top: 0;
-        border-top: none;
       }
-
       .footer-legal-top {
         display: flex;
         align-items: center;
@@ -1052,36 +995,23 @@
         gap: 0;
         line-height: 1.8;
       }
-
       .footer-legal-link {
         color: var(--muted2);
         font-size: 0.95rem;
         text-decoration: none;
       }
-
       .footer-sep{
         color: #666;
         padding: 0 10px;
         user-select: none;
       }
 
-      .footer-legal-mid { text-align: center; }
-
-      .footer-legal-mid a {
-        color: var(--muted2);
-        font-size: 1.05rem;
-        text-decoration: none;
-      }
-
-      /* ✅ Footer: decrease width on mobile */
       @media (max-width:768px){
         footer#footer{ padding-left: var(--px-sm) !important; padding-right: var(--px-sm) !important; }
         .footer-legal-top{ max-width: 360px; }
       }
 
-      /* =========================================================
-         FLOATING CART
-      ========================================================= */
+      /* FLOATING CART */
       .floating-cart {
         position: fixed;
         bottom: 32px;
@@ -1100,7 +1030,6 @@
         z-index: 1500;
         transition: all 0.3s ease;
       }
-
       .floating-cart:hover { transform: scale(1.1); box-shadow: 0 15px 50px rgba(147, 51, 234, 0.7); }
 
       .cart-count {
@@ -1155,21 +1084,18 @@
         border-bottom: 1px solid var(--border);
         background: var(--surface);
       }
-
       .cart-header h2 {
         font-size: 1.5rem;
         font-weight: 700;
         color: var(--primary);
         margin: 0;
       }
-
       .close-cart {
         background: transparent;
         border: none;
         color: #888;
         cursor: pointer;
         padding: 8px;
-        transition: all 0.3s ease;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1195,15 +1121,8 @@
         grid-template-columns: 66px 1fr auto;
         gap: 12px;
         align-items: center;
-        transition: all 0.25s ease;
       }
 
-      .cart-item:hover {
-        border-color: rgba(255,255,255,0.14);
-        background: #141414;
-      }
-
-      /* ✅ Cart: image fills inside border */
       .cart-item-img {
         width: 66px;
         height: 66px;
@@ -1211,7 +1130,6 @@
         border: 1px solid rgba(255,255,255,0.08);
         background: rgba(255,255,255,0.02);
         object-fit: cover;
-        padding: 0;
       }
 
       .cart-item-title {
@@ -1241,7 +1159,6 @@
         border-radius: 999px;
         padding: 1px;
         background: rgba(255,255,255,0.04);
-        box-shadow: none;
         border: 1px solid rgba(255,255,255,0.14);
       }
       .qty-stepper-inner{
@@ -1259,13 +1176,11 @@
         background: transparent;
         color: #fff;
         cursor: pointer;
-        transition: background 0.2s ease, transform 0.12s ease;
         font-weight: 950;
         font-size: 1.05rem;
         line-height: 1;
       }
       .qty-btn:hover{ background: rgba(255,255,255,0.08); }
-      .qty-btn:active{ transform: scale(0.98); }
       .qty-value{
         width: 38px;
         text-align: center;
@@ -1275,12 +1190,6 @@
         user-select: none;
       }
 
-      .qty-stepper .qty-btn:focus,
-      .qty-stepper .qty-btn:focus-visible{
-        outline: none;
-        box-shadow: none;
-      }
-
       .remove-btn {
         border: none;
         background: transparent;
@@ -1288,7 +1197,6 @@
         cursor: pointer;
         font-size: 0.85rem;
         font-weight: 700;
-        transition: color 0.2s ease;
       }
       .remove-btn:hover { color: #ef4444; }
 
@@ -1297,10 +1205,6 @@
         color: var(--primary);
         font-size: 0.95rem;
       }
-
-      .cart-items::-webkit-scrollbar { width: 6px; }
-      .cart-items::-webkit-scrollbar-track { background: var(--surface); }
-      .cart-items::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 10px; }
 
       .cart-footer {
         padding: 24px;
@@ -1317,9 +1221,8 @@
       }
 
       .cart-total-label { font-weight: 700; color: #888; }
-
       .cart-total-value {
-        font-weight: 700;
+        font-weight: 900;
         color: var(--primary);
         font-size: 1.5rem;
       }
@@ -1331,27 +1234,14 @@
         padding: 16px;
         border-radius: 50px;
         color: #fff;
-        font-weight: 700;
+        font-weight: 800;
         cursor: pointer;
-        transition: all 0.3s ease;
         text-transform: uppercase;
         letter-spacing: 1px;
         font-size: 0.9rem;
       }
-
-      .checkout-btn:hover {
-        background: #fff;
-        color: #000;
-        transform: scale(1.02);
-      }
-
-      .checkout-btn:disabled{
-        opacity: 0.45;
-        cursor: not-allowed;
-        transform: none !important;
-        background: #222 !important;
-        color: #777 !important;
-      }
+      .checkout-btn:hover { background: #fff; color: #000; }
+      .checkout-btn:disabled{ opacity: 0.45; cursor: not-allowed; background: #222 !important; color: #777 !important; }
 
       .cart-toast {
         position: fixed;
@@ -1368,21 +1258,14 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        font-weight: 600;
+        font-weight: 700;
       }
       .cart-toast.show { transform: translateY(0); }
 
       @media (max-width: 768px) {
         .cart-sidebar { width: 100%; right: -100%; }
         .floating-cart { bottom: 24px; right: 24px; width: 56px; height: 56px; }
-
-        .cart-toast {
-          bottom: 100px;
-          right: 24px;
-          left: 24px;
-          max-width: calc(100% - 48px);
-        }
-
+        .cart-toast { bottom: 100px; right: 24px; left: 24px; max-width: calc(100% - 48px); }
         .cart-item{
           grid-template-columns: 58px 1fr;
           grid-template-areas:
@@ -1394,17 +1277,9 @@
         .cart-item-actions{ grid-area: actions; align-items:flex-start; flex-direction: row; justify-content: space-between; }
       }
 
-      /* =========================================================
-         ✅ UPDATED: PRODUCT MODAL = FULLSCREEN + REMOVE SCROLL INDICATOR + NO OUTER SHAPE
-      ========================================================= */
-      #product-modal.gallery-modal{
-        background: rgba(0,0,0,0.96);
-      }
-
-      #product-modal .gallery-frame{
-        grid-template-rows: auto 1fr;
-      }
-
+      /* PRODUCT MODAL (fullscreen) */
+      #product-modal.gallery-modal{ background: rgba(0,0,0,0.96); }
+      #product-modal .gallery-frame{ grid-template-rows: auto 1fr; }
       #product-modal .gallery-topbar{
         position: sticky;
         top: 0;
@@ -1413,56 +1288,78 @@
         border-bottom: 1px solid rgba(255,255,255,0.08);
         backdrop-filter: blur(10px);
       }
-
       #product-modal .gallery-stage{
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         align-items: flex-start;
         justify-content: center;
         padding: 14px 14px 22px;
-
-        /* ✅ remove visible purple scroll indicator */
         scrollbar-width: none;
       }
       #product-modal .gallery-stage::-webkit-scrollbar{ width: 0; height: 0; }
-
-      #pm-prev, #pm-next{ display: none !important; }
-
       #product-modal #pm-viewport{
         width: min(760px, 94vw);
         height: auto !important;
-        max-height: none !important;
         overflow: visible !important;
         border: none !important;
         background: transparent !important;
         border-radius: 0 !important;
         padding: 0 !important;
       }
-
-      #product-modal .pm-image-shell{
-        height: min(54vh, 520px);
+      .thumb-row{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 10px;
+        margin-bottom: 6px;
+      }
+      .thumb{
+        height: 74px;
         border-radius: 0;
         overflow: hidden;
-        background: #000;
-        padding: 0 !important;
-        border: none !important;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.02);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
       }
-      #product-modal .pm-image-shell img{
+      .thumb img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        pointer-events: none;
+      }
+      .thumb.active{ border-color: rgba(168,85,247,0.95); }
+
+      .pm-media{
+        display: grid;
+        grid-template-rows: 1fr auto;
+        gap: 14px;
+        width: 100%;
+      }
+      .pm-image-shell{
+        position: relative;
+        overflow: hidden;
+        border-radius: 0;
+        border: none;
+        background: #000;
+      }
+      .pm-image-shell img{
         width: 100%;
         height: 100%;
         object-fit: contain;
         display: block;
       }
-
-      #product-modal .pm-hint{
+      .pm-hint{
         color:#777;
         text-align:center;
         padding: 18px 0 0;
         font-size: 0.9rem;
       }
     </style>
-
-    <style>@view-transition { navigation: auto; }</style>
   </head>
 
   <body class="h-full w-full">
@@ -1526,18 +1423,18 @@
 
       <div class="vertical-list">
         <div class="lookbook-card" role="button" tabindex="0" aria-label="Open Lookbook 1">
-          <img src="/images/lookbook1.png" alt="FAIDE Lookbook 1" class="lookbook-img" />
+          <img src="/images/lookbook1.png" alt="FAIDE Lookbook 1" class="lookbook-img" loading="lazy" decoding="async" />
           <h3 class="lookbook-card-title">Look 1</h3>
         </div>
 
         <div class="lookbook-card" role="button" tabindex="0" aria-label="Open Lookbook 2">
-          <img src="/images/lookbook2.png" alt="FAIDE Lookbook 2" class="lookbook-img" />
+          <img src="/images/lookbook2.png" alt="FAIDE Lookbook 2" class="lookbook-img" loading="lazy" decoding="async" />
           <h3 class="lookbook-card-title">Look 2</h3>
         </div>
       </div>
     </section>
 
-    <!-- ✅ FULLSCREEN LOOKBOOK GALLERY MODAL -->
+    <!-- FULLSCREEN LOOKBOOK GALLERY MODAL -->
     <div id="gallery-modal" class="gallery-modal" aria-hidden="true" role="dialog" aria-label="Lookbook gallery">
       <div class="gallery-frame" id="gallery-frame">
         <div class="gallery-topbar">
@@ -1561,12 +1458,12 @@
         </div>
 
         <div class="gallery-bottombar">
-          <span>Tip: Double tap / Double click to zoom • Pinch to zoom • Drag to pan</span>
+          <span>Tip: Double tap to zoom • Pinch to zoom • Drag to pan</span>
         </div>
       </div>
     </div>
 
-    <!-- ✅ FULLSCREEN PRODUCT MODAL (SHOP) -->
+    <!-- FULLSCREEN PRODUCT MODAL -->
     <div id="product-modal" class="gallery-modal" aria-hidden="true" role="dialog" aria-label="Product details">
       <div class="gallery-frame">
         <div class="gallery-topbar">
@@ -1586,7 +1483,7 @@
         <div class="gallery-stage">
           <div class="gallery-viewport" id="pm-viewport" style="display:grid; grid-template-rows: auto auto; gap: 14px;">
             <div class="pm-media">
-              <div class="pm-image-shell">
+              <div class="pm-image-shell" style="height: min(54vh, 520px);">
                 <img id="pm-img" alt="Product image" src="" />
               </div>
               <div class="thumb-row" id="pm-thumbs"></div>
@@ -1634,16 +1531,14 @@
         <!-- Tank-top -->
         <div class="product" data-name="FAIDE Essentials Tank" data-price="199.99">
           <div class="product-img-container">
-            <!-- ✅ UPDATED: removed space filename -->
-            <img src="/images/tank-top.png" alt="FAIDE Essentials Tank" class="product-img" />
+            <img src="/images/tank-top.png" alt="FAIDE Essentials Tank" class="product-img" loading="lazy" decoding="async" />
+            <button class="mobile-view-btn" type="button" data-open-product>View / Select Options</button>
           </div>
-          <div class="thumb-row" data-thumb-row></div>
 
           <div class="product-info">
             <div class="product-label">Just In</div>
-
             <div class="product-header">
-              <div class="product-name-wrapper">
+              <div>
                 <h3>FAIDE Essentials Tank</h3>
                 <div class="product-category">UNISEX Tank Top</div>
                 <div class="product-colors-count">2 Colors</div>
@@ -1651,6 +1546,7 @@
               <p class="price">R199.99</p>
             </div>
 
+            <!-- Desktop hover options only -->
             <div class="options" aria-label="Tank options">
               <div class="option-label">Select Size</div>
               <div class="sizes">
@@ -1682,15 +1578,14 @@
         <!-- T-shirt -->
         <div class="product" data-name="FAIDE Signature Tee" data-price="349.99">
           <div class="product-img-container">
-            <img src="/images/tshirt.png" alt="FAIDE Signature Tee" class="product-img" />
+            <img src="/images/tshirt.png" alt="FAIDE Signature Tee" class="product-img" loading="lazy" decoding="async" />
+            <button class="mobile-view-btn" type="button" data-open-product>View / Select Options</button>
           </div>
-          <div class="thumb-row" data-thumb-row></div>
 
           <div class="product-info">
             <div class="product-label">Bestseller</div>
-
             <div class="product-header">
-              <div class="product-name-wrapper">
+              <div>
                 <h3>FAIDE Signature Tee</h3>
                 <div class="product-category">UNISEX Short-Sleeve Top</div>
                 <div class="product-colors-count">3 Colors</div>
@@ -1730,15 +1625,14 @@
         <!-- Long Sleeve -->
         <div class="product" data-name="FAIDE Long Sleeve" data-price="549.99">
           <div class="product-img-container">
-            <img src="/images/longsleeve.png" alt="FAIDE Long Sleeve" class="product-img" />
+            <img src="/images/longsleeve.png" alt="FAIDE Long Sleeve" class="product-img" loading="lazy" decoding="async" />
+            <button class="mobile-view-btn" type="button" data-open-product>View / Select Options</button>
           </div>
-          <div class="thumb-row" data-thumb-row></div>
 
           <div class="product-info">
             <div class="product-label">Member Exclusive</div>
-
             <div class="product-header">
-              <div class="product-name-wrapper">
+              <div>
                 <h3>FAIDE Long Sleeve</h3>
                 <div class="product-category">UNISEX Long Sleeve</div>
                 <div class="product-colors-count">2 Colors</div>
@@ -1777,15 +1671,14 @@
         <!-- Hoodie -->
         <div class="product" data-name="FAIDE Luxury Hoodie" data-price="699.99">
           <div class="product-img-container">
-            <img src="/images/hoodie.png" alt="FAIDE Luxury Hoodie" class="product-img" />
+            <img src="/images/hoodie.png" alt="FAIDE Luxury Hoodie" class="product-img" loading="lazy" decoding="async" />
+            <button class="mobile-view-btn" type="button" data-open-product>View / Select Options</button>
           </div>
-          <div class="thumb-row" data-thumb-row></div>
 
           <div class="product-info">
             <div class="product-label">Premium</div>
-
             <div class="product-header">
-              <div class="product-name-wrapper">
+              <div>
                 <h3>FAIDE Luxury Hoodie</h3>
                 <div class="product-category">UNISEX Pullover Hoodie</div>
                 <div class="product-colors-count">2 Colors</div>
@@ -1823,7 +1716,6 @@
       </div>
     </section>
 
-    <!-- ✅ Divider between Shop and About -->
     <div class="section-divider" aria-hidden="true"></div>
 
     <!-- ABOUT -->
@@ -1844,7 +1736,6 @@
     <footer id="footer" style="background:#0a0a0a; border-top:1px solid var(--border); padding: 42px 32px 40px;">
       <div style="max-width: 1200px; margin: 0 auto;">
         <div class="footer-legal">
-          <!-- ✅ Footer policy order + separators -->
           <div class="footer-legal-top" aria-label="Policies">
             <a href="#" id="privacy-link" class="footer-legal-link">Privacy Policy</a>
             <span class="footer-sep">|</span>
@@ -1862,7 +1753,7 @@
       </div>
     </footer>
 
-    <!-- Policy Modal (kept as-is) -->
+    <!-- POLICY MODAL -->
     <div
       id="policy-modal"
       role="dialog"
@@ -1873,7 +1764,7 @@
       <div style="max-width:800px; margin:0 auto; background:#0a0a0a; border-radius:20px; border:1px solid var(--border); overflow:hidden;">
         <div style="background:var(--surface); padding:24px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border);">
           <h2 id="modal-title" style="color:var(--primary); font-size:1.5rem; font-weight:700; margin:0;">Policy</h2>
-          <button id="close-modal" type="button" style="background:transparent; border:none; color:#888; cursor:pointer; padding:8px; display:flex; align-items:center; justify-content:center; border-radius:8px; transition:all 0.3s ease;">
+          <button id="close-modal" type="button" style="background:transparent; border:none; color:#888; cursor:pointer; padding:8px; display:flex; align-items:center; justify-content:center; border-radius:8px;">
             <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
               <path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/>
             </svg>
@@ -1895,7 +1786,7 @@
     </button>
 
     <!-- Cart Sidebar -->
-    <div id="cart-sidebar" class="cart-sidebar" aria-label="Shopping cart">
+    <div id="cart-sidebar" class="cart-sidebar" aria-label="Shopping cart" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="cart-header">
         <h2>Your Cart</h2>
         <button id="close-cart" class="close-cart" aria-label="Close cart" type="button">
@@ -1916,6 +1807,10 @@
         <button class="checkout-btn" id="checkout-btn" type="button" disabled title="Add items to checkout">
           Proceed to Checkout
         </button>
+
+        <p style="margin-top:10px; color:#777; font-size:0.9rem; line-height:1.4;">
+          Checkout happens via WhatsApp confirmation. Delivery fees (if any) are confirmed in chat.
+        </p>
       </div>
     </div>
 
@@ -1929,7 +1824,7 @@
 
     <script>
       /*************************************************************
-       * ✅ SINGLE shared helper (removed duplicate)
+       * ✅ Small utilities
        *************************************************************/
       function clickOnEnterSpace(el, fn) {
         el.addEventListener("keydown", (e) => {
@@ -1938,6 +1833,58 @@
             fn();
           }
         });
+      }
+
+      function setOverscrollLock(on) {
+        // Helps Android/iOS modal scrolling behavior
+        if (on) {
+          document.documentElement.style.overscrollBehavior = "none";
+        } else {
+          document.documentElement.style.overscrollBehavior = "";
+        }
+      }
+
+      function trapFocus(modalEl, { initialFocus } = {}) {
+        if (!modalEl) return () => {};
+        const selector = [
+          "a[href]",
+          "button:not([disabled])",
+          "textarea:not([disabled])",
+          "input:not([disabled])",
+          "select:not([disabled])",
+          "[tabindex]:not([tabindex='-1'])"
+        ].join(",");
+
+        const getFocusable = () =>
+          Array.from(modalEl.querySelectorAll(selector)).filter(el => !el.hasAttribute("disabled") && el.offsetParent !== null);
+
+        const focusFirst = () => {
+          const items = getFocusable();
+          const target = initialFocus || items[0];
+          target?.focus?.();
+        };
+
+        const onKeyDown = (e) => {
+          if (e.key !== "Tab") return;
+          const items = getFocusable();
+          if (!items.length) return;
+
+          const first = items[0];
+          const last = items[items.length - 1];
+
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        };
+
+        modalEl.addEventListener("keydown", onKeyDown);
+        setTimeout(focusFirst, 0);
+
+        return () => modalEl.removeEventListener("keydown", onKeyDown);
       }
 
       /*************************************************************
@@ -1967,16 +1914,14 @@
       async function onConfigChange(config) {
         const heroTitle = config.hero_title || defaultConfig.hero_title;
         const heroDescription = config.hero_description || defaultConfig.hero_description;
-
         const aboutHeadline = config.about_headline || defaultConfig.about_headline;
         const aboutDescription = config.about_description || defaultConfig.about_description;
 
-        const backgroundColor = config.background_color || defaultConfig.background_color;
-        const surfaceColor = config.surface_color || defaultConfig.surface_color;
-        const textColor = config.text_color || defaultConfig.text_color;
-        const primaryAccent = config.primary_accent || defaultConfig.primary_accent;
-        const secondaryAccent = config.secondary_accent || defaultConfig.secondary_accent;
-        const customFont = config.font_family || defaultConfig.font_family;
+        setCSSVar("--bg", config.background_color || defaultConfig.background_color);
+        setCSSVar("--surface", config.surface_color || defaultConfig.surface_color);
+        setCSSVar("--text", config.text_color || defaultConfig.text_color);
+        setCSSVar("--primary", config.primary_accent || defaultConfig.primary_accent);
+        setCSSVar("--secondary", config.secondary_accent || defaultConfig.secondary_accent);
 
         const heroTitleEl = document.getElementById("hero-title");
         const heroDescEl = document.getElementById("hero-description");
@@ -1988,16 +1933,7 @@
         if (aboutTitleEl) aboutTitleEl.textContent = aboutHeadline;
         if (aboutDescEl) aboutDescEl.textContent = aboutDescription;
 
-        setCSSVar("--bg", backgroundColor);
-        setCSSVar("--surface", surfaceColor);
-        setCSSVar("--text", textColor);
-        setCSSVar("--primary", primaryAccent);
-        setCSSVar("--secondary", secondaryAccent);
-
-        document.body.style.fontFamily = `${customFont}, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
-
-        const heroTitleNode = document.querySelector(".hero-title");
-        if (heroTitleNode) heroTitleNode.style.textShadow = `0 0 40px ${primaryAccent}80`;
+        document.body.style.fontFamily = `${(config.font_family || defaultConfig.font_family)}, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
       }
 
       function mapToCapabilities(config) {
@@ -2007,11 +1943,11 @@
             { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => window.elementSdk?.setConfig?.({ surface_color: (config.surface_color = v) }) },
             { get: () => config.text_color || defaultConfig.text_color, set: (v) => window.elementSdk?.setConfig?.({ text_color: (config.text_color = v) }) },
             { get: () => config.primary_accent || defaultConfig.primary_accent, set: (v) => window.elementSdk?.setConfig?.({ primary_accent: (config.primary_accent = v) }) },
-            { get: () => config.secondary_accent || defaultConfig.secondary_accent, set: (v) => window.elementSdk?.setConfig?.({ secondary_accent: (config.secondary_accent = v) }) },
+            { get: () => config.secondary_accent || defaultConfig.secondary_accent, set: (v) => window.elementSdk?.setConfig?.({ secondary_accent: (config.secondary_accent = v) }) }
           ],
           borderables: [],
           fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => window.elementSdk?.setConfig?.({ font_family: (config.font_family = v) }) },
-          fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => window.elementSdk?.setConfig?.({ font_size: (config.font_size = v) }) },
+          fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => window.elementSdk?.setConfig?.({ font_size: (config.font_size = v) }) }
         };
       }
 
@@ -2044,13 +1980,12 @@
       })();
 
       /*************************************************************
-       * ✅ PRODUCT ALT IMAGES (used by Product Modal)
+       * ✅ Product alt images for modal (2/3/4 versions)
        *************************************************************/
       function buildVariantSrc(baseSrc, n) {
         const qIndex = baseSrc.indexOf("?");
         const clean = qIndex >= 0 ? baseSrc.slice(0, qIndex) : baseSrc;
         const query = qIndex >= 0 ? baseSrc.slice(qIndex) : "";
-
         const dot = clean.lastIndexOf(".");
         if (dot < 0) return baseSrc;
         const left = clean.slice(0, dot);
@@ -2062,15 +1997,8 @@
         return new Promise((resolve) => {
           const img = new Image();
           let done = false;
-
-          const finish = (ok) => {
-            if (done) return;
-            done = true;
-            resolve(ok);
-          };
-
+          const finish = (ok) => { if (done) return; done = true; resolve(ok); };
           const t = setTimeout(() => finish(false), timeoutMs);
-
           img.onload = () => { clearTimeout(t); finish(true); };
           img.onerror = () => { clearTimeout(t); finish(false); };
           img.src = src;
@@ -2078,287 +2006,88 @@
       }
 
       /*************************************************************
-       * ✅ CART MEMORY (localStorage)
+       * CART MEMORY
        *************************************************************/
-      const CART_STORAGE_KEY = "faide_cart_v1";
+      const CART_STORAGE_KEY = "faide_cart_v2";
       function loadCartFromStorage(){
         try{
           const raw = localStorage.getItem(CART_STORAGE_KEY);
           const parsed = raw ? JSON.parse(raw) : [];
           return Array.isArray(parsed) ? parsed : [];
-        }catch(_){
-          return [];
-        }
+        }catch(_){ return []; }
       }
       function saveCartToStorage(nextCart){
-        try{
-          localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(nextCart || []));
-        }catch(_){}
-      }
-
-      /*************************************************************
-       * CART + WHATSAPP CHECKOUT
-       *************************************************************/
-      const WHATSAPP_NUMBER = "27695603929";
-      let cart = [];
-
-      function showCartToast(message) {
-        const toast = document.getElementById("cartToast");
-        const messageEl = document.getElementById("cartMessage");
-        if (!toast || !messageEl) return;
-        messageEl.textContent = message;
-        toast.classList.add("show");
-        clearTimeout(window.__toastTimer);
-        window.__toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
-      }
-
-      function checkoutOnWhatsApp() {
-        if (!cart || cart.length === 0) return showCartToast("Your cart is empty.");
-
-        const lines = [];
-        lines.push("Hi FAIDE, I want to place an order:");
-        lines.push("");
-
-        let total = 0;
-
-        cart.forEach((item, i) => {
-          const lineTotal = item.price * item.quantity;
-          total += lineTotal;
-          lines.push(`${i + 1}) ${item.name} | Size: ${item.size} | Color: ${item.color} | Qty: ${item.quantity} | R${lineTotal.toFixed(2)}`);
-        });
-
-        lines.push("");
-        lines.push(`TOTAL: R${total.toFixed(2)}`);
-        lines.push("");
-        lines.push("Name:");
-        lines.push("(Type here)");
-        lines.push("");
-        lines.push("Delivery address:");
-        lines.push("(Type here)");
-
-        const message = encodeURIComponent(lines.join("\n"));
-        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank", "noopener,noreferrer");
-      }
-
-      /*************************************************************
-       * POLICY MODAL
-       *************************************************************/
-      const policyModal = document.getElementById("policy-modal");
-      const modalTitle = document.getElementById("modal-title");
-      const modalContent = document.getElementById("modal-content");
-      const closeModal = document.getElementById("close-modal");
-
-      const policies = {
-        privacy: {
-          title: "Privacy Policy",
-          content: `
-            <p style="margin-bottom:14px;"><strong>FAIDE Privacy Policy</strong></p>
-            <p style="margin-bottom:14px;">We respect your privacy. This policy explains what information we collect, why we collect it, and how we use it.</p>
-            <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">What we collect</h3>
-            <ul style="margin-left:18px; margin-bottom:14px;">
-              <li>Contact details you provide (name, phone number, email).</li>
-              <li>Order details (items, size, color, quantity, delivery address).</li>
-              <li>Basic site analytics (to improve performance and experience).</li>
-            </ul>
-            <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">How we use it</h3>
-            <ul style="margin-left:18px; margin-bottom:14px;">
-              <li>To process and fulfill your order.</li>
-              <li>To communicate about your order (shipping updates, questions).</li>
-              <li>To improve the website and product experience.</li>
-            </ul>
-            <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Your choices</h3>
-            <p style="margin-bottom:14px;">You can request to update or delete your information by contacting us at <a style="color:var(--primary); text-decoration:none;" href="mailto:faideclothingsa@gmail.com">faideclothingsa@gmail.com</a>.</p>
-          `
-        },
-        terms: {
-          title: "Terms of Service",
-          content: `
-            <p style="margin-bottom:14px;"><strong>FAIDE Terms of Service</strong></p>
-            <p style="margin-bottom:14px;">By using this website and placing an order, you agree to the terms below.</p>
-            <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Orders</h3>
-            <ul style="margin-left:18px; margin-bottom:14px;">
-              <li>Orders are confirmed via WhatsApp after you submit your cart.</li>
-              <li>We may contact you if we need size/color confirmation or address clarification.</li>
-            </ul>
-            <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Pricing</h3>
-            <p style="margin-bottom:14px;">Prices are listed in ZAR (R). We reserve the right to correct errors and update pricing.</p>
-            <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Availability</h3>
-            <p style="margin-bottom:14px;">Stock availability may change. If an item is unavailable, we’ll offer an alternative or refund.</p>
-          `
-        },
-        returns: {
-          title: "Returns & Exchanges",
-          content: `
-            <p style="margin-bottom:14px;"><strong>Returns & Exchanges</strong></p>
-            <p style="margin-bottom:14px;">If something isn’t right, we’ll work with you.</p>
-            <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Eligibility</h3>
-            <ul style="margin-left:18px; margin-bottom:14px;">
-              <li>Items must be unworn, unwashed, and in original condition.</li>
-              <li>Request must be made within 7 days of delivery.</li>
-            </ul>
-            <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Exchanges</h3>
-            <p style="margin-bottom:14px;">Size exchanges are accepted if stock is available.</p>
-            <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">How to request</h3>
-            <p style="margin-bottom:14px;">Contact us on WhatsApp or email with your order details.</p>
-          `
-        },
-        shipping: {
-          title: "Shipping Policy",
-          content: `
-            <p style="margin-bottom:14px;"><strong>Shipping Policy</strong></p>
-            <p style="margin-bottom:14px;">We ship orders within South Africa. Delivery times depend on your location.</p>
-            <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Processing time</h3>
-            <p style="margin-bottom:14px;">Orders are typically processed within 1–3 business days after confirmation.</p>
-            <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Delivery</h3>
-            <ul style="margin-left:18px; margin-bottom:14px;">
-              <li>Estimated delivery: 2–7 business days (varies by region).</li>
-              <li>Tracking may be provided depending on courier service.</li>
-            </ul>
-            <p style="margin-bottom:14px;">Questions? Email <a style="color:var(--primary); text-decoration:none;" href="mailto:faideclothingsa@gmail.com">faideclothingsa@gmail.com</a></p>
-          `
-        },
-      };
-
-      let lastFocusedEl = null;
-
-      function showPolicy(policyType) {
-        const policy = policies[policyType];
-        if (!policy) return;
-        lastFocusedEl = document.activeElement;
-
-        if (modalTitle) modalTitle.textContent = policy.title;
-        if (modalContent) modalContent.innerHTML = policy.content;
-        if (policyModal) policyModal.style.display = "block";
-
-        document.body.classList.add("lock-scroll");
-        setTimeout(() => closeModal?.focus(), 0);
-      }
-
-      function hidePolicy() {
-        if (policyModal) policyModal.style.display = "none";
-        document.body.classList.remove("lock-scroll");
-        if (lastFocusedEl && typeof lastFocusedEl.focus === "function") lastFocusedEl.focus();
-      }
-
-      function onClick(id, fn) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.addEventListener("click", (e) => { e.preventDefault(); fn(); });
-      }
-
-      onClick("privacy-link", () => showPolicy("privacy"));
-      onClick("terms-link", () => showPolicy("terms"));
-      onClick("returns-link", () => showPolicy("returns"));
-      onClick("shipping-link", () => showPolicy("shipping"));
-
-      closeModal?.addEventListener("click", hidePolicy);
-      policyModal?.addEventListener("click", (e) => { if (e.target === policyModal) hidePolicy(); });
-
-      /*************************************************************
-       * ✅ Helpers: Nav scroll + active state
-       *************************************************************/
-      function getNavOffsetPx() {
-        const nav = document.querySelector(".navbar");
-        const navH = nav?.getBoundingClientRect?.().height || parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--nav-h")) || 86;
-        return Math.round(navH + 18);
-      }
-
-      function scrollToSectionId(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const top = el.getBoundingClientRect().top + window.pageYOffset - getNavOffsetPx();
-        window.scrollTo({ top, behavior: "smooth" });
-      }
-
-      /*************************************************************
-       * ✅ Qty stepper
-       *************************************************************/
-      function setupQtyStepper(rootEl, { onChange } = {}) {
-        const valueEl = rootEl.querySelector("[data-qty-value]");
-        const incBtn = rootEl.querySelector('[data-qty-btn="inc"]');
-        const decBtn = rootEl.querySelector('[data-qty-btn="dec"]');
-        if (!valueEl || !incBtn || !decBtn) return;
-
-        let qty = 1;
-        let holdTimer = null;
-        let holdInterval = null;
-        let speed = 180;
-
-        const render = () => {
-          valueEl.textContent = String(qty);
-          onChange?.(qty);
-        };
-
-        const setQty = (next) => {
-          qty = Math.max(1, next);
-          render();
-        };
-
-        const step = (dir) => setQty(qty + dir);
-
-        const stopHold = () => {
-          clearTimeout(holdTimer);
-          clearInterval(holdInterval);
-          holdTimer = null;
-          holdInterval = null;
-          speed = 180;
-        };
-
-        const startHold = (dir) => {
-          stopHold();
-          holdTimer = setTimeout(() => {
-            holdInterval = setInterval(() => {
-              step(dir);
-              if (speed > 65) speed -= 10;
-            }, speed);
-          }, 260);
-        };
-
-        const bindBtn = (btn, dir) => {
-          btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            step(dir);
-          });
-
-          const start = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            startHold(dir);
-            step(dir);
-          };
-
-          btn.addEventListener("mousedown", start);
-          btn.addEventListener("touchstart", start, { passive: false });
-
-          ["mouseup", "mouseleave", "touchend", "touchcancel"].forEach((ev) => {
-            btn.addEventListener(ev, stopHold, { passive: true });
-          });
-        };
-
-        bindBtn(incBtn, +1);
-        bindBtn(decBtn, -1);
-
-        return { getQty: () => qty, setQty };
+        try{ localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(nextCart || [])); }catch(_){}
       }
 
       /*************************************************************
        * MAIN DOM READY
        *************************************************************/
       document.addEventListener("DOMContentLoaded", async () => {
-        const shopNowBtn = document.getElementById("shop-now-btn");
-        shopNowBtn?.addEventListener("click", () => scrollToSectionId("shop"));
+        const WHATSAPP_NUMBER = "27695603929";
+        let cart = loadCartFromStorage();
+
+        function showCartToast(message) {
+          const toast = document.getElementById("cartToast");
+          const messageEl = document.getElementById("cartMessage");
+          if (!toast || !messageEl) return;
+          messageEl.textContent = message;
+          toast.classList.add("show");
+          clearTimeout(window.__toastTimer);
+          window.__toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
+        }
+
+        function checkoutOnWhatsApp() {
+          if (!cart || cart.length === 0) return showCartToast("Your cart is empty.");
+
+          const lines = [];
+          lines.push("Hi FAIDE, I want to place an order:");
+          lines.push("");
+
+          let total = 0;
+          cart.forEach((item, i) => {
+            const lineTotal = item.price * item.quantity;
+            total += lineTotal;
+            lines.push(`${i + 1}) ${item.name} | Size: ${item.size} | Color: ${item.color} | Qty: ${item.quantity} | R${lineTotal.toFixed(2)}`);
+          });
+
+          lines.push("");
+          lines.push(`TOTAL: R${total.toFixed(2)}`);
+          lines.push("");
+          lines.push("Name:");
+          lines.push("(Type here)");
+          lines.push("");
+          lines.push("Delivery address:");
+          lines.push("(Type here)");
+
+          const message = encodeURIComponent(lines.join("\n"));
+          window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank", "noopener,noreferrer");
+          showCartToast("Opening WhatsApp checkout…");
+        }
+
+        /*************************************************************
+         * NAV scroll + active state
+         *************************************************************/
+        function getNavOffsetPx() {
+          const nav = document.querySelector(".navbar");
+          const navH = nav?.getBoundingClientRect?.().height || 86;
+          return Math.round(navH + 18);
+        }
+        function scrollToSectionId(id) {
+          const el = document.getElementById(id);
+          if (!el) return;
+          const top = el.getBoundingClientRect().top + window.pageYOffset - getNavOffsetPx();
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+
+        document.getElementById("shop-now-btn")?.addEventListener("click", () => scrollToSectionId("shop"));
 
         const navbar = document.querySelector(".navbar");
-        const navLinks = document.querySelectorAll(".nav-links a");
-
-        function handleShrink() {
-          if (!navbar) return;
-          navbar.classList.toggle("shrink", window.scrollY > 20);
-        }
+        function handleShrink() { navbar?.classList.toggle("shrink", window.scrollY > 20); }
         handleShrink();
         window.addEventListener("scroll", handleShrink, { passive: true });
 
+        const navLinks = document.querySelectorAll(".nav-links a");
         const sectionIds = ["drop", "lookbook", "shop", "about"];
         const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
@@ -2381,15 +2110,11 @@
             const href = a.getAttribute("href") || "";
             if (!href.startsWith("#")) return;
             const id = href.slice(1);
-            if (!id) return;
-
             e.preventDefault();
-
             navLock = true;
             clearTimeout(navUnlockTimer);
             setActive(id);
             scrollToSectionId(id);
-
             navUnlockTimer = setTimeout(() => { navLock = false; }, 650);
           });
         });
@@ -2397,28 +2122,157 @@
         let raf = null;
         function updateActiveFromScroll() {
           if (navLock) return;
-
           const refY = window.scrollY + getNavOffsetPx() + 10;
           let current = sections[0]?.id || "drop";
-
-          for (const sec of sections) {
-            if (!sec) continue;
-            const top = sec.offsetTop;
-            if (top <= refY) current = sec.id;
-          }
+          for (const sec of sections) if (sec.offsetTop <= refY) current = sec.id;
           setActive(current);
         }
 
         function onScroll() {
           if (raf) return;
-          raf = requestAnimationFrame(() => {
-            raf = null;
-            updateActiveFromScroll();
-          });
+          raf = requestAnimationFrame(() => { raf = null; updateActiveFromScroll(); });
         }
         updateActiveFromScroll();
         window.addEventListener("scroll", onScroll, { passive: true });
-        window.addEventListener("resize", () => { updateActiveFromScroll(); }, { passive: true });
+
+        /*************************************************************
+         * ✅ Qty stepper
+         *************************************************************/
+        function setupQtyStepper(rootEl, { onChange } = {}) {
+          const valueEl = rootEl.querySelector("[data-qty-value]");
+          const incBtn = rootEl.querySelector('[data-qty-btn="inc"]');
+          const decBtn = rootEl.querySelector('[data-qty-btn="dec"]');
+          if (!valueEl || !incBtn || !decBtn) return;
+
+          let qty = 1;
+          const render = () => { valueEl.textContent = String(qty); onChange?.(qty); };
+          const setQty = (next) => { qty = Math.max(1, next); render(); };
+          const step = (dir) => setQty(qty + dir);
+
+          incBtn.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); step(+1); });
+          decBtn.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); step(-1); });
+
+          return { getQty: () => qty, setQty };
+        }
+
+        /*************************************************************
+         * ✅ Policy modal + focus trap
+         *************************************************************/
+        const policyModal = document.getElementById("policy-modal");
+        const modalTitle = document.getElementById("modal-title");
+        const modalContent = document.getElementById("modal-content");
+        const closeModal = document.getElementById("close-modal");
+
+        const policies = {
+          privacy: {
+            title: "Privacy Policy",
+            content: `
+              <p style="margin-bottom:14px;"><strong>FAIDE Privacy Policy</strong></p>
+              <p style="margin-bottom:14px;">We respect your privacy. This policy explains what information we collect, why we collect it, and how we use it.</p>
+              <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">What we collect</h3>
+              <ul style="margin-left:18px; margin-bottom:14px;">
+                <li>Contact details you provide (name, phone number, email).</li>
+                <li>Order details (items, size, color, quantity, delivery address).</li>
+                <li>Basic site analytics (to improve performance and experience).</li>
+              </ul>
+              <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">How we use it</h3>
+              <ul style="margin-left:18px; margin-bottom:14px;">
+                <li>To process and fulfill your order.</li>
+                <li>To communicate about your order (shipping updates, questions).</li>
+                <li>To improve the website and product experience.</li>
+              </ul>
+              <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Your choices</h3>
+              <p style="margin-bottom:14px;">You can request to update or delete your information by contacting us at <a style="color:var(--primary); text-decoration:none;" href="mailto:faideclothingsa@gmail.com">faideclothingsa@gmail.com</a>.</p>
+            `
+          },
+          terms: {
+            title: "Terms of Service",
+            content: `
+              <p style="margin-bottom:14px;"><strong>FAIDE Terms of Service</strong></p>
+              <p style="margin-bottom:14px;">By using this website and placing an order, you agree to the terms below.</p>
+              <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Orders</h3>
+              <ul style="margin-left:18px; margin-bottom:14px;">
+                <li>Orders are confirmed via WhatsApp after you submit your cart.</li>
+                <li>We may contact you if we need size/color confirmation or address clarification.</li>
+              </ul>
+              <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Pricing</h3>
+              <p style="margin-bottom:14px;">Prices are listed in ZAR (R). We reserve the right to correct errors and update pricing.</p>
+              <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Availability</h3>
+              <p style="margin-bottom:14px;">Stock availability may change. If an item is unavailable, we’ll offer an alternative or refund.</p>
+            `
+          },
+          returns: {
+            title: "Returns & Exchanges",
+            content: `
+              <p style="margin-bottom:14px;"><strong>Returns & Exchanges</strong></p>
+              <p style="margin-bottom:14px;">If something isn’t right, we’ll work with you.</p>
+              <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Eligibility</h3>
+              <ul style="margin-left:18px; margin-bottom:14px;">
+                <li>Items must be unworn, unwashed, and in original condition.</li>
+                <li>Request must be made within 7 days of delivery.</li>
+              </ul>
+              <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Exchanges</h3>
+              <p style="margin-bottom:14px;">Size exchanges are accepted if stock is available.</p>
+              <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">How to request</h3>
+              <p style="margin-bottom:14px;">Contact us on WhatsApp or email with your order details.</p>
+            `
+          },
+          shipping: {
+            title: "Shipping Policy",
+            content: `
+              <p style="margin-bottom:14px;"><strong>Shipping Policy</strong></p>
+              <p style="margin-bottom:14px;">We ship orders within South Africa. Delivery times depend on your location.</p>
+              <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Processing time</h3>
+              <p style="margin-bottom:14px;">Orders are typically processed within 1–3 business days after confirmation.</p>
+              <h3 style="color:#fff; font-size:1.05rem; margin:18px 0 8px;">Delivery</h3>
+              <ul style="margin-left:18px; margin-bottom:14px;">
+                <li>Estimated delivery: 2–7 business days (varies by region).</li>
+                <li>Tracking may be provided depending on courier service.</li>
+              </ul>
+              <p style="margin-bottom:14px;">Questions? Email <a style="color:var(--primary); text-decoration:none;" href="mailto:faideclothingsa@gmail.com">faideclothingsa@gmail.com</a></p>
+            `
+          }
+        };
+
+        let cleanupPolicyTrap = null;
+        let lastFocusedEl = null;
+
+        function showPolicy(policyType) {
+          const policy = policies[policyType];
+          if (!policy) return;
+          lastFocusedEl = document.activeElement;
+
+          modalTitle.textContent = policy.title;
+          modalContent.innerHTML = policy.content;
+
+          policyModal.style.display = "block";
+          document.body.classList.add("lock-scroll");
+          setOverscrollLock(true);
+
+          cleanupPolicyTrap?.();
+          cleanupPolicyTrap = trapFocus(policyModal, { initialFocus: closeModal });
+        }
+
+        function hidePolicy() {
+          policyModal.style.display = "none";
+          document.body.classList.remove("lock-scroll");
+          setOverscrollLock(false);
+          cleanupPolicyTrap?.(); cleanupPolicyTrap = null;
+          lastFocusedEl?.focus?.();
+        }
+
+        function onClick(id, fn) {
+          const el = document.getElementById(id);
+          el?.addEventListener("click", (e) => { e.preventDefault(); fn(); });
+        }
+
+        onClick("privacy-link", () => showPolicy("privacy"));
+        onClick("terms-link", () => showPolicy("terms"));
+        onClick("returns-link", () => showPolicy("returns"));
+        onClick("shipping-link", () => showPolicy("shipping"));
+
+        closeModal?.addEventListener("click", hidePolicy);
+        policyModal?.addEventListener("click", (e) => { if (e.target === policyModal) hidePolicy(); });
 
         /*************************************************************
          * CART
@@ -2433,19 +2287,27 @@
         const cartCountEl = document.getElementById("cart-count");
         const checkoutBtn = document.getElementById("checkout-btn");
 
-        /* ✅ load cart from storage on start */
-        cart = loadCartFromStorage();
+        let cleanupCartTrap = null;
 
         function openCart() {
-          cartSidebar?.classList.add("active");
-          cartOverlay?.classList.add("active");
+          cartSidebar.classList.add("active");
+          cartSidebar.setAttribute("aria-hidden", "false");
+          cartOverlay.classList.add("active");
           document.body.classList.add("lock-scroll");
+          setOverscrollLock(true);
+
+          cleanupCartTrap?.();
+          cleanupCartTrap = trapFocus(cartSidebar, { initialFocus: closeCart });
         }
 
         function closeCartPanel() {
-          cartSidebar?.classList.remove("active");
-          cartOverlay?.classList.remove("active");
+          cartSidebar.classList.remove("active");
+          cartSidebar.setAttribute("aria-hidden", "true");
+          cartOverlay.classList.remove("active");
           document.body.classList.remove("lock-scroll");
+          setOverscrollLock(false);
+
+          cleanupCartTrap?.(); cleanupCartTrap = null;
         }
 
         floatingCart?.addEventListener("click", openCart);
@@ -2462,15 +2324,11 @@
 
         function setCheckoutState() {
           const empty = cart.length === 0;
-          if (!checkoutBtn) return;
           checkoutBtn.disabled = empty;
           checkoutBtn.title = empty ? "Add items to checkout" : "Proceed to WhatsApp checkout";
         }
 
         function updateCartUI() {
-          if (!cartItemsEl || !cartTotalEl || !cartCountEl) return;
-
-          /* ✅ persist cart on every render change */
           saveCartToStorage(cart);
 
           cartItemsEl.innerHTML = "";
@@ -2493,9 +2351,8 @@
 
             const li = document.createElement("li");
             li.className = "cart-item";
-
             li.innerHTML = `
-              <img class="cart-item-img" src="${item.image || ""}" alt="${item.name}" onerror="this.style.display='none';" />
+              <img class="cart-item-img" src="${item.image || ""}" alt="${item.name}" loading="lazy" decoding="async" onerror="this.style.display='none';" />
               <div class="cart-item-info">
                 <div class="cart-item-title">${item.name}</div>
                 <div class="cart-item-meta">Size: ${item.size} • Color: ${item.color}</div>
@@ -2513,30 +2370,21 @@
               </div>
             `;
 
-            li.querySelector('[data-action="dec"]').addEventListener("click", () => {
-              item.quantity = Math.max(1, item.quantity - 1);
-              updateCartUI();
-            });
-
-            li.querySelector('[data-action="inc"]').addEventListener("click", () => {
-              item.quantity += 1;
-              updateCartUI();
-            });
-
-            li.querySelector('[data-action="remove"]').addEventListener("click", () => {
-              cart.splice(idx, 1);
-              updateCartUI();
-            });
+            li.querySelector('[data-action="dec"]').addEventListener("click", () => { item.quantity = Math.max(1, item.quantity - 1); updateCartUI(); });
+            li.querySelector('[data-action="inc"]').addEventListener("click", () => { item.quantity += 1; updateCartUI(); });
+            li.querySelector('[data-action="remove"]').addEventListener("click", () => { cart.splice(idx, 1); updateCartUI(); });
 
             cartItemsEl.appendChild(li);
           });
 
           cartTotalEl.textContent = total.toFixed(2);
           cartCountEl.textContent = String(itemCount);
-
           setCheckoutState();
         }
 
+        /*************************************************************
+         * Desktop card options (unchanged), product modal is primary for mobile
+         *************************************************************/
         products.forEach((product) => {
           const stepperRoot = product.querySelector('.qty-stepper-ui[data-qty-root="card"]');
           const stepper = stepperRoot ? setupQtyStepper(stepperRoot) : null;
@@ -2576,9 +2424,7 @@
 
           updateAddBtn();
 
-          if (!addToCartBtn) return;
-
-          addToCartBtn.addEventListener("click", (e) => {
+          addToCartBtn?.addEventListener("click", (e) => {
             e.preventDefault();
             e.stopPropagation();
 
@@ -2587,7 +2433,6 @@
 
             const selectedSize = product.querySelector(".size-btn.selected");
             const selectedColor = product.querySelector(".color.selected");
-
             if (!selectedSize) return showCartToast("Select a size first.");
             if (!selectedColor) return showCartToast("Select a color first.");
 
@@ -2608,32 +2453,18 @@
 
             updateCartUI();
             showCartToast(`Added ${quantity}x ${productName} (${size}) in ${colorName}`);
-
             stepper?.setQty?.(1);
           });
         });
 
         updateCartUI();
 
-        document.addEventListener("keydown", (e) => {
-          if (e.key !== "Escape") return;
-
-          if (policyModal && policyModal.style.display === "block") hidePolicy();
-          if (cartSidebar?.classList.contains("active")) {
-            cartSidebar.classList.remove("active");
-            cartOverlay?.classList.remove("active");
-            document.body.classList.remove("lock-scroll");
-          }
-        });
-
         /*************************************************************
-         * ✅ SHOP FULLSCREEN PRODUCT MODAL (WITH THUMBS)
+         * ✅ PRODUCT MODAL (with focus trap)
          *************************************************************/
         const pm = {
           modal: document.getElementById("product-modal"),
           close: document.getElementById("pm-close"),
-          prev: document.getElementById("pm-prev"),
-          next: document.getElementById("pm-next"),
           img: document.getElementById("pm-img"),
           thumbs: document.getElementById("pm-thumbs"),
           subtitle: document.getElementById("pm-subtitle"),
@@ -2646,25 +2477,25 @@
 
           sizes: document.getElementById("pm-sizes"),
           colorsRow: document.getElementById("pm-colors-row"),
-          add: document.getElementById("pm-add"),
+          add: document.getElementById("pm-add")
         };
 
         let pmSources = [];
         let pmIndex = 0;
         let pmActiveProductEl = null;
+        let cleanupPmTrap = null;
 
         const pmStepperRoot = document.querySelector('.qty-stepper-ui[data-qty-root="pm"]');
         const pmStepper = pmStepperRoot ? setupQtyStepper(pmStepperRoot) : null;
 
         function pmRenderThumbs() {
-          if (!pm.thumbs) return;
           pm.thumbs.innerHTML = "";
           pmSources.slice(0, 4).forEach((src, i) => {
             const btn = document.createElement("button");
             btn.type = "button";
             btn.className = "thumb" + (i === pmIndex ? " active" : "");
             btn.setAttribute("aria-label", `View image ${i + 1}`);
-            btn.innerHTML = `<img src="${src}" alt="" loading="lazy" />`;
+            btn.innerHTML = `<img src="${src}" alt="" loading="lazy" decoding="async" />`;
             btn.addEventListener("click", (e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -2675,22 +2506,25 @@
         }
 
         function pmOpen() {
-          if (!pm.modal) return;
           pm.modal.classList.add("active");
           pm.modal.setAttribute("aria-hidden", "false");
           document.body.classList.add("lock-scroll");
-          pm.close?.focus();
+          setOverscrollLock(true);
+
+          cleanupPmTrap?.();
+          cleanupPmTrap = trapFocus(pm.modal, { initialFocus: pm.close });
         }
 
         function pmClose() {
-          if (!pm.modal) return;
           pm.modal.classList.remove("active");
           pm.modal.setAttribute("aria-hidden", "true");
           document.body.classList.remove("lock-scroll");
+          setOverscrollLock(false);
+
+          cleanupPmTrap?.(); cleanupPmTrap = null;
           pmActiveProductEl = null;
         }
 
-        /* ✅ Product modal: fix switch glitch (prevent duplicate swaps) */
         let __pmSwapToken = 0;
         function pmSetImage(i) {
           if (!pmSources.length || !pm.img) return;
@@ -2700,7 +2534,7 @@
           const nextSrc = pmSources[pmIndex];
 
           if (pm.img.getAttribute("src") === nextSrc) {
-            if (pm.subtitle) pm.subtitle.textContent = `${pmIndex + 1} / ${pmSources.length}`;
+            pm.subtitle.textContent = `${pmIndex + 1} / ${pmSources.length}`;
             pmRenderThumbs();
             return;
           }
@@ -2709,7 +2543,7 @@
           requestAnimationFrame(() => {
             if (token !== __pmSwapToken) return;
             pm.img.src = nextSrc;
-            if (pm.subtitle) pm.subtitle.textContent = `${pmIndex + 1} / ${pmSources.length}`;
+            pm.subtitle.textContent = `${pmIndex + 1} / ${pmSources.length}`;
             pmRenderThumbs();
             setTimeout(() => {
               if (token !== __pmSwapToken) return;
@@ -2760,7 +2594,7 @@
 
           const colors = original.length ? original : [
             { className: "color black", colorName: "Black" },
-            { className: "color white", colorName: "White" },
+            { className: "color white", colorName: "White" }
           ];
 
           pm.colorsRow.innerHTML = "";
@@ -2789,7 +2623,6 @@
           const name = productEl.getAttribute("data-name") || "Item";
           const price = productEl.querySelector(".price")?.textContent?.trim() || "";
           const label = productEl.querySelector(".product-label")?.textContent?.trim() || "";
-
           const category = productEl.querySelector(".product-category")?.textContent?.trim() || "";
           const colorsCount = productEl.querySelector(".product-colors-count")?.textContent?.trim() || "";
 
@@ -2816,32 +2649,8 @@
           pmOpen();
         }
 
-        let pmTouchStartX = null;
-        pm.img?.addEventListener("touchstart", (e) => {
-          if (!e.touches || e.touches.length !== 1) return;
-          pmTouchStartX = e.touches[0].clientX;
-        }, { passive: true });
-
-        pm.img?.addEventListener("touchend", (e) => {
-          if (pmTouchStartX == null) return;
-          const endX = e.changedTouches?.[0]?.clientX ?? pmTouchStartX;
-          const diff = endX - pmTouchStartX;
-          pmTouchStartX = null;
-
-          if (Math.abs(diff) < 35) return;
-          if (diff < 0) pmSetImage(pmIndex + 1);
-          else pmSetImage(pmIndex - 1);
-        }, { passive: true });
-
         pm.close?.addEventListener("click", pmClose);
         pm.modal?.addEventListener("click", (e) => { if (e.target === pm.modal) pmClose(); });
-
-        document.addEventListener("keydown", (e) => {
-          if (!pm.modal?.classList.contains("active")) return;
-          if (e.key === "Escape") pmClose();
-          if (e.key === "ArrowRight") pmSetImage(pmIndex + 1);
-          if (e.key === "ArrowLeft") pmSetImage(pmIndex - 1);
-        });
 
         pm.add?.addEventListener("click", () => {
           if (!pmActiveProductEl) return;
@@ -2873,16 +2682,26 @@
           pmClose();
         });
 
+        // ✅ Open product modal on card click (except interactive items)
         products.forEach((productEl) => {
           productEl.addEventListener("click", (e) => {
             const interactive = e.target.closest("button, input, .color, a, .sizes, .colors, .options, .thumb-row");
-            if (interactive) return;
+            if (interactive && !e.target.closest("[data-open-product]")) return;
             openProductModal(productEl);
+          });
+
+          // ✅ Mobile CTA button opens modal
+          productEl.querySelectorAll("[data-open-product]").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              openProductModal(productEl);
+            });
           });
         });
 
         /*************************************************************
-         * LOOKBOOK FULLSCREEN GALLERY + ZOOM
+         * LOOKBOOK GALLERY
          *************************************************************/
         const lookbookCards = Array.from(document.querySelectorAll(".lookbook-card"));
         const galleryModal = document.getElementById("gallery-modal");
@@ -2901,65 +2720,46 @@
           .filter(Boolean);
 
         let galleryIndex = 0;
-        let touchStartX = null;
+        let cleanupGalleryTrap = null;
 
-        let scale = 1;
-        let tx = 0;
-        let ty = 0;
-
-        let dragging = false;
-        let dragStartX = 0;
-        let dragStartY = 0;
-        let dragStartTx = tx;
-        let dragStartTy = ty;
-
-        let pinchStartDist = 0;
-        let pinchStartScale = 1;
-        let pinchMid = { x: 0, y: 0 };
-
+        let scale = 1, tx = 0, ty = 0;
         function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
 
         function applyTransform() {
-          if (!galleryImg) return;
           galleryImg.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`;
           galleryImg.classList.toggle("zoomed", scale > 1.01);
         }
 
-        function resetZoom() {
-          scale = 1;
-          tx = 0;
-          ty = 0;
-          applyTransform();
-        }
+        function resetZoom() { scale = 1; tx = 0; ty = 0; applyTransform(); }
 
         function setGallery(index) {
-          if (!galleryItems.length) return;
           galleryIndex = (index + galleryItems.length) % galleryItems.length;
-
           const item = galleryItems[galleryIndex];
           galleryImg.src = item.src;
           galleryImg.alt = item.title;
           galleryTitle.textContent = item.title;
           galleryCounter.textContent = `${galleryIndex + 1} / ${galleryItems.length}`;
-
           resetZoom();
         }
 
         function openGallery(index) {
-          if (!galleryItems.length) return;
           setGallery(index);
-
           galleryModal.classList.add("active");
           galleryModal.setAttribute("aria-hidden", "false");
           document.body.classList.add("lock-scroll");
+          setOverscrollLock(true);
 
-          galleryClose?.focus();
+          cleanupGalleryTrap?.();
+          cleanupGalleryTrap = trapFocus(galleryModal, { initialFocus: galleryClose });
         }
 
         function closeGallery() {
           galleryModal.classList.remove("active");
           galleryModal.setAttribute("aria-hidden", "true");
           document.body.classList.remove("lock-scroll");
+          setOverscrollLock(false);
+
+          cleanupGalleryTrap?.(); cleanupGalleryTrap = null;
           resetZoom();
         }
 
@@ -2969,19 +2769,9 @@
         });
 
         galleryClose?.addEventListener("click", closeGallery);
-
-        galleryModal?.addEventListener("click", (e) => {
-          if (e.target === galleryModal) closeGallery();
-        });
-
-        document.addEventListener("keydown", (e) => {
-          if (!galleryModal?.classList.contains("active")) return;
-          if (e.key === "Escape") closeGallery();
-        });
+        galleryModal?.addEventListener("click", (e) => { if (e.target === galleryModal) closeGallery(); });
 
         function toggleZoomAt(clientX, clientY) {
-          if (!galleryViewport) return;
-
           const rect = galleryViewport.getBoundingClientRect();
           const x = clientX - rect.left - rect.width / 2;
           const y = clientY - rect.top - rect.height / 2;
@@ -2997,135 +2787,22 @@
 
           tx = clamp(tx, -rect.width * (scale - 1) * 0.5, rect.width * (scale - 1) * 0.5);
           ty = clamp(ty, -rect.height * (scale - 1) * 0.5, rect.height * (scale - 1) * 0.5);
-
           applyTransform();
         }
 
-        galleryImg?.addEventListener("dblclick", (e) => {
-          e.preventDefault();
-          toggleZoomAt(e.clientX, e.clientY);
+        galleryImg?.addEventListener("dblclick", (e) => { e.preventDefault(); toggleZoomAt(e.clientX, e.clientY); });
+
+        /*************************************************************
+         * Global ESC close
+         *************************************************************/
+        document.addEventListener("keydown", (e) => {
+          if (e.key !== "Escape") return;
+          if (policyModal?.style.display === "block") hidePolicy();
+          if (galleryModal?.classList.contains("active")) closeGallery();
+          if (pm.modal?.classList.contains("active")) pmClose();
+          if (cartSidebar?.classList.contains("active")) closeCartPanel();
         });
-
-        function distance(t1, t2) {
-          const dx = t2.clientX - t1.clientX;
-          const dy = t2.clientY - t1.clientY;
-          return Math.hypot(dx, dy);
-        }
-
-        let lastTap = 0;
-
-        galleryViewport?.addEventListener("touchstart", (e) => {
-          if (!galleryModal?.classList.contains("active")) return;
-
-          const now = Date.now();
-          if (e.touches.length === 1) {
-            if (now - lastTap < 260) {
-              const t = e.touches[0];
-              toggleZoomAt(t.clientX, t.clientY);
-              lastTap = 0;
-              return;
-            }
-            lastTap = now;
-          }
-
-          if (e.touches.length === 1) {
-            touchStartX = e.touches[0].clientX;
-
-            if (scale > 1.01) {
-              dragging = true;
-              dragStartX = e.touches[0].clientX;
-              dragStartY = e.touches[0].clientY;
-              dragStartTx = tx;
-              dragStartTy = ty;
-            }
-          }
-
-          if (e.touches.length === 2) {
-            pinchStartDist = distance(e.touches[0], e.touches[1]);
-            pinchStartScale = scale;
-            pinchMid = {
-              x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
-              y: (e.touches[0].clientY + e.touches[1].clientY) / 2
-            };
-          }
-        }, { passive: true });
-
-        galleryViewport?.addEventListener("touchmove", (e) => {
-          if (!galleryModal?.classList.contains("active") || !galleryViewport) return;
-
-          if (e.touches.length === 2) {
-            const d = distance(e.touches[0], e.touches[1]);
-            const next = clamp(pinchStartScale * (d / pinchStartDist), 1, 3);
-
-            const rect = galleryViewport.getBoundingClientRect();
-            const cx = pinchMid.x - rect.left - rect.width / 2;
-            const cy = pinchMid.y - rect.top - rect.height / 2;
-
-            const ratio = next / scale;
-            tx = (tx - cx) * ratio + cx;
-            ty = (ty - cy) * ratio + cy;
-            scale = next;
-
-            tx = clamp(tx, -rect.width * (scale - 1) * 0.5, rect.width * (scale - 1) * 0.5);
-            ty = clamp(ty, -rect.height * (scale - 1) * 0.5, rect.height * (scale - 1) * 0.5);
-
-            applyTransform();
-            return;
-          }
-
-          if (e.touches.length === 1 && scale > 1.01 && dragging) {
-            const t = e.touches[0];
-            const dx = t.clientX - dragStartX;
-            const dy = t.clientY - dragStartY;
-
-            const rect = galleryViewport.getBoundingClientRect();
-            tx = clamp(dragStartTx + dx, -rect.width * (scale - 1) * 0.5, rect.width * (scale - 1) * 0.5);
-            ty = clamp(dragStartTy + dy, -rect.height * (scale - 1) * 0.5, rect.height * (scale - 1) * 0.5);
-
-            applyTransform();
-          }
-        }, { passive: true });
-
-        galleryViewport?.addEventListener("touchend", () => {
-          dragging = false;
-          touchStartX = null;
-        }, { passive: true });
       });
-    </script>
-
-    <!-- Cloudflare snippet (kept as-is) -->
-    <script>
-      (function () {
-        function c() {
-          var b = a.contentDocument || a.contentWindow.document;
-          if (b) {
-            var d = b.createElement("script");
-            d.innerHTML =
-              "window.__CF$cv$params={r:'9c6cd97dc2926d25',t:'MTc2OTkwMDY4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-            b.getElementsByTagName("head")[0].appendChild(d);
-          }
-        }
-        if (document.body) {
-          var a = document.createElement("iframe");
-          a.height = 1;
-          a.width = 1;
-          a.style.position = "absolute";
-          a.style.top = 0;
-          a.style.left = 0;
-          a.style.border = "none";
-          a.style.visibility = "hidden";
-          document.body.appendChild(a);
-          if ("loading" !== document.readyState) c();
-          else if (window.addEventListener) document.addEventListener("DOMContentLoaded", c);
-          else {
-            var e = document.onreadystatechange || function () {};
-            document.onreadystatechange = function (b) {
-              e(b);
-              "loading" !== document.readyState && (document.onreadystatechange = e, c());
-            };
-          }
-        }
-      })();
     </script>
   </body>
 </html>
