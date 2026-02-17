@@ -89,8 +89,9 @@
         --surface: #111111;
         --text: #ffffff;
 
-        /* ✅ Purple accents restored */
+        /* ✅ Purple accents kept */
         --primary: #a855f7;
+        --secondary: #9333ea;
 
         --muted: #888888;
         --muted2: #777777;
@@ -154,27 +155,26 @@
         backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--border);
         z-index: 1000;
-        transition: all 0.20s ease;
+        transition: all 0.25s ease;
         padding: 0 var(--px);
         display: flex;
         align-items: center;
       }
 
       .faide-wordmark-img {
-        height: 42px;
+        height: 32px;
         width: auto;
         display: block;
         user-select: none;
-        transition: transform 0.20s ease;
+        transition: transform 0.25s ease;
       }
 
       .nav-links {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 18px;
       }
 
-      /* ✅ Removed purple slider underline indicator */
       .nav-links a {
         font-size: 0.7rem;
         letter-spacing: 1px;
@@ -189,7 +189,6 @@
         border-radius: 999px;
       }
 
-      /* ✅ Lift on hover + press lift effect */
       .nav-links a:hover {
         color: var(--secondary);
         transform: translateY(-2px);
@@ -216,7 +215,7 @@
 
       @media (max-width: 768px) {
         .navbar { padding: 0 var(--px-sm); }
-        .faide-wordmark-img { height: 28px; }
+        .faide-wordmark-img { height: 22px; }
 
         .nav-links {
           gap: 10px;
@@ -272,7 +271,6 @@
         padding-right: var(--px);
       }
 
-      /* ✅ Hero: full image background hero.png */
       .hero-bg {
         position: absolute;
         inset: 0;
@@ -282,7 +280,6 @@
         pointer-events: none;
       }
 
-      /* ✅ Removed purple glow overlay from hero */
       .hero-bg::after{
         content:"";
         position:absolute;
@@ -292,7 +289,6 @@
 
       .hero-content{ max-width: 900px; margin: 0 auto; }
 
-      /* ✅ Purple accent kept (no glow) */
       .hero-title {
         font-size: var(--h1);
         font-weight: 800;
@@ -300,7 +296,7 @@
         text-transform: uppercase;
         letter-spacing: 0.05em;
         position: relative;
-        text-shadow: none; /* removed glow */
+        text-shadow: none;
         line-height: 1.05;
       }
 
@@ -434,9 +430,6 @@
         transition: none;
       }
 
-      .lookbook-card:hover .lookbook-card-title { opacity: 1; transform: none; }
-      .lookbook-card:hover { transform: none; box-shadow: none; }
-
       .lookbook-img {
         width: 100%;
         height: 100%;
@@ -452,7 +445,7 @@
       }
 
       /* =========================================================
-         FULLSCREEN GALLERY (LOOKBOOK)
+         FULLSCREEN GALLERY MODALS (LOOKBOOK + PRODUCT)
       ========================================================= */
       .gallery-modal{
         position: fixed;
@@ -572,6 +565,7 @@
         gap: 10px;
         color: #777;
         font-size: 0.85rem;
+        text-align: center;
       }
 
       /* =========================================================
@@ -696,6 +690,7 @@
         border-color: rgba(168,85,247,0.95);
       }
 
+      /* ✅ product modal internals */
       .pm-media{
         display: grid;
         grid-template-rows: 1fr auto;
@@ -719,6 +714,8 @@
         object-fit: contain;
         display: block;
         cursor: default;
+        user-select: none;
+        -webkit-user-drag: none;
       }
       #pm-thumbs{ align-content: start; }
 
@@ -965,6 +962,39 @@
       }
 
       /* =========================================================
+         ✅ PRODUCT MODAL (FULLSCREEN) CONTENT LAYOUT
+      ========================================================= */
+      #product-modal .gallery-stage{
+        align-items: flex-start;
+        justify-content: center;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 18px 18px 22px;
+      }
+      #product-modal .gallery-stage::-webkit-scrollbar{ width: 0; height: 0; }
+      #product-modal .gallery-stage{ scrollbar-width: none; }
+
+      #product-modal .pm-wrap{
+        width: min(980px, 100%);
+        display: grid;
+        gap: 18px;
+        padding-bottom: 14px;
+      }
+
+      #product-modal .pm-image-shell{
+        height: min(48vh, 520px);
+      }
+
+      @media (max-width: 768px){
+        #product-modal .pm-image-shell{
+          height: 44vh;
+        }
+        #product-modal .gallery-stage{
+          padding: 14px 14px 18px;
+        }
+      }
+
+      /* =========================================================
          ABOUT
       ========================================================= */
       .about {
@@ -1022,7 +1052,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.5px;
+        gap: 16px;
         padding-top: 0;
         border-top: none;
       }
@@ -1053,7 +1083,7 @@
 
       .footer-legal-mid a {
         color: var(--muted2);
-        font-size: 1.00rem;
+        font-size: 1.05rem;
         text-decoration: none;
       }
 
@@ -1374,89 +1404,6 @@
         .cart-item-info{ grid-area: info; }
         .cart-item-actions{ grid-area: actions; align-items:flex-start; flex-direction: row; justify-content: space-between; }
       }
-
-      /* =========================================================
-         ✅ PRODUCT MODAL: reverted to POPUP modal (not fullscreen)
-      ========================================================= */
-      #product-modal.gallery-modal{
-        background: rgba(0,0,0,0.78);
-      }
-
-      /* Center panel */
-      #product-modal .gallery-frame{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: min(920px, 94vw);
-        max-height: 86vh;
-        background: #0a0a0a;
-        border: 2px solid var(--border);
-        border-radius: 50px;
-        overflow: hidden;
-        display: grid;
-        grid-template-rows: auto 1fr;
-        box-shadow: 0 20px 80px rgba(0,0,0,0.75);
-      }
-
-      #product-modal .gallery-topbar{
-        position: relative;
-        top: auto;
-        background: rgba(10,10,10,0.75);
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        backdrop-filter: blur(10px);
-      }
-
-      #product-modal .gallery-stage{
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 18px 18px 22px;
-
-        /* remove scroll indicator */
-        scrollbar-width: none;
-      }
-      #product-modal .gallery-stage::-webkit-scrollbar{ width: 0; height: 0; }
-
-      #pm-prev, #pm-next{ display: none !important; }
-
-      #product-modal #pm-viewport{
-        width: 100%;
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
-        border: none !important;
-        background: transparent !important;
-        border-radius: 0 !important;
-        padding: 0 !important;
-      }
-
-      #product-modal .pm-image-shell{
-        height: min(46vh, 440px);
-        background: #000;
-      }
-
-      #product-modal .pm-hint{
-        color:#777;
-        text-align:center;
-        padding: 18px 0 0;
-        font-size: 0.9rem;
-      }
-
-      /* Mobile: modal becomes full height for comfort */
-      @media (max-width: 768px){
-        #product-modal .gallery-frame{
-          top: 0;
-          left: 0;
-          transform: none;
-          width: 100vw;
-          height: 100vh;
-          max-height: 100vh;
-          border-radius: 0;
-        }
-        #product-modal .pm-image-shell{ height: 42vh; }
-      }
     </style>
 
     <style>@view-transition { navigation: auto; }</style>
@@ -1465,7 +1412,7 @@
   <body class="h-full w-full">
     <!-- NAVBAR -->
     <nav class="navbar flex justify-between items-center">
-      <a href="#drop" aria-label="FAIDE Home" style="display:flex; align-items:center; gap:0.5px; text-decoration:none;">
+      <a href="#drop" aria-label="FAIDE Home" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
         <img src="/images/faide-wordmark.png" alt="FAIDE" class="faide-wordmark-img" id="brand-wordmark" />
       </a>
 
@@ -1508,7 +1455,7 @@
 
           <a href="https://tiktok.com/@faideclothing" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok">
             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
             </svg>
           </a>
         </div>
@@ -1563,12 +1510,12 @@
       </div>
     </div>
 
-    <!-- ✅ PRODUCT MODAL (SHOP) - POPUP STYLE -->
+    <!-- ✅ PRODUCT MODAL (SHOP) — FULLSCREEN (restored) -->
     <div id="product-modal" class="gallery-modal" aria-hidden="true" role="dialog" aria-label="Product details">
       <div class="gallery-frame">
         <div class="gallery-topbar">
           <div class="gallery-meta">
-            <div class="gallery-title">PRODUCT</div>
+            <div class="gallery-title" id="pm-title">PRODUCT</div>
             <div class="gallery-counter" id="pm-subtitle">1 / 1</div>
           </div>
 
@@ -1581,7 +1528,7 @@
         </div>
 
         <div class="gallery-stage">
-          <div class="gallery-viewport" id="pm-viewport" style="display:grid; grid-template-rows: auto auto; gap: 14px;">
+          <div class="pm-wrap">
             <div class="pm-media">
               <div class="pm-image-shell">
                 <img id="pm-img" alt="Product image" src="" />
@@ -1615,10 +1562,12 @@
               </div>
 
               <button type="button" class="secondary-btn" id="pm-add" disabled>Add to Bag</button>
-
-              <div class="pm-hint">Swipe images • Select size &amp; color • Add to Bag</div>
             </div>
           </div>
+        </div>
+
+        <div class="gallery-bottombar">
+          <span>Swipe images • Select size &amp; color • Add to Bag</span>
         </div>
       </div>
     </div>
@@ -1856,7 +1805,7 @@
       </div>
     </footer>
 
-    <!-- Policy Modal (kept as-is) -->
+    <!-- Policy Modal -->
     <div
       id="policy-modal"
       role="dialog"
@@ -1922,9 +1871,6 @@
     </div>
 
     <script>
-      /*************************************************************
-       * ✅ SINGLE shared helper
-       *************************************************************/
       function clickOnEnterSpace(el, fn) {
         el.addEventListener("keydown", (e) => {
           if (e.key === "Enter" || e.key === " ") {
@@ -1934,9 +1880,6 @@
         });
       }
 
-      /*************************************************************
-       * CONFIG (Element SDK)
-       *************************************************************/
       const defaultConfig = {
         brand_name: "FAIDE",
         hero_title: "NEW DROP",
@@ -1990,7 +1933,6 @@
 
         document.body.style.fontFamily = `${customFont}, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
 
-        /* ✅ Keep hero title clean (no glow) */
         const heroTitleNode = document.querySelector(".hero-title");
         if (heroTitleNode) heroTitleNode.style.textShadow = "none";
       }
@@ -2038,9 +1980,6 @@
         }
       })();
 
-      /*************************************************************
-       * ✅ PRODUCT ALT IMAGES (used by Product Modal)
-       *************************************************************/
       function buildVariantSrc(baseSrc, n) {
         const qIndex = baseSrc.indexOf("?");
         const clean = qIndex >= 0 ? baseSrc.slice(0, qIndex) : baseSrc;
@@ -2072,9 +2011,6 @@
         });
       }
 
-      /*************************************************************
-       * ✅ CART MEMORY (localStorage)
-       *************************************************************/
       const CART_STORAGE_KEY = "faide_cart_v1";
       function loadCartFromStorage(){
         try{
@@ -2091,9 +2027,6 @@
         }catch(_){}
       }
 
-      /*************************************************************
-       * CART + WHATSAPP CHECKOUT
-       *************************************************************/
       const WHATSAPP_NUMBER = "27695603929";
       let cart = [];
 
@@ -2135,9 +2068,6 @@
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank", "noopener,noreferrer");
       }
 
-      /*************************************************************
-       * POLICY MODAL
-       *************************************************************/
       const policyModal = document.getElementById("policy-modal");
       const modalTitle = document.getElementById("modal-title");
       const modalContent = document.getElementById("modal-content");
@@ -2249,9 +2179,6 @@
       closeModal?.addEventListener("click", hidePolicy);
       policyModal?.addEventListener("click", (e) => { if (e.target === policyModal) hidePolicy(); });
 
-      /*************************************************************
-       * ✅ Helpers: Nav scroll + active state
-       *************************************************************/
       function getNavOffsetPx() {
         const nav = document.querySelector(".navbar");
         const navH = nav?.getBoundingClientRect?.().height || parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--nav-h")) || 86;
@@ -2265,9 +2192,6 @@
         window.scrollTo({ top, behavior: "smooth" });
       }
 
-      /*************************************************************
-       * ✅ Qty stepper
-       *************************************************************/
       function setupQtyStepper(rootEl, { onChange } = {}) {
         const valueEl = rootEl.querySelector("[data-qty-value]");
         const incBtn = rootEl.querySelector('[data-qty-btn="inc"]');
@@ -2337,9 +2261,6 @@
         return { getQty: () => qty, setQty };
       }
 
-      /*************************************************************
-       * MAIN DOM READY
-       *************************************************************/
       document.addEventListener("DOMContentLoaded", async () => {
         const shopNowBtn = document.getElementById("shop-now-btn");
         shopNowBtn?.addEventListener("click", () => scrollToSectionId("shop"));
@@ -2415,9 +2336,6 @@
         window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("resize", () => { updateActiveFromScroll(); }, { passive: true });
 
-        /*************************************************************
-         * CART
-         *************************************************************/
         const products = document.querySelectorAll(".product");
         const floatingCart = document.getElementById("floating-cart");
         const cartSidebar = document.getElementById("cart-sidebar");
@@ -2619,9 +2537,9 @@
           }
         });
 
-        /*************************************************************
-         * ✅ SHOP PRODUCT POPUP MODAL (with thumbs) — restored popup
-         *************************************************************/
+        /* =========================================================
+           ✅ PRODUCT FULLSCREEN MODAL LOGIC
+        ========================================================= */
         const pm = {
           modal: document.getElementById("product-modal"),
           close: document.getElementById("pm-close"),
@@ -2871,9 +2789,9 @@
           });
         });
 
-        /*************************************************************
-         * LOOKBOOK FULLSCREEN GALLERY + ZOOM
-         *************************************************************/
+        /* =========================================================
+           LOOKBOOK FULLSCREEN GALLERY + ZOOM
+        ========================================================= */
         const lookbookCards = Array.from(document.querySelectorAll(".lookbook-card"));
         const galleryModal = document.getElementById("gallery-modal");
         const galleryImg = document.getElementById("gallery-img");
