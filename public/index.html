@@ -278,13 +278,10 @@
         white-space: nowrap;
         padding: 10px 10px;
         line-height: 1;
-        border-radius: 999px;
+        border-radius: 0px;
       }
 
-      .nav-links a:hover {
-        color: var(--secondary);
-        transform: translateY(-2px);
-        background: rgba(168, 85, 247, 0.08);
+      .nav-links a:hover,
       }
       .nav-links a:active {
         transform: translateY(0px) scale(0.98);
@@ -305,12 +302,12 @@
 
       #drop, #lookbook, #shop, #about, #footer { scroll-margin-top: calc(var(--nav-h) + 18px); }
 
-      @media (max-width: 768px) {
+      @media (max-width: 600px) {
         .navbar { padding: 0 var(--px-sm); }
         .faide-wordmark-img { height: 22px; }
 
         .nav-links {
-          gap: 5px;
+          gap: 2px;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
