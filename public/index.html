@@ -119,36 +119,119 @@
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
       html { scroll-behavior: smooth; height: 100%; font-size: 16px; }
-      body {
-        background: var(--bg);
-        color: var(--text);
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        overflow-x: hidden;
-        height: 100%;
-        width: 100%;
-      }
-      body.lock-scroll { overflow: hidden; }
+/* Premium smoothing */
+body{
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
 
-      @media (max-width: 768px){
-        html{ font-size: 15px; }
-      }
+/* NAV — more luxury, less “glow” */
+.navbar{
+  background: rgba(0,0,0,0.72);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+}
 
-      @keyframes fadeInUp {
-        0% { opacity: 0; transform: translateY(20px); }
-        100% { opacity: 1; transform: translateY(0); }
-      }
-      .fade-in-up { animation: fadeInUp 1s forwards; }
-      .delay-1 { animation-delay: 0.3s; opacity: 0; }
-      .delay-2 { animation-delay: 0.6s; opacity: 0; }
-      .delay-3 { animation-delay: 0.9s; opacity: 0; }
+.nav-links a{
+  color: rgba(255,255,255,0.65);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  transition: transform .18s var(--ease), color .18s var(--ease), opacity .18s var(--ease);
+}
 
-      @media (prefers-reduced-motion: reduce){
-        html{ scroll-behavior:auto; }
-        .fade-in-up{ animation:none !important; opacity:1 !important; transform:none !important; }
-        *{ transition:none !important; }
-      }
+/* Remove the purple slider line effect */
+.nav-links a::after{ display:none !important; }
 
-      /* =========================================================
+/* active state = purple text only */
+.nav-links a.active{ color: var(--primary); }
+
+/* hover = subtle lift */
+.nav-links a:hover{
+  color: rgba(255,255,255,0.9);
+  transform: translateY(-1px);
+}
+
+/* press = tiny down */
+.nav-links a:active{ transform: translateY(0px) scale(0.98); }
+
+/* HERO — remove purple glow, keep contrast */
+.hero-bg::after{
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.86)),
+    radial-gradient(70% 40% at 50% 35%, rgba(168,85,247,0.06), transparent 70%);
+}
+
+.hero-title{
+  color: #fff;               /* make title white */
+  text-shadow: none;         /* remove glow */
+  letter-spacing: 0.12em;
+}
+
+.purple-title{
+  color: #fff;
+  position: relative;
+}
+
+/* section title accent = small purple underline */
+.purple-title::after{
+  content:"";
+  display:block;
+  width: 56px;
+  height: 2px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  opacity: .9;
+}
+
+/* Buttons = premium lift */
+.primary-btn, .secondary-btn, .checkout-btn{
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.checkout-btn:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.primary-btn:active,
+.secondary-btn:active,
+.checkout-btn:active{
+  transform: translateY(0px) scale(0.99);
+}
+
+/* Cards = subtle premium surface */
+.product-img-container{
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.product-info{
+  padding-top: 8px;
+}
+
+/* labels look more expensive */
+.product-label{
+  color: rgba(168,85,247,0.95);
+  text-shadow: none;
+  letter-spacing: 0.16em;
+}
+
+/* Shop card hover (desktop) */
+@media (hover:hover) and (pointer:fine){
+  .product:hover .product-img-container{
+    border-color: rgba(255,255,255,0.18);
+  }
+  .product:hover{
+    transform: translateY(-3px);
+    transition: transform .22s var(--ease);
+  }
+}
+ =========================================================
          NAVBAR
       ========================================================= */
       .navbar {
