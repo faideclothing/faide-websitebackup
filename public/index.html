@@ -296,19 +296,19 @@
 
       #drop, #lookbook, #shop, #about, #footer { scroll-margin-top: calc(var(--nav-h) + 18px); }
 
-      @media (max-width: 700px) {
+      @media (max-width: 400px) {
         .navbar { padding: 0 var(--px-sm); }
         .faide-wordmark-img { height: 22px; }
 
         .nav-links {
-          gap: 1px;
+          gap: 0px;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
           max-width: 68vw;
         }
         .nav-links::-webkit-scrollbar { display: none; }
-        .nav-links a { font-size: 0.62rem; letter-spacing: 0.8px; color: #777; padding: 10px 10px; }
+        .nav-links a { font-size: 0.50rem; letter-spacing: 0.8px; color: #777; padding: 10px 10px; }
       }
 
       /* =========================================================
