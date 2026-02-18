@@ -282,15 +282,9 @@
       }
 
       .nav-links a:hover,
-      }
-      .nav-links a:active {
-        transform: translateY(0px) scale(0.98);
-        background: rgba(168, 85, 247, 0.14);
-      }
-
-      .nav-links a.active {
-        color: var(--primary);
-        background: rgba(168, 85, 247, 0.10);
+      .nav-links a:active,
+      .nav-links a.active{
+        background: transparent
       }
 
       .navbar.shrink {
@@ -302,12 +296,12 @@
 
       #drop, #lookbook, #shop, #about, #footer { scroll-margin-top: calc(var(--nav-h) + 18px); }
 
-      @media (max-width: 600px) {
+      @media (max-width: 700px) {
         .navbar { padding: 0 var(--px-sm); }
         .faide-wordmark-img { height: 22px; }
 
         .nav-links {
-          gap: 2px;
+          gap: 1px;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
