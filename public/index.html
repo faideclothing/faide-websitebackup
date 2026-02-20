@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="xHQMXeonHcUZ-NTHCrtvjlR9bojEkpwc8CzKChP7I9o" />
 
-  <title>FAIDE™ | Luxury Streetwear Brand</title>
+  <title>FAIDE® | Luxury Streetwear Brand</title>
   <meta
     name="description"
-    content="FAIDE™ luxury streetwear. New drops, exclusive releases, and curated essentials. Designed with intention. Worn with purpose."
+    content="FAIDE® luxury streetwear. New drops, exclusive releases, and curated essentials. Designed with intention. Worn with purpose."
   />
 <!-- Open Graph / Social Preview -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="FAIDE™ | Luxury Streetwear Brand" />
-<meta property="og:site_name" content="FAIDE™" />
+<meta property="og:title" content="FAIDE® | Luxury Streetwear Brand" />
+<meta property="og:site_name" content="FAIDE®" />
 <meta
   property="og:description"
   content="Luxury streetwear designed with intention. New drops, exclusive releases, and curated essentials."
@@ -134,23 +134,11 @@
       .delay-2 { animation-delay: 0.6s; opacity: 0; }
       .delay-3 { animation-delay: 0.9s; opacity: 0; }
 
-      /* =========================================================
-         ✅ Tap / Click lift (no glow)
-      ========================================================= */
-      .tap-lift{
-        transition: transform 0.14s ease;
-        will-change: transform;
-      }
-      .tap-lift:active{
-        transform: translateY(-2px);
-      }
-      @media (hover:hover) and (pointer:fine){
-        .tap-lift:hover{
-          transform: translateY(-2px);
-        }
-        .tap-lift:active{
-          transform: translateY(-3px);
-        }
+      /* ✅ Click lift (no glow) */
+      .press-lift{ transition: transform 0.16s ease; }
+      .press-lift:active{ transform: translateY(-2px); }
+      @media (hover: hover) and (pointer: fine){
+        .press-lift:hover{ transform: translateY(-1px); }
       }
 
       /* =========================================================
@@ -182,38 +170,34 @@
       .nav-links {
         display: flex;
         align-items: center;
-        gap: 18px; /* keep spacing */
+        gap: 18px;
       }
 
-      /* ✅ Navbar: remove purple sliding stripe on hover, keep active underline only */
+      /* ✅ Navbar links (bigger tap target) */
       .nav-links a {
-        font-size: 0.10rem;
+        font-size: 0.7rem;
         letter-spacing: 1px;
         text-transform: uppercase;
         color: var(--muted);
         text-decoration: none;
-        transition: color 0.25s ease, transform 0.14s ease;
+        transition: color 0.25s ease, transform 0.16s ease;
         position: relative;
         white-space: nowrap;
-        padding: 12px 0; /* bigger tap target */
+        padding: 12px 0;
         line-height: 1;
       }
 
-      .nav-links a:hover { color: var(--secondary); transform: translateY(-2px); }
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: 6px;
-        left: 0;
-        width: 0; /* no hover slide */
-        height: 2px;
-        background: transparent;
-        transition: none;
-      }
-      .nav-links a:hover::after { width: 0; } /* ensure no hover stripe */
+      /* ✅ REMOVE purple stripe/underline completely */
+      .nav-links a::after { content: none !important; }
+      .nav-links a:hover::after { content: none !important; }
+      .nav-links a.active::after { content: none !important; }
 
+      /* ✅ Keep purple active state on click (no stripe) */
+      .nav-links a:hover { color: var(--secondary); }
       .nav-links a.active { color: var(--primary); }
-      .nav-links a.active::after { width: 100%; background: var(--primary); }
+
+      /* ✅ click lift */
+      .nav-links a:active { transform: translateY(-2px); }
 
       .navbar.shrink {
         height: 72px;
@@ -229,7 +213,7 @@
         .faide-wordmark-img { height: 22px; }
 
         .nav-links {
-          gap: 10px;
+          gap: 12px;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
@@ -282,7 +266,7 @@
         padding-right: var(--px);
       }
 
-      /* ✅ Hero: full image background hero.png, remove purple background glow */
+      /* ✅ Hero: full image background hero.png */
       .hero-bg {
         position: absolute;
         inset: 0;
@@ -291,11 +275,12 @@
         filter: saturate(1) contrast(1.02);
         pointer-events: none;
       }
+      /* ✅ Remove purple background glow on hero */
       .hero-bg::after{
         content:"";
         position:absolute;
         inset:0;
-        background: radial-gradient(80% 60% at 50% 40%, rgba(0,0,0,0.55), rgba(0,0,0,0.82) 70%, rgba(0,0,0,0.93));
+        background: radial-gradient(80% 60% at 50% 40%, rgba(0,0,0,0.10), rgba(0,0,0,0.78) 70%, rgba(0,0,0,0.92));
       }
 
       .hero-content{ max-width: 900px; margin: 0 auto; }
@@ -307,7 +292,8 @@
         text-transform: uppercase;
         letter-spacing: 0.05em;
         position: relative;
-        text-shadow: none; /* ✅ remove purple glow */
+        /* ✅ remove hero title glow */
+        text-shadow: none;
         line-height: 1.05;
       }
 
@@ -329,17 +315,18 @@
         background: #111;
         color: #888;
         margin: 0 8px;
-        transition: transform 0.14s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+        transition: transform 0.16s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         border: 1px solid #222;
       }
 
       .social-icon:hover {
         background: var(--secondary);
         color: #fff;
-        transform: translateY(-2px) scale(1.04); /* lift without glow */
+        transform: translateY(-1px) scale(1.02);
         border-color: var(--secondary);
         box-shadow: none; /* ✅ no glow */
       }
+      .social-icon:active{ transform: translateY(-2px) scale(1.03); box-shadow:none; }
 
       .primary-btn {
         background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
@@ -350,7 +337,7 @@
         font-weight: 700;
         cursor: pointer;
         margin-top: 28px;
-        transition: transform 0.14s ease, background 0.25s ease, color 0.25s ease;
+        transition: transform 0.16s ease, filter 0.2s ease, background 0.3s ease, color 0.3s ease;
         text-transform: uppercase;
         letter-spacing: 1px;
         font-size: 0.9rem;
@@ -358,12 +345,11 @@
       }
 
       .primary-btn:hover {
-        background: #fff;
-        color: #000;
-        transform: translateY(-2px);
+        filter: brightness(1.05);
+        transform: translateY(-1px);
         box-shadow: none;
       }
-      .primary-btn:active { transform: translateY(-3px); }
+      .primary-btn:active{ transform: translateY(-2px); }
 
       @media (max-width: 768px){
         .hero{ padding-left: var(--px-sm); padding-right: var(--px-sm); }
@@ -381,7 +367,7 @@
       }
       .purple-title {
         color: var(--primary);
-        text-shadow: none; /* keep clean */
+        text-shadow: none; /* ✅ no glow */
       }
 
       .aligned-title {
@@ -424,12 +410,12 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.75) 100%);
+        background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.75) 100%);
         z-index: 1;
         pointer-events: none;
       }
 
-      /* ✅ remove "Look 1 / Look 2" text overlays */
+      /* ✅ Remove "Look 1 / Look 2" text */
       .lookbook-card-title{ display:none !important; }
 
       .lookbook-img {
@@ -447,141 +433,138 @@
       }
 
       /* =========================================================
-         ✅ FULLSCREEN PAGES (Lookbook + Product) — replaces popups
+         ✅ FULLSCREEN PAGES (Lookbook + Product) — NOT POPUP MODALS
       ========================================================= */
-      .fs-page{
+      .fullpage{
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.96);
-        z-index: 2600;
+        background: #000;
+        z-index: 2800;
         display: none;
-        flex-direction: column;
+        overflow: hidden;
       }
-      .fs-page.active{ display:flex; }
+      .fullpage.active{ display:block; }
 
-      .fs-topbar{
+      .fp-frame{
+        position:absolute;
+        inset:0;
+        display:grid;
+        grid-template-rows: auto 1fr;
+      }
+      .fp-topbar{
         display:flex;
         align-items:center;
         justify-content:space-between;
         gap: 14px;
         padding: 18px 18px;
         border-bottom: 1px solid rgba(255,255,255,0.08);
-        background: rgba(10,10,10,0.60);
+        background: rgba(10,10,10,0.55);
         backdrop-filter: blur(10px);
       }
-      .fs-meta{
+      .fp-meta{
         display:flex;
         flex-direction:column;
-        gap:4px;
-        min-width:0;
+        gap: 4px;
+        min-width: 0;
       }
-      .fs-title{
+      .fp-title{
         font-weight: 900;
         color: var(--primary);
         letter-spacing: 0.04em;
         text-transform: uppercase;
         font-size: 0.95rem;
         white-space: nowrap;
-        overflow: hidden;
+        overflow:hidden;
         text-overflow: ellipsis;
       }
-      .fs-subtitle{
+      .fp-subtitle{
         color:#888;
-        font-size: 0.85rem;
-        font-weight: 700;
+        font-size:0.85rem;
+        font-weight:700;
       }
-
-      .fs-btn{
+      .fp-btn{
         border: 1px solid rgba(255,255,255,0.14);
         background: rgba(255,255,255,0.03);
         color:#fff;
         padding: 10px 14px;
         border-radius: 999px;
         cursor:pointer;
-        transition: transform 0.14s ease, background 0.2s ease, border-color 0.2s ease;
+        transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease;
         font-weight: 800;
         letter-spacing: 0.02em;
         display:inline-flex;
         align-items:center;
         gap: 8px;
-        box-shadow:none; /* ✅ no glow */
+        box-shadow:none;
       }
-      .fs-btn:hover{
+      .fp-btn:hover{
         background: rgba(255,255,255,0.08);
         border-color: rgba(255,255,255,0.24);
-        transform: translateY(-2px);
+        transform: translateY(-1px);
       }
-      .fs-btn:active{ transform: translateY(-3px); }
+      .fp-btn:active{ transform: translateY(-2px); }
 
-      .fs-body{
-        flex:1;
-        overflow:hidden;
+      .fp-stage{
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .fp-stage::-webkit-scrollbar{ width:0; height:0; }
+
+      /* Lookbook full page */
+      #lookbook-page .fp-stage{
         display:flex;
-        align-items:stretch;
+        align-items:center;
         justify-content:center;
-      }
-
-      /* Lookbook page (zoom/pinch) */
-      #lookbook-page .fs-body{
         padding: 0;
+        background:#000;
       }
-      .lb-viewport{
+      #lookbook-page .fp-viewport{
         width: 100vw;
         height: calc(100vh - 72px);
         position: relative;
         overflow: hidden;
-        touch-action: pan-x pan-y;
         background: transparent;
       }
-      .lb-img{
+      #lb-img{
         width: 100%;
         height: 100%;
         object-fit: contain;
         display:block;
-        transform-origin: center center;
-        transform: translate3d(0,0,0) scale(1);
-        transition: transform 120ms ease;
-        user-select: none;
-        -webkit-user-drag: none;
-        cursor: zoom-in;
+        user-select:none;
+        -webkit-user-drag:none;
       }
-      .lb-img.zoomed{ cursor: grab; }
-      .lb-img.zoomed:active{ cursor: grabbing; }
 
-      /* Product page layout */
-      #product-page .fs-body{
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
+      /* Product full page */
+      #product-page .fp-stage{
         padding: 14px 14px 22px;
-        scrollbar-width: none; /* hide scroll indicator */
+        display:flex;
+        justify-content:center;
+        align-items:flex-start;
       }
-      #product-page .fs-body::-webkit-scrollbar{ width:0; height:0; }
-
-      .pm-wrap{
+      #product-page .fp-content{
         width: min(760px, 94vw);
-        margin: 0 auto;
-        display: grid;
+        display:grid;
         grid-template-rows: auto auto;
         gap: 14px;
       }
-      .pm-media{
-        display: grid;
+      #product-page .pm-media{
+        display:grid;
         grid-template-rows: 1fr auto;
         gap: 14px;
         width: 100%;
+        min-height: 0;
       }
-      .pm-image-shell{
+      #product-page .pm-image-shell{
         height: min(54vh, 520px);
-        overflow: hidden;
-        background: #000;
-        border: none;
-        border-radius: 0;
+        overflow:hidden;
+        background:#000;
       }
-      .pm-image-shell img{
-        width: 100%;
-        height: 100%;
+      #product-page .pm-image-shell img{
+        width:100%;
+        height:100%;
         object-fit: contain;
-        display: block;
+        display:block;
       }
 
       .thumb-row{
@@ -598,17 +581,18 @@
         border: 1px solid rgba(255,255,255,0.12);
         background: rgba(255,255,255,0.02);
         cursor: pointer;
-        transition: transform 0.14s ease, border-color 0.18s ease;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        padding:0;
+        transition: border-color 0.18s ease, transform 0.16s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
       }
+      .thumb:hover{ transform: translateY(-1px); }
       .thumb:active{ transform: translateY(-2px); }
       .thumb img{
         width:100%;
         height:100%;
-        object-fit: cover;
+        object-fit:cover;
         display:block;
         user-select:none;
         -webkit-user-drag:none;
@@ -792,18 +776,17 @@
         color: #b5b5b5;
         border: 1px solid rgba(255,255,255,0.14);
         cursor: pointer;
-        transition: transform 0.14s ease, border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+        transition: transform 0.16s ease, border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
         font-weight: 800;
         font-size: 0.95rem;
         box-shadow:none;
       }
-
       .size-btn:hover:not(.selected) {
         border-color: rgba(168,85,247,0.4);
         color: #fff;
-        transform: translateY(-2px);
+        transform: translateY(-1px);
       }
-      .size-btn:active{ transform: translateY(-3px); }
+      .size-btn:active{ transform: translateY(-2px); }
 
       .size-btn.selected {
         background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
@@ -820,10 +803,9 @@
         height: 38px;
         border-radius: 999px;
         cursor: pointer;
-        transition: transform 0.14s ease, border-color 0.18s ease;
+        transition: transform 0.16s ease, border-color 0.18s ease;
         border: 2px solid transparent;
         position: relative;
-        box-shadow:none;
       }
 
       .color::after {
@@ -838,12 +820,11 @@
         transition: transform 0.18s ease;
       }
 
-      .color:hover { transform: translateY(-2px) scale(1.04); box-shadow:none; }
-      .color:active{ transform: translateY(-3px) scale(1.05); }
-
+      .color:hover { transform: translateY(-1px) scale(1.02); box-shadow: none; }
+      .color:active { transform: translateY(-2px) scale(1.03); box-shadow: none; }
       .color.selected {
         border-color: rgba(168,85,247,0.95);
-        transform: translateY(-1px) scale(1.03);
+        transform: scale(1.03);
         box-shadow: none;
       }
       .color.selected::after { transform: translate(-50%, -50%) scale(1); }
@@ -882,15 +863,14 @@
         align-items: center;
         justify-content: center;
         user-select: none;
-        transition: transform 0.14s ease, background 0.2s ease, border-color 0.2s ease;
-        box-shadow:none;
+        transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease;
       }
       .qty-stepper-ui .qty-btn-ui:hover{
         background: rgba(255,255,255,0.06);
         border-color: rgba(255,255,255,0.22);
-        transform: translateY(-2px);
+        transform: translateY(-1px);
       }
-      .qty-stepper-ui .qty-btn-ui:active{ transform: translateY(-3px); }
+      .qty-stepper-ui .qty-btn-ui:active{ transform: translateY(-2px); }
       .qty-stepper-ui .qty-value-ui{
         flex: 1;
         text-align: center;
@@ -917,20 +897,20 @@
         color: #fff;
         font-weight: 950;
         cursor: pointer;
-        transition: transform 0.14s ease, filter 0.2s ease;
+        transition: transform 0.16s ease, filter 0.2s ease;
         font-size: 0.92rem;
         width: 100%;
         text-transform: uppercase;
         letter-spacing: 1px;
-        box-shadow: none; /* ✅ no glow */
+        box-shadow: none; /* ✅ remove glow */
       }
 
       .secondary-btn:hover {
-        transform: translateY(-2px);
-        filter: brightness(1.06);
+        transform: translateY(-1px);
+        filter: brightness(1.05);
         box-shadow: none;
       }
-      .secondary-btn:active { transform: translateY(-3px); }
+      .secondary-btn:active { transform: translateY(-2px); }
 
       .secondary-btn:disabled{
         opacity: 0.45;
@@ -996,10 +976,10 @@
         color: var(--muted);
         text-decoration:none;
         width: fit-content;
-        transition: transform 0.14s ease, color 0.25s ease;
+        transition: color 0.25s ease, transform 0.16s ease;
       }
-      .about-contact a:hover{ color: var(--secondary); transform: translateY(-2px); }
-      .about-contact a:active{ transform: translateY(-3px); }
+      .about-contact a:hover{ color: var(--secondary); transform: translateY(-1px); }
+      .about-contact a:active{ transform: translateY(-2px); }
 
       @media (max-width: 768px){
         .about{ padding-left: var(--px-sm); padding-right: var(--px-sm); }
@@ -1008,9 +988,9 @@
       /* =========================================================
          FOOTER
       ========================================================= */
-      footer a { transition: transform 0.14s ease, color 0.25s ease; }
-      footer a:hover { color: var(--secondary); transform: translateY(-2px); }
-      footer a:active { transform: translateY(-3px); }
+      footer a { transition: color 0.25s ease, transform 0.16s ease; }
+      footer a:hover { color: var(--secondary); transform: translateY(-1px); }
+      footer a:active{ transform: translateY(-2px); }
 
       .footer-legal {
         display: flex;
@@ -1028,30 +1008,32 @@
         flex-wrap: wrap;
         text-align: center;
         gap: 0;
-        line-height: 1.4; /* tighter */
+        /* ✅ reduce spacing to 0.5 (line-height) */
+        line-height: 0.5;
       }
 
       .footer-legal-link {
         color: var(--muted2);
-        font-size: 0.75rem;
+        font-size: 0.95rem;
         text-decoration: none;
       }
 
-      /* ✅ Footer policy spacing = 0.5rem */
       .footer-sep{
         color: #666;
-        padding: 0 0.5rem; /* 0.5 spacing */
+        padding: 0 10px;
         user-select: none;
+        line-height: 0.5;
       }
 
       .footer-legal-mid { text-align: center; }
 
       .footer-legal-mid a {
         color: var(--muted2);
-        font-size: 0.76em;
+        font-size: 1.05rem;
         text-decoration: none;
       }
 
+      /* ✅ Footer: decrease width on mobile */
       @media (max-width:768px){
         footer#footer{ padding-left: var(--px-sm) !important; padding-right: var(--px-sm) !important; }
         .footer-legal-top{ max-width: 360px; }
@@ -1076,11 +1058,11 @@
         align-items: center;
         justify-content: center;
         z-index: 1500;
-        transition: transform 0.14s ease;
+        transition: transform 0.16s ease, filter 0.2s ease;
       }
 
-      .floating-cart:hover { transform: translateY(-2px) scale(1.04); box-shadow:none; }
-      .floating-cart:active { transform: translateY(-3px) scale(1.05); }
+      .floating-cart:hover { transform: translateY(-1px) scale(1.02); filter: brightness(1.05); box-shadow:none; }
+      .floating-cart:active { transform: translateY(-2px) scale(1.03); }
 
       .cart-count {
         position: absolute;
@@ -1117,7 +1099,7 @@
         width: 400px;
         height: 100%;
         background: #0a0a0a;
-        box-shadow: none; /* ✅ no glow */
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
         z-index: 2000;
         transition: right 0.4s ease;
         display: flex;
@@ -1148,14 +1130,14 @@
         color: #888;
         cursor: pointer;
         padding: 8px;
-        transition: transform 0.14s ease, color 0.25s ease, background 0.25s ease;
+        transition: transform 0.16s ease, background 0.3s ease, color 0.3s ease;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 8px;
       }
-      .close-cart:hover { color: #fff; background: #1a1a1a; transform: translateY(-2px); }
-      .close-cart:active{ transform: translateY(-3px); }
+      .close-cart:hover { color: #fff; background: #1a1a1a; transform: translateY(-1px); }
+      .close-cart:active{ transform: translateY(-2px); }
 
       .cart-items {
         flex: 1;
@@ -1175,13 +1157,12 @@
         grid-template-columns: 66px 1fr auto;
         gap: 12px;
         align-items: center;
-        transition: border-color 0.2s ease, transform 0.14s ease, background 0.2s ease;
+        transition: all 0.25s ease;
       }
 
       .cart-item:hover {
         border-color: rgba(255,255,255,0.14);
         background: #141414;
-        transform: translateY(-2px);
       }
 
       .cart-item-img {
@@ -1239,13 +1220,13 @@
         background: transparent;
         color: #fff;
         cursor: pointer;
-        transition: transform 0.14s ease, background 0.2s ease;
+        transition: background 0.2s ease, transform 0.16s ease;
         font-weight: 950;
         font-size: 1.05rem;
         line-height: 1;
       }
-      .qty-btn:hover{ background: rgba(255,255,255,0.08); transform: translateY(-2px); }
-      .qty-btn:active{ transform: translateY(-3px); }
+      .qty-btn:hover{ background: rgba(255,255,255,0.08); transform: translateY(-1px); }
+      .qty-btn:active{ transform: translateY(-2px); }
       .qty-value{
         width: 38px;
         text-align: center;
@@ -1268,10 +1249,10 @@
         cursor: pointer;
         font-size: 0.85rem;
         font-weight: 700;
-        transition: transform 0.14s ease, color 0.2s ease;
+        transition: color 0.2s ease, transform 0.16s ease;
       }
-      .remove-btn:hover { color: #ef4444; transform: translateY(-2px); }
-      .remove-btn:active{ transform: translateY(-3px); }
+      .remove-btn:hover { color: #ef4444; transform: translateY(-1px); }
+      .remove-btn:active{ transform: translateY(-2px); }
 
       .cart-item-price {
         font-weight: 900;
@@ -1314,7 +1295,7 @@
         color: #fff;
         font-weight: 700;
         cursor: pointer;
-        transition: transform 0.14s ease, background 0.25s ease, color 0.25s ease;
+        transition: transform 0.16s ease, filter 0.2s ease;
         text-transform: uppercase;
         letter-spacing: 1px;
         font-size: 0.9rem;
@@ -1322,11 +1303,10 @@
       }
 
       .checkout-btn:hover {
-        background: #fff;
-        color: #000;
-        transform: translateY(-2px);
+        transform: translateY(-1px);
+        filter: brightness(1.05);
       }
-      .checkout-btn:active{ transform: translateY(-3px); }
+      .checkout-btn:active{ transform: translateY(-2px); }
 
       .checkout-btn:disabled{
         opacity: 0.45;
@@ -1384,15 +1364,15 @@
   <body class="h-full w-full">
     <!-- NAVBAR -->
     <nav class="navbar flex justify-between items-center">
-      <a href="#drop" aria-label="FAIDE Home" style="display:flex; align-items:center; gap:10px; text-decoration:none;" class="tap-lift">
+      <a href="#drop" aria-label="FAIDE Home" style="display:flex; align-items:center; gap:10px; text-decoration:none;">
         <img src="/images/faide-wordmark.png" alt="FAIDE" class="faide-wordmark-img" id="brand-wordmark" />
       </a>
 
       <div class="nav-links">
-        <a href="#drop" class="tap-lift">NEW DROP</a>
-        <a href="#lookbook" class="tap-lift">LOOKBOOK</a>
-        <a href="#shop" class="tap-lift">SHOP</a>
-        <a href="#about" class="tap-lift">ABOUT</a>
+        <a href="#drop">NEW DROP</a>
+        <a href="#lookbook">LOOKBOOK</a>
+        <a href="#shop">SHOP</a>
+        <a href="#about">ABOUT</a>
       </div>
     </nav>
 
@@ -1407,32 +1387,32 @@
         </p>
 
         <div class="hero-social-icons fade-in-up delay-2" style="margin: 32px 0;">
-          <a href="https://instagram.com/faideclothing" target="_blank" rel="noopener noreferrer" class="social-icon tap-lift" aria-label="Instagram">
+          <a href="https://instagram.com/faideclothing" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
             </svg>
           </a>
 
-          <a href="https://facebook.com/faideclothing" target="_blank" rel="noopener noreferrer" class="social-icon tap-lift" aria-label="Facebook">
+          <a href="https://facebook.com/faideclothing" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
             </svg>
           </a>
 
-          <a href="https://twitter.com/faideclothing" target="_blank" rel="noopener noreferrer" class="social-icon tap-lift" aria-label="X">
+          <a href="https://twitter.com/faideclothing" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X">
             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
           </a>
 
-          <a href="https://tiktok.com/@faideclothing" target="_blank" rel="noopener noreferrer" class="social-icon tap-lift" aria-label="TikTok">
+          <a href="https://tiktok.com/@faideclothing" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok">
             <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
               <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
             </svg>
           </a>
         </div>
 
-        <button class="primary-btn fade-in-up delay-3 tap-lift" id="shop-now-btn">Shop Now</button>
+        <button class="primary-btn fade-in-up delay-3" id="shop-now-btn">Shop Now</button>
       </div>
     </section>
 
@@ -1441,95 +1421,99 @@
       <h2 class="section-title purple-title aligned-title">Lookbook</h2>
 
       <div class="vertical-list">
-        <div class="lookbook-card tap-lift" role="button" tabindex="0" aria-label="Open Lookbook 1" data-lookbook-src="/images/lookbook1.png">
+        <div class="lookbook-card" role="button" tabindex="0" aria-label="Open Lookbook 1">
           <img src="/images/lookbook1.png" alt="FAIDE Lookbook 1" class="lookbook-img" />
           <h3 class="lookbook-card-title">Look 1</h3>
         </div>
 
-        <div class="lookbook-card tap-lift" role="button" tabindex="0" aria-label="Open Lookbook 2" data-lookbook-src="/images/lookbook2.png">
+        <div class="lookbook-card" role="button" tabindex="0" aria-label="Open Lookbook 2">
           <img src="/images/lookbook2.png" alt="FAIDE Lookbook 2" class="lookbook-img" />
           <h3 class="lookbook-card-title">Look 2</h3>
         </div>
       </div>
     </section>
 
-    <!-- ✅ FULLSCREEN LOOKBOOK PAGE (replaces modal) -->
-    <div id="lookbook-page" class="fs-page" aria-hidden="true" role="dialog" aria-label="Lookbook full screen">
-      <div class="fs-topbar">
-        <div class="fs-meta">
-          <div class="fs-title" id="lb-title">LOOKBOOK</div>
-          <div class="fs-subtitle" id="lb-subtitle">1 / 2</div>
+    <!-- ✅ FULLSCREEN LOOKBOOK PAGE -->
+    <div id="lookbook-page" class="fullpage" aria-hidden="true" role="dialog" aria-label="Lookbook page">
+      <div class="fp-frame">
+        <div class="fp-topbar">
+          <div class="fp-meta">
+            <div class="fp-title" id="lb-title">LOOKBOOK</div>
+            <div class="fp-subtitle" id="lb-counter">1 / 2</div>
+          </div>
+
+          <button type="button" class="fp-btn" id="lb-close" aria-label="Close lookbook">
+            Close
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/>
+            </svg>
+          </button>
         </div>
 
-        <button type="button" class="fs-btn tap-lift" id="lb-close" aria-label="Close lookbook">
-          Close
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/>
-          </svg>
-        </button>
-      </div>
-
-      <div class="fs-body">
-        <div class="lb-viewport" id="lb-viewport">
-          <img id="lb-img" class="lb-img" alt="Lookbook image" src="" />
+        <div class="fp-stage">
+          <div class="fp-viewport">
+            <img id="lb-img" alt="Lookbook image" src="" />
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- ✅ FULLSCREEN PRODUCT PAGE (replaces modal) -->
-    <div id="product-page" class="fs-page" aria-hidden="true" role="dialog" aria-label="Product full screen">
-      <div class="fs-topbar">
-        <div class="fs-meta">
-          <div class="fs-title">PRODUCT</div>
-          <div class="fs-subtitle" id="pp-subtitle">1 / 1</div>
-        </div>
-
-        <button type="button" class="fs-btn tap-lift" id="pp-close" aria-label="Close product">
-          Close
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/>
-          </svg>
-        </button>
-      </div>
-
-      <div class="fs-body">
-        <div class="pm-wrap">
-          <div class="pm-media">
-            <div class="pm-image-shell">
-              <img id="pp-img" alt="Product image" src="" />
-            </div>
-            <div class="thumb-row" id="pp-thumbs"></div>
+    <!-- ✅ FULLSCREEN PRODUCT PAGE -->
+    <div id="product-page" class="fullpage" aria-hidden="true" role="dialog" aria-label="Product details page">
+      <div class="fp-frame">
+        <div class="fp-topbar">
+          <div class="fp-meta">
+            <div class="fp-title">PRODUCT</div>
+            <div class="fp-subtitle" id="pp-subtitle">1 / 1</div>
           </div>
 
-          <div id="pp-details" style="width:100%; max-width: 720px; margin: 0 auto;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap: 12px; margin-bottom: 10px;">
-              <div style="min-width:0;">
-                <div id="pp-label" class="product-label" style="margin-bottom:8px;"></div>
-                <h3 id="pp-name" style="font-size:1.15rem; font-weight:900; color:#fff; line-height:1.25; margin:0 0 6px;"></h3>
-                <div id="pp-category" style="color:#9a9a9a; font-weight:700;"></div>
-                <div id="pp-colors" style="color:#9a9a9a; font-weight:700; margin-top:6px;"></div>
+          <button type="button" class="fp-btn" id="pp-close" aria-label="Close product">
+            Close
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="fp-stage">
+          <div class="fp-content">
+            <div class="pm-media">
+              <div class="pm-image-shell">
+                <img id="pp-img" alt="Product image" src="" />
               </div>
-              <div id="pp-price" style="font-size:1.15rem; font-weight:950; color:#fff; white-space:nowrap;"></div>
+              <div class="thumb-row" id="pp-thumbs"></div>
             </div>
 
-            <div class="option-label">Select Size</div>
-            <div class="sizes" id="pp-sizes"></div>
-
-            <div class="option-label">Select Color</div>
-            <div class="colors" id="pp-colors-row"></div>
-
-            <div class="quantity-wrapper">
-              <div class="qty-stepper-ui" data-qty-root="pp">
-                <button type="button" class="qty-btn-ui" data-qty-btn="dec" aria-label="Decrease quantity">−</button>
-                <div class="qty-value-ui" data-qty-value>1</div>
-                <button type="button" class="qty-btn-ui" data-qty-btn="inc" aria-label="Increase quantity">+</button>
+            <div id="pp-details" style="width:100%; max-width: 720px; margin: 0 auto;">
+              <div style="display:flex; justify-content:space-between; align-items:flex-start; gap: 12px; margin-bottom: 10px;">
+                <div style="min-width:0;">
+                  <div id="pp-label" class="product-label" style="margin-bottom:8px;"></div>
+                  <h3 id="pp-name" style="font-size:1.15rem; font-weight:900; color:#fff; line-height:1.25; margin:0 0 6px;"></h3>
+                  <div id="pp-category" style="color:#9a9a9a; font-weight:700;"></div>
+                  <div id="pp-colors" style="color:#9a9a9a; font-weight:700; margin-top:6px;"></div>
+                </div>
+                <div id="pp-price" style="font-size:1.15rem; font-weight:950; color:#fff; white-space:nowrap;"></div>
               </div>
-            </div>
 
-            <button type="button" class="secondary-btn tap-lift" id="pp-add" disabled>Add to Bag</button>
+              <div class="option-label">Select Size</div>
+              <div class="sizes" id="pp-sizes"></div>
 
-            <div class="pm-hint" style="color:#777; text-align:center; padding: 18px 0 0; font-size: 0.9rem;">
-              Swipe images • Select size &amp; color • Add to Bag
+              <div class="option-label">Select Color</div>
+              <div class="colors" id="pp-colors-row"></div>
+
+              <div class="quantity-wrapper">
+                <div class="qty-stepper-ui" data-qty-root="pp">
+                  <button type="button" class="qty-btn-ui" data-qty-btn="dec" aria-label="Decrease quantity">−</button>
+                  <div class="qty-value-ui" data-qty-value>1</div>
+                  <button type="button" class="qty-btn-ui" data-qty-btn="inc" aria-label="Increase quantity">+</button>
+                </div>
+              </div>
+
+              <button type="button" class="secondary-btn" id="pp-add" disabled>Add to Bag</button>
+
+              <div style="color:#777; text-align:center; padding: 18px 0 0; font-size: 0.9rem;">
+                Swipe images • Select size &amp; color • Add to Bag
+              </div>
             </div>
           </div>
         </div>
@@ -1542,7 +1526,7 @@
 
       <div class="horizontal-scroll">
         <!-- Tank-top -->
-        <div class="product tap-lift" data-name="FAIDE Essentials Tank" data-price="199.99">
+        <div class="product" data-name="FAIDE Essentials Tank" data-price="199.99">
           <div class="product-img-container">
             <img src="/images/tank-top.png" alt="FAIDE Essentials Tank" class="product-img" />
           </div>
@@ -1563,33 +1547,33 @@
             <div class="options" aria-label="Tank options">
               <div class="option-label">Select Size</div>
               <div class="sizes">
-                <button type="button" class="size-btn tap-lift" data-size="S">S</button>
-                <button type="button" class="size-btn tap-lift" data-size="M">M</button>
-                <button type="button" class="size-btn tap-lift" data-size="L">L</button>
-                <button type="button" class="size-btn tap-lift" data-size="XL">XL</button>
+                <button type="button" class="size-btn" data-size="S">S</button>
+                <button type="button" class="size-btn" data-size="M">M</button>
+                <button type="button" class="size-btn" data-size="L">L</button>
+                <button type="button" class="size-btn" data-size="XL">XL</button>
               </div>
 
               <div class="option-label">Select Color</div>
               <div class="colors">
-                <div class="color black tap-lift" role="button" tabindex="0" aria-label="Black" data-color="Black"></div>
-                <div class="color white tap-lift" role="button" tabindex="0" aria-label="White" data-color="White"></div>
+                <div class="color black" role="button" tabindex="0" aria-label="Black" data-color="Black"></div>
+                <div class="color white" role="button" tabindex="0" aria-label="White" data-color="White"></div>
               </div>
 
               <div class="quantity-wrapper">
                 <div class="qty-stepper-ui" data-qty-root="card">
-                  <button type="button" class="qty-btn-ui tap-lift" data-qty-btn="dec" aria-label="Decrease quantity">−</button>
+                  <button type="button" class="qty-btn-ui" data-qty-btn="dec" aria-label="Decrease quantity">−</button>
                   <div class="qty-value-ui" data-qty-value>1</div>
-                  <button type="button" class="qty-btn-ui tap-lift" data-qty-btn="inc" aria-label="Increase quantity">+</button>
+                  <button type="button" class="qty-btn-ui" data-qty-btn="inc" aria-label="Increase quantity">+</button>
                 </div>
               </div>
 
-              <button type="button" class="secondary-btn add-to-cart tap-lift" disabled>Add to Bag</button>
+              <button type="button" class="secondary-btn add-to-cart" disabled>Add to Bag</button>
             </div>
           </div>
         </div>
 
         <!-- T-shirt -->
-        <div class="product tap-lift" data-name="FAIDE Signature Tee" data-price="349.99">
+        <div class="product" data-name="FAIDE Signature Tee" data-price="349.99">
           <div class="product-img-container">
             <img src="/images/tshirt.png" alt="FAIDE Signature Tee" class="product-img" />
           </div>
@@ -1610,34 +1594,34 @@
             <div class="options" aria-label="Tee options">
               <div class="option-label">Select Size</div>
               <div class="sizes">
-                <button type="button" class="size-btn tap-lift" data-size="S">S</button>
-                <button type="button" class="size-btn tap-lift" data-size="M">M</button>
-                <button type="button" class="size-btn tap-lift" data-size="L">L</button>
-                <button type="button" class="size-btn tap-lift" data-size="XL">XL</button>
+                <button type="button" class="size-btn" data-size="S">S</button>
+                <button type="button" class="size-btn" data-size="M">M</button>
+                <button type="button" class="size-btn" data-size="L">L</button>
+                <button type="button" class="size-btn" data-size="XL">XL</button>
               </div>
 
               <div class="option-label">Select Color</div>
               <div class="colors">
-                <div class="color black tap-lift" role="button" tabindex="0" aria-label="Black" data-color="Black"></div>
-                <div class="color white tap-lift" role="button" tabindex="0" aria-label="White" data-color="White"></div>
-                <div class="color grey tap-lift" role="button" tabindex="0" aria-label="Grey" data-color="Grey"></div>
+                <div class="color black" role="button" tabindex="0" aria-label="Black" data-color="Black"></div>
+                <div class="color white" role="button" tabindex="0" aria-label="White" data-color="White"></div>
+                <div class="color grey" role="button" tabindex="0" aria-label="Grey" data-color="Grey"></div>
               </div>
 
               <div class="quantity-wrapper">
                 <div class="qty-stepper-ui" data-qty-root="card">
-                  <button type="button" class="qty-btn-ui tap-lift" data-qty-btn="dec" aria-label="Decrease quantity">−</button>
+                  <button type="button" class="qty-btn-ui" data-qty-btn="dec" aria-label="Decrease quantity">−</button>
                   <div class="qty-value-ui" data-qty-value>1</div>
-                  <button type="button" class="qty-btn-ui tap-lift" data-qty-btn="inc" aria-label="Increase quantity">+</button>
+                  <button type="button" class="qty-btn-ui" data-qty-btn="inc" aria-label="Increase quantity">+</button>
                 </div>
               </div>
 
-              <button type="button" class="secondary-btn add-to-cart tap-lift" disabled>Add to Bag</button>
+              <button type="button" class="secondary-btn add-to-cart" disabled>Add to Bag</button>
             </div>
           </div>
         </div>
 
         <!-- Long Sleeve -->
-        <div class="product tap-lift" data-name="FAIDE Long Sleeve" data-price="549.99">
+        <div class="product" data-name="FAIDE Long Sleeve" data-price="549.99">
           <div class="product-img-container">
             <img src="/images/longsleeve.png" alt="FAIDE Long Sleeve" class="product-img" />
           </div>
@@ -1658,33 +1642,33 @@
             <div class="options" aria-label="Long sleeve options">
               <div class="option-label">Select Size</div>
               <div class="sizes">
-                <button type="button" class="size-btn tap-lift" data-size="S">S</button>
-                <button type="button" class="size-btn tap-lift" data-size="M">M</button>
-                <button type="button" class="size-btn tap-lift" data-size="L">L</button>
-                <button type="button" class="size-btn tap-lift" data-size="XL">XL</button>
+                <button type="button" class="size-btn" data-size="S">S</button>
+                <button type="button" class="size-btn" data-size="M">M</button>
+                <button type="button" class="size-btn" data-size="L">L</button>
+                <button type="button" class="size-btn" data-size="XL">XL</button>
               </div>
 
               <div class="option-label">Select Color</div>
               <div class="colors">
-                <div class="color black tap-lift" role="button" tabindex="0" aria-label="Black" data-color="Black"></div>
-                <div class="color white tap-lift" role="button" tabindex="0" aria-label="White" data-color="White"></div>
+                <div class="color black" role="button" tabindex="0" aria-label="Black" data-color="Black"></div>
+                <div class="color white" role="button" tabindex="0" aria-label="White" data-color="White"></div>
               </div>
 
               <div class="quantity-wrapper">
                 <div class="qty-stepper-ui" data-qty-root="card">
-                  <button type="button" class="qty-btn-ui tap-lift" data-qty-btn="dec" aria-label="Decrease quantity">−</button>
+                  <button type="button" class="qty-btn-ui" data-qty-btn="dec" aria-label="Decrease quantity">−</button>
                   <div class="qty-value-ui" data-qty-value>1</div>
-                  <button type="button" class="qty-btn-ui tap-lift" data-qty-btn="inc" aria-label="Increase quantity">+</button>
+                  <button type="button" class="qty-btn-ui" data-qty-btn="inc" aria-label="Increase quantity">+</button>
                 </div>
               </div>
 
-              <button type="button" class="secondary-btn add-to-cart tap-lift" disabled>Add to Bag</button>
+              <button type="button" class="secondary-btn add-to-cart" disabled>Add to Bag</button>
             </div>
           </div>
         </div>
 
         <!-- Hoodie -->
-        <div class="product tap-lift" data-name="FAIDE Luxury Hoodie" data-price="699.99">
+        <div class="product" data-name="FAIDE Luxury Hoodie" data-price="699.99">
           <div class="product-img-container">
             <img src="/images/hoodie.png" alt="FAIDE Luxury Hoodie" class="product-img" />
           </div>
@@ -1705,27 +1689,27 @@
             <div class="options" aria-label="Hoodie options">
               <div class="option-label">Select Size</div>
               <div class="sizes">
-                <button type="button" class="size-btn tap-lift" data-size="S">S</button>
-                <button type="button" class="size-btn tap-lift" data-size="M">M</button>
-                <button type="button" class="size-btn tap-lift" data-size="L">L</button>
-                <button type="button" class="size-btn tap-lift" data-size="XL">XL</button>
+                <button type="button" class="size-btn" data-size="S">S</button>
+                <button type="button" class="size-btn" data-size="M">M</button>
+                <button type="button" class="size-btn" data-size="L">L</button>
+                <button type="button" class="size-btn" data-size="XL">XL</button>
               </div>
 
               <div class="option-label">Select Color</div>
               <div class="colors">
-                <div class="color black tap-lift" role="button" tabindex="0" aria-label="Black" data-color="Black"></div>
-                <div class="color grey tap-lift" role="button" tabindex="0" aria-label="Grey" data-color="Grey"></div>
+                <div class="color black" role="button" tabindex="0" aria-label="Black" data-color="Black"></div>
+                <div class="color grey" role="button" tabindex="0" aria-label="Grey" data-color="Grey"></div>
               </div>
 
               <div class="quantity-wrapper">
                 <div class="qty-stepper-ui" data-qty-root="card">
-                  <button type="button" class="qty-btn-ui tap-lift" data-qty-btn="dec" aria-label="Decrease quantity">−</button>
+                  <button type="button" class="qty-btn-ui" data-qty-btn="dec" aria-label="Decrease quantity">−</button>
                   <div class="qty-value-ui" data-qty-value>1</div>
-                  <button type="button" class="qty-btn-ui tap-lift" data-qty-btn="inc" aria-label="Increase quantity">+</button>
+                  <button type="button" class="qty-btn-ui" data-qty-btn="inc" aria-label="Increase quantity">+</button>
                 </div>
               </div>
 
-              <button type="button" class="secondary-btn add-to-cart tap-lift" disabled>Add to Bag</button>
+              <button type="button" class="secondary-btn add-to-cart" disabled>Add to Bag</button>
             </div>
           </div>
         </div>
@@ -1744,8 +1728,8 @@
 
       <div class="about-contact">
         <h4>Contact</h4>
-        <a href="mailto:faideclothingsa@gmail.com" class="tap-lift">faideclothingsa@gmail.com</a>
-        <a href="tel:+27695603929" class="tap-lift">+27 69 560 3929</a>
+        <a href="mailto:faideclothingsa@gmail.com">faideclothingsa@gmail.com</a>
+        <a href="tel:+27695603929">+27 69 560 3929</a>
       </div>
     </section>
 
@@ -1754,13 +1738,13 @@
       <div style="max-width: 1200px; margin: 0 auto;">
         <div class="footer-legal">
           <div class="footer-legal-top" aria-label="Policies">
-            <a href="#" id="privacy-link" class="footer-legal-link tap-lift">Privacy Policy</a>
+            <a href="#" id="privacy-link" class="footer-legal-link">Privacy Policy</a>
             <span class="footer-sep">|</span>
-            <a href="#" id="shipping-link" class="footer-legal-link tap-lift">Shipping Policy</a>
+            <a href="#" id="shipping-link" class="footer-legal-link">Shipping Policy</a>
             <span class="footer-sep">|</span>
-            <a href="#" id="terms-link" class="footer-legal-link tap-lift">Terms of Service</a>
+            <a href="#" id="terms-link" class="footer-legal-link">Terms of Service</a>
             <span class="footer-sep">|</span>
-            <a href="#" id="returns-link" class="footer-legal-link tap-lift">Return and exchange</a>
+            <a href="#" id="returns-link" class="footer-legal-link">Return and exchange</a>
           </div>
 
           <p style="color:#666; font-size:0.95rem; margin: 6px 0 0; text-align:center;">
@@ -1781,7 +1765,7 @@
       <div style="max-width:800px; margin:0 auto; background:#0a0a0a; border-radius:20px; border:1px solid var(--border); overflow:hidden;">
         <div style="background:var(--surface); padding:24px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border);">
           <h2 id="modal-title" style="color:var(--primary); font-size:1.5rem; font-weight:700; margin:0;">Policy</h2>
-          <button id="close-modal" type="button" class="tap-lift" style="background:transparent; border:none; color:#888; cursor:pointer; padding:8px; display:flex; align-items:center; justify-content:center; border-radius:8px; transition:all 0.3s ease;">
+          <button id="close-modal" type="button" style="background:transparent; border:none; color:#888; cursor:pointer; padding:8px; display:flex; align-items:center; justify-content:center; border-radius:8px; transition:all 0.3s ease;">
             <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
               <path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/>
             </svg>
@@ -1795,7 +1779,7 @@
     <div id="cart-overlay" class="cart-overlay" aria-hidden="true"></div>
 
     <!-- Floating Cart Button -->
-    <button id="floating-cart" class="floating-cart tap-lift" aria-label="View shopping cart" type="button">
+    <button id="floating-cart" class="floating-cart" aria-label="View shopping cart" type="button">
       <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
         <path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.304-15l-3.431 12h-2.102l2.542-9h-16.813l4.615 11h13.239l3.474-12h1.929l.743-2h-4.196z"/>
       </svg>
@@ -1806,7 +1790,7 @@
     <div id="cart-sidebar" class="cart-sidebar" aria-label="Shopping cart">
       <div class="cart-header">
         <h2>Your Cart</h2>
-        <button id="close-cart" class="close-cart tap-lift" aria-label="Close cart" type="button">
+        <button id="close-cart" class="close-cart" aria-label="Close cart" type="button">
           <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
             <path d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"/>
           </svg>
@@ -1821,7 +1805,7 @@
           <span class="cart-total-value">R<span id="cart-total">0.00</span></span>
         </div>
 
-        <button class="checkout-btn tap-lift" id="checkout-btn" type="button" disabled title="Add items to checkout">
+        <button class="checkout-btn" id="checkout-btn" type="button" disabled title="Add items to checkout">
           Proceed to Checkout
         </button>
       </div>
@@ -1846,18 +1830,6 @@
             fn();
           }
         });
-      }
-
-      /*************************************************************
-       * ✅ History helpers (Back gesture support)
-       *************************************************************/
-      function pushOverlayState(type, payload = {}) {
-        try {
-          history.pushState({ __faide_overlay: type, ...payload }, "");
-        } catch (_) {}
-      }
-      function currentOverlayType() {
-        return history.state && history.state.__faide_overlay ? history.state.__faide_overlay : null;
       }
 
       /*************************************************************
@@ -1916,7 +1888,7 @@
 
         document.body.style.fontFamily = `${customFont}, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
 
-        /* ✅ remove purple title glow injection */
+        /* ✅ Remove hero title glow (keep as is) */
         const heroTitleNode = document.querySelector(".hero-title");
         if (heroTitleNode) heroTitleNode.style.textShadow = "none";
       }
@@ -2153,19 +2125,12 @@
 
         document.body.classList.add("lock-scroll");
         setTimeout(() => closeModal?.focus(), 0);
-
-        // ✅ Back gesture closes policy
-        pushOverlayState("policy");
       }
 
-      function hidePolicy({ fromPop = false } = {}) {
+      function hidePolicy() {
         if (policyModal) policyModal.style.display = "none";
         document.body.classList.remove("lock-scroll");
         if (lastFocusedEl && typeof lastFocusedEl.focus === "function") lastFocusedEl.focus();
-
-        if (!fromPop && currentOverlayType() === "policy") {
-          history.back();
-        }
       }
 
       function onClick(id, fn) {
@@ -2179,7 +2144,7 @@
       onClick("returns-link", () => showPolicy("returns"));
       onClick("shipping-link", () => showPolicy("shipping"));
 
-      closeModal?.addEventListener("click", () => hidePolicy());
+      closeModal?.addEventListener("click", hidePolicy);
       policyModal?.addEventListener("click", (e) => { if (e.target === policyModal) hidePolicy(); });
 
       /*************************************************************
@@ -2271,6 +2236,96 @@
       }
 
       /*************************************************************
+       * ✅ "FULL SCREEN PAGE" ROUTER (hash + history)
+       * - Lookbook: #look=1
+       * - Product:  #product=1
+       * Back gesture closes pages correctly.
+       *************************************************************/
+      function parseHash() {
+        const h = (location.hash || "").replace("#", "");
+        if (!h) return { type: "none" };
+
+        // allow normal anchors: drop/lookbook/shop/about
+        if (["drop","lookbook","shop","about","footer"].includes(h)) return { type: "anchor", id: h };
+
+        const [key, val] = h.split("=");
+        if (key === "look") return { type: "look", index: Math.max(0, (parseInt(val || "1", 10) - 1)) };
+        if (key === "product") return { type: "product", index: Math.max(0, (parseInt(val || "1", 10) - 1)) };
+
+        return { type: "none" };
+      }
+
+      function setHashWithoutScroll(nextHash) {
+        // keep URL change but avoid jump
+        const scrollY = window.scrollY;
+        location.hash = nextHash;
+        requestAnimationFrame(() => window.scrollTo({ top: scrollY }));
+      }
+
+      function openLookbookPage(idx, { push = true } = {}) {
+        const page = document.getElementById("lookbook-page");
+        if (!page) return;
+
+        if (push) setHashWithoutScroll(`look=${idx + 1}`);
+
+        page.classList.add("active");
+        page.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lock-scroll");
+      }
+
+      function closeLookbookPage({ clearHash = true } = {}) {
+        const page = document.getElementById("lookbook-page");
+        if (!page) return;
+
+        page.classList.remove("active");
+        page.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lock-scroll");
+
+        if (clearHash) {
+          // go back to previous history entry if possible; else clear hash
+          if (history.length > 1 && location.hash.startsWith("#look=")) history.back();
+          else setHashWithoutScroll("");
+        }
+      }
+
+      function openProductPage(idx, { push = true } = {}) {
+        const page = document.getElementById("product-page");
+        if (!page) return;
+
+        if (push) setHashWithoutScroll(`product=${idx + 1}`);
+
+        page.classList.add("active");
+        page.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lock-scroll");
+      }
+
+      function closeProductPage({ clearHash = true } = {}) {
+        const page = document.getElementById("product-page");
+        if (!page) return;
+
+        page.classList.remove("active");
+        page.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lock-scroll");
+
+        if (clearHash) {
+          if (history.length > 1 && location.hash.startsWith("#product=")) history.back();
+          else setHashWithoutScroll("");
+        }
+      }
+
+      function closeAllFullPages({ clearHash = false } = {}) {
+        const lb = document.getElementById("lookbook-page");
+        const pp = document.getElementById("product-page");
+        lb?.classList.remove("active");
+        lb?.setAttribute("aria-hidden", "true");
+        pp?.classList.remove("active");
+        pp?.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lock-scroll");
+
+        if (clearHash) setHashWithoutScroll("");
+      }
+
+      /*************************************************************
        * MAIN DOM READY
        *************************************************************/
       document.addEventListener("DOMContentLoaded", async () => {
@@ -2313,6 +2368,9 @@
 
             e.preventDefault();
 
+            // if any full page open, close it first
+            closeAllFullPages();
+
             navLock = true;
             clearTimeout(navUnlockTimer);
             setActive(id);
@@ -2349,7 +2407,7 @@
         window.addEventListener("resize", () => { updateActiveFromScroll(); }, { passive: true });
 
         /*************************************************************
-         * CART (with Back gesture)
+         * CART
          *************************************************************/
         const products = document.querySelectorAll(".product");
         const floatingCart = document.getElementById("floating-cart");
@@ -2367,22 +2425,17 @@
           cartSidebar?.classList.add("active");
           cartOverlay?.classList.add("active");
           document.body.classList.add("lock-scroll");
-          pushOverlayState("cart");
         }
 
-        function closeCartPanel({ fromPop = false } = {}) {
+        function closeCartPanel() {
           cartSidebar?.classList.remove("active");
           cartOverlay?.classList.remove("active");
           document.body.classList.remove("lock-scroll");
-
-          if (!fromPop && currentOverlayType() === "cart") {
-            history.back();
-          }
         }
 
         floatingCart?.addEventListener("click", openCart);
-        closeCart?.addEventListener("click", () => closeCartPanel());
-        cartOverlay?.addEventListener("click", () => closeCartPanel());
+        closeCart?.addEventListener("click", closeCartPanel);
+        cartOverlay?.addEventListener("click", closeCartPanel);
 
         checkoutBtn?.addEventListener("click", (e) => {
           if (checkoutBtn.disabled) {
@@ -2468,6 +2521,9 @@
           setCheckoutState();
         }
 
+        // assign stable product ids for routing
+        products.forEach((p, i) => p.setAttribute("data-product-id", String(i + 1)));
+
         products.forEach((product) => {
           const stepperRoot = product.querySelector('.qty-stepper-ui[data-qty-root="card"]');
           const stepper = stepperRoot ? setupQtyStepper(stepperRoot) : null;
@@ -2546,220 +2602,36 @@
 
         updateCartUI();
 
-        /*************************************************************
-         * ✅ Fullscreen Lookbook Page (replaces modal) + Zoom + Back
-         *************************************************************/
-        const lookbookPage = document.getElementById("lookbook-page");
-        const lbImg = document.getElementById("lb-img");
-        const lbClose = document.getElementById("lb-close");
-        const lbSubtitle = document.getElementById("lb-subtitle");
-        const lbViewport = document.getElementById("lb-viewport");
+        document.addEventListener("keydown", (e) => {
+          if (e.key !== "Escape") return;
 
-        const lookbookCards = Array.from(document.querySelectorAll(".lookbook-card"));
-        const lookbookItems = lookbookCards
-          .map((card) => {
-            const src = card.getAttribute("data-lookbook-src") || card.querySelector("img")?.getAttribute("src") || "";
-            return src ? { src } : null;
-          })
-          .filter(Boolean);
+          if (policyModal && policyModal.style.display === "block") hidePolicy();
+          if (cartSidebar?.classList.contains("active")) closeCartPanel();
 
-        let lbIndex = 0;
-
-        let lbScale = 1;
-        let lbTx = 0;
-        let lbTy = 0;
-
-        let lbDragging = false;
-        let lbDragStartX = 0;
-        let lbDragStartY = 0;
-        let lbDragStartTx = 0;
-        let lbDragStartTy = 0;
-
-        let lbPinchStartDist = 0;
-        let lbPinchStartScale = 1;
-        let lbPinchMid = { x: 0, y: 0 };
-
-        function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
-
-        function lbApplyTransform() {
-          if (!lbImg) return;
-          lbImg.style.transform = `translate3d(${lbTx}px, ${lbTy}px, 0) scale(${lbScale})`;
-          lbImg.classList.toggle("zoomed", lbScale > 1.01);
-        }
-
-        function lbResetZoom() {
-          lbScale = 1;
-          lbTx = 0;
-          lbTy = 0;
-          lbApplyTransform();
-        }
-
-        function lbSet(index) {
-          if (!lookbookItems.length || !lbImg) return;
-          lbIndex = (index + lookbookItems.length) % lookbookItems.length;
-
-          const item = lookbookItems[lbIndex];
-          lbImg.src = item.src;
-          lbSubtitle.textContent = `${lbIndex + 1} / ${lookbookItems.length}`;
-
-          lbResetZoom();
-        }
-
-        function lbOpen(index) {
-          if (!lookbookItems.length) return;
-          lbSet(index);
-
-          lookbookPage.classList.add("active");
-          lookbookPage.setAttribute("aria-hidden", "false");
-          document.body.classList.add("lock-scroll");
-
-          pushOverlayState("lookbook", { index });
-          lbClose?.focus();
-        }
-
-        function lbClosePage({ fromPop = false } = {}) {
-          lookbookPage.classList.remove("active");
-          lookbookPage.setAttribute("aria-hidden", "true");
-          document.body.classList.remove("lock-scroll");
-          lbResetZoom();
-
-          if (!fromPop && currentOverlayType() === "lookbook") history.back();
-        }
-
-        lookbookCards.forEach((card, idx) => {
-          card.addEventListener("click", () => lbOpen(idx));
-          clickOnEnterSpace(card, () => lbOpen(idx));
+          const lbActive = document.getElementById("lookbook-page")?.classList.contains("active");
+          const ppActive = document.getElementById("product-page")?.classList.contains("active");
+          if (lbActive) closeLookbookPage();
+          if (ppActive) closeProductPage();
         });
 
-        lbClose?.addEventListener("click", () => lbClosePage());
-
-        function lbToggleZoomAt(clientX, clientY) {
-          if (!lbViewport) return;
-
-          const rect = lbViewport.getBoundingClientRect();
-          const x = clientX - rect.left - rect.width / 2;
-          const y = clientY - rect.top - rect.height / 2;
-
-          if (lbScale <= 1.01) {
-            lbScale = 2.2;
-            lbTx = -x;
-            lbTy = -y;
-          } else {
-            lbResetZoom();
-            return;
-          }
-
-          lbTx = clamp(lbTx, -rect.width * (lbScale - 1) * 0.5, rect.width * (lbScale - 1) * 0.5);
-          lbTy = clamp(lbTy, -rect.height * (lbScale - 1) * 0.5, rect.height * (lbScale - 1) * 0.5);
-
-          lbApplyTransform();
-        }
-
-        lbImg?.addEventListener("dblclick", (e) => {
-          e.preventDefault();
-          lbToggleZoomAt(e.clientX, e.clientY);
-        });
-
-        function distance(t1, t2) {
-          const dx = t2.clientX - t1.clientX;
-          const dy = t2.clientY - t1.clientY;
-          return Math.hypot(dx, dy);
-        }
-
-        let lbLastTap = 0;
-
-        lbViewport?.addEventListener("touchstart", (e) => {
-          if (!lookbookPage.classList.contains("active")) return;
-
-          const now = Date.now();
-          if (e.touches.length === 1) {
-            if (now - lbLastTap < 260) {
-              const t = e.touches[0];
-              lbToggleZoomAt(t.clientX, t.clientY);
-              lbLastTap = 0;
-              return;
-            }
-            lbLastTap = now;
-          }
-
-          if (e.touches.length === 1) {
-            if (lbScale > 1.01) {
-              lbDragging = true;
-              lbDragStartX = e.touches[0].clientX;
-              lbDragStartY = e.touches[0].clientY;
-              lbDragStartTx = lbTx;
-              lbDragStartTy = lbTy;
-            }
-          }
-
-          if (e.touches.length === 2) {
-            lbPinchStartDist = distance(e.touches[0], e.touches[1]);
-            lbPinchStartScale = lbScale;
-            lbPinchMid = {
-              x: (e.touches[0].clientX + e.touches[1].clientX) / 2,
-              y: (e.touches[0].clientY + e.touches[1].clientY) / 2
-            };
-          }
-        }, { passive: true });
-
-        lbViewport?.addEventListener("touchmove", (e) => {
-          if (!lookbookPage.classList.contains("active") || !lbViewport) return;
-
-          if (e.touches.length === 2) {
-            const d = distance(e.touches[0], e.touches[1]);
-            const next = clamp(lbPinchStartScale * (d / lbPinchStartDist), 1, 3);
-
-            const rect = lbViewport.getBoundingClientRect();
-            const cx = lbPinchMid.x - rect.left - rect.width / 2;
-            const cy = lbPinchMid.y - rect.top - rect.height / 2;
-
-            const ratio = next / lbScale;
-            lbTx = (lbTx - cx) * ratio + cx;
-            lbTy = (lbTy - cy) * ratio + cy;
-            lbScale = next;
-
-            lbTx = clamp(lbTx, -rect.width * (lbScale - 1) * 0.5, rect.width * (lbScale - 1) * 0.5);
-            lbTy = clamp(lbTy, -rect.height * (lbScale - 1) * 0.5, rect.height * (lbScale - 1) * 0.5);
-
-            lbApplyTransform();
-            return;
-          }
-
-          if (e.touches.length === 1 && lbScale > 1.01 && lbDragging) {
-            const t = e.touches[0];
-            const dx = t.clientX - lbDragStartX;
-            const dy = t.clientY - lbDragStartY;
-
-            const rect = lbViewport.getBoundingClientRect();
-            lbTx = clamp(lbDragStartTx + dx, -rect.width * (lbScale - 1) * 0.5, rect.width * (lbScale - 1) * 0.5);
-            lbTy = clamp(lbDragStartTy + dy, -rect.height * (lbScale - 1) * 0.5, rect.height * (lbScale - 1) * 0.5);
-
-            lbApplyTransform();
-          }
-        }, { passive: true });
-
-        lbViewport?.addEventListener("touchend", () => {
-          lbDragging = false;
-        }, { passive: true });
-
         /*************************************************************
-         * ✅ Fullscreen Product Page (replaces modal) + Back
+         * ✅ PRODUCT FULLSCREEN PAGE (WITH THUMBS)
          *************************************************************/
-        const productPage = document.getElementById("product-page");
-        const ppClose = document.getElementById("pp-close");
-        const ppImg = document.getElementById("pp-img");
-        const ppThumbs = document.getElementById("pp-thumbs");
-        const ppSubtitle = document.getElementById("pp-subtitle");
-
-        const ppLabel = document.getElementById("pp-label");
-        const ppName = document.getElementById("pp-name");
-        const ppCategory = document.getElementById("pp-category");
-        const ppColorsCount = document.getElementById("pp-colors");
-        const ppPrice = document.getElementById("pp-price");
-
-        const ppSizes = document.getElementById("pp-sizes");
-        const ppColorsRow = document.getElementById("pp-colors-row");
-        const ppAdd = document.getElementById("pp-add");
+        const pp = {
+          page: document.getElementById("product-page"),
+          close: document.getElementById("pp-close"),
+          img: document.getElementById("pp-img"),
+          thumbs: document.getElementById("pp-thumbs"),
+          subtitle: document.getElementById("pp-subtitle"),
+          label: document.getElementById("pp-label"),
+          name: document.getElementById("pp-name"),
+          category: document.getElementById("pp-category"),
+          colorsCount: document.getElementById("pp-colors"),
+          price: document.getElementById("pp-price"),
+          sizes: document.getElementById("pp-sizes"),
+          colorsRow: document.getElementById("pp-colors-row"),
+          add: document.getElementById("pp-add"),
+        };
 
         let ppSources = [];
         let ppIndex = 0;
@@ -2768,31 +2640,13 @@
         const ppStepperRoot = document.querySelector('.qty-stepper-ui[data-qty-root="pp"]');
         const ppStepper = ppStepperRoot ? setupQtyStepper(ppStepperRoot) : null;
 
-        function ppOpen() {
-          productPage.classList.add("active");
-          productPage.setAttribute("aria-hidden", "false");
-          document.body.classList.add("lock-scroll");
-          ppClose?.focus();
-        }
-
-        function ppClosePage({ fromPop = false } = {}) {
-          productPage.classList.remove("active");
-          productPage.setAttribute("aria-hidden", "true");
-          document.body.classList.remove("lock-scroll");
-          ppActiveProductEl = null;
-
-          if (!fromPop && currentOverlayType() === "product") history.back();
-        }
-
-        ppClose?.addEventListener("click", () => ppClosePage());
-
         function ppRenderThumbs() {
-          if (!ppThumbs) return;
-          ppThumbs.innerHTML = "";
+          if (!pp.thumbs) return;
+          pp.thumbs.innerHTML = "";
           ppSources.slice(0, 4).forEach((src, i) => {
             const btn = document.createElement("button");
             btn.type = "button";
-            btn.className = "thumb tap-lift" + (i === ppIndex ? " active" : "");
+            btn.className = "thumb" + (i === ppIndex ? " active" : "");
             btn.setAttribute("aria-label", `View image ${i + 1}`);
             btn.innerHTML = `<img src="${src}" alt="" loading="lazy" />`;
             btn.addEventListener("click", (e) => {
@@ -2800,33 +2654,33 @@
               e.stopPropagation();
               ppSetImage(i);
             });
-            ppThumbs.appendChild(btn);
+            pp.thumbs.appendChild(btn);
           });
         }
 
         let __ppSwapToken = 0;
         function ppSetImage(i) {
-          if (!ppSources.length || !ppImg) return;
+          if (!ppSources.length || !pp.img) return;
           const token = ++__ppSwapToken;
 
           ppIndex = (i + ppSources.length) % ppSources.length;
           const nextSrc = ppSources[ppIndex];
 
-          if (ppImg.getAttribute("src") === nextSrc) {
-            ppSubtitle.textContent = `${ppIndex + 1} / ${ppSources.length}`;
+          if (pp.img.getAttribute("src") === nextSrc) {
+            if (pp.subtitle) pp.subtitle.textContent = `${ppIndex + 1} / ${ppSources.length}`;
             ppRenderThumbs();
             return;
           }
 
-          ppImg.style.opacity = "0.25";
+          pp.img.style.opacity = "0.25";
           requestAnimationFrame(() => {
             if (token !== __ppSwapToken) return;
-            ppImg.src = nextSrc;
-            ppSubtitle.textContent = `${ppIndex + 1} / ${ppSources.length}`;
+            pp.img.src = nextSrc;
+            if (pp.subtitle) pp.subtitle.textContent = `${ppIndex + 1} / ${ppSources.length}`;
             ppRenderThumbs();
             setTimeout(() => {
               if (token !== __ppSwapToken) return;
-              ppImg.style.opacity = "1";
+              pp.img.style.opacity = "1";
             }, 60);
           });
         }
@@ -2841,27 +2695,27 @@
         }
 
         function ppUpdateAddState() {
-          const selectedSize = ppSizes.querySelector(".size-btn.selected");
-          const selectedColor = ppColorsRow.querySelector(".color.selected");
-          ppAdd.disabled = !(selectedSize && selectedColor);
+          const selectedSize = pp.sizes.querySelector(".size-btn.selected");
+          const selectedColor = pp.colorsRow.querySelector(".color.selected");
+          pp.add.disabled = !(selectedSize && selectedColor);
         }
 
         function ppRenderSizes(productEl) {
           const original = Array.from(productEl.querySelectorAll(".size-btn")).map(b => b.textContent.trim());
           const sizes = original.length ? original : ["S", "M", "L", "XL"];
 
-          ppSizes.innerHTML = "";
+          pp.sizes.innerHTML = "";
           sizes.forEach((s) => {
             const btn = document.createElement("button");
             btn.type = "button";
-            btn.className = "size-btn tap-lift";
+            btn.className = "size-btn";
             btn.textContent = s;
             btn.addEventListener("click", () => {
-              Array.from(ppSizes.querySelectorAll(".size-btn")).forEach(x => x.classList.remove("selected"));
+              Array.from(pp.sizes.querySelectorAll(".size-btn")).forEach(x => x.classList.remove("selected"));
               btn.classList.add("selected");
               ppUpdateAddState();
             });
-            ppSizes.appendChild(btn);
+            pp.sizes.appendChild(btn);
           });
         }
 
@@ -2876,17 +2730,17 @@
             { className: "color white", colorName: "White" },
           ];
 
-          ppColorsRow.innerHTML = "";
+          pp.colorsRow.innerHTML = "";
           colors.forEach((c) => {
             const div = document.createElement("div");
-            div.className = c.className + " tap-lift";
+            div.className = c.className;
             div.setAttribute("role", "button");
             div.setAttribute("tabindex", "0");
             div.setAttribute("aria-label", c.colorName);
             div.setAttribute("data-color", c.colorName);
 
             const select = () => {
-              Array.from(ppColorsRow.querySelectorAll(".color")).forEach(x => x.classList.remove("selected"));
+              Array.from(pp.colorsRow.querySelectorAll(".color")).forEach(x => x.classList.remove("selected"));
               div.classList.add("selected");
               ppUpdateAddState();
             };
@@ -2894,7 +2748,7 @@
             div.addEventListener("click", select);
             clickOnEnterSpace(div, select);
 
-            ppColorsRow.appendChild(div);
+            pp.colorsRow.appendChild(div);
           });
         }
 
@@ -2906,17 +2760,17 @@
           const category = productEl.querySelector(".product-category")?.textContent?.trim() || "";
           const colorsCount = productEl.querySelector(".product-colors-count")?.textContent?.trim() || "";
 
-          ppLabel.textContent = label;
-          ppName.textContent = name;
-          ppCategory.textContent = category;
-          ppColorsCount.textContent = colorsCount;
-          ppPrice.textContent = price;
+          pp.label.textContent = label;
+          pp.name.textContent = name;
+          pp.category.textContent = category;
+          pp.colorsCount.textContent = colorsCount;
+          pp.price.textContent = price;
 
           ppStepper?.setQty?.(1);
-          ppAdd.disabled = true;
+          pp.add.disabled = true;
         }
 
-        async function openProductPage(productEl) {
+        async function openProductPageFromElement(productEl, { push = true } = {}) {
           ppActiveProductEl = productEl;
 
           ppFillMeta(productEl);
@@ -2926,18 +2780,20 @@
           ppSources = await ppBuildImagesFromProduct(productEl);
           ppSetImage(0);
 
-          ppOpen();
-          pushOverlayState("product");
+          const idx = parseInt(productEl.getAttribute("data-product-id") || "1", 10) - 1;
+          openProductPage(Math.max(0, idx), { push });
+
+          pp.close?.focus();
         }
 
-        // swipe images on product page
+        // swipe image in product page
         let ppTouchStartX = null;
-        ppImg?.addEventListener("touchstart", (e) => {
+        pp.img?.addEventListener("touchstart", (e) => {
           if (!e.touches || e.touches.length !== 1) return;
           ppTouchStartX = e.touches[0].clientX;
         }, { passive: true });
 
-        ppImg?.addEventListener("touchend", (e) => {
+        pp.img?.addEventListener("touchend", (e) => {
           if (ppTouchStartX == null) return;
           const endX = e.changedTouches?.[0]?.clientX ?? ppTouchStartX;
           const diff = endX - ppTouchStartX;
@@ -2948,14 +2804,17 @@
           else ppSetImage(ppIndex - 1);
         }, { passive: true });
 
-        ppAdd?.addEventListener("click", () => {
+        pp.close?.addEventListener("click", () => closeProductPage());
+        pp.page?.addEventListener("click", (e) => { if (e.target === pp.page) closeProductPage(); });
+
+        pp.add?.addEventListener("click", () => {
           if (!ppActiveProductEl) return;
 
           const productName = ppActiveProductEl.getAttribute("data-name") || "Item";
           const price = parseFloat(ppActiveProductEl.getAttribute("data-price") || "0");
 
-          const selectedSize = ppSizes.querySelector(".size-btn.selected");
-          const selectedColor = ppColorsRow.querySelector(".color.selected");
+          const selectedSize = pp.sizes.querySelector(".size-btn.selected");
+          const selectedColor = pp.colorsRow.querySelector(".color.selected");
 
           if (!selectedSize) return showCartToast("Select a size first.");
           if (!selectedColor) return showCartToast("Select a color first.");
@@ -2975,44 +2834,116 @@
 
           updateCartUI();
           showCartToast(`Added ${quantity}x ${productName} (${size}) in ${colorName}`);
-          ppClosePage();
+          closeProductPage();
         });
 
-        // open product page on card tap (ignore inner controls)
+        // open product page on card tap (non-interactive targets)
         products.forEach((productEl) => {
           productEl.addEventListener("click", (e) => {
             const interactive = e.target.closest("button, input, .color, a, .sizes, .colors, .options, .thumb-row");
             if (interactive) return;
-            openProductPage(productEl);
+            openProductPageFromElement(productEl, { push: true });
           });
         });
 
         /*************************************************************
-         * ✅ Back gesture + ESC behavior (central)
+         * ✅ LOOKBOOK FULLSCREEN PAGE
          *************************************************************/
-        window.addEventListener("popstate", (e) => {
-          const t = (e.state && e.state.__faide_overlay) ? e.state.__faide_overlay : null;
+        const lookbookCards = Array.from(document.querySelectorAll(".lookbook-card"));
+        const lbPage = document.getElementById("lookbook-page");
+        const lbImg = document.getElementById("lb-img");
+        const lbClose = document.getElementById("lb-close");
+        const lbCounter = document.getElementById("lb-counter");
+        const lbTitle = document.getElementById("lb-title");
 
-          // If we popped to a state that is NOT the current open overlay, close any open overlays.
-          // (This keeps Android back-swipe working even if state is null)
-          if (policyModal?.style.display === "block") hidePolicy({ fromPop: true });
-          if (cartSidebar?.classList.contains("active")) closeCartPanel({ fromPop: true });
-          if (productPage?.classList.contains("active")) ppClosePage({ fromPop: true });
-          if (lookbookPage?.classList.contains("active")) lbClosePage({ fromPop: true });
+        const galleryItems = lookbookCards
+          .map((card) => {
+            const img = card.querySelector("img");
+            const title = card.getAttribute("aria-label") || "Lookbook";
+            return img?.getAttribute("src") ? { src: img.getAttribute("src"), title } : null;
+          })
+          .filter(Boolean);
 
-          // If pop landed on a specific overlay state, re-open that overlay (rare but safe)
-          if (t === "cart") openCart();
-          if (t === "policy") showPolicy("privacy"); // fallback, but shouldn't happen normally
+        let lbIndex = 0;
+        function lbSet(index) {
+          if (!galleryItems.length) return;
+          lbIndex = (index + galleryItems.length) % galleryItems.length;
+          const item = galleryItems[lbIndex];
+          lbImg.src = item.src;
+          lbImg.alt = item.title;
+          lbTitle.textContent = "LOOKBOOK";
+          lbCounter.textContent = `${lbIndex + 1} / ${galleryItems.length}`;
+        }
+
+        function openLookbookPageAt(index, { push = true } = {}) {
+          lbSet(index);
+          openLookbookPage(index, { push });
+          lbClose?.focus();
+        }
+
+        lbClose?.addEventListener("click", () => closeLookbookPage());
+        lbPage?.addEventListener("click", (e) => { if (e.target === lbPage) closeLookbookPage(); });
+
+        lookbookCards.forEach((card, idx) => {
+          card.addEventListener("click", () => openLookbookPageAt(idx, { push: true }));
+          clickOnEnterSpace(card, () => openLookbookPageAt(idx, { push: true }));
         });
 
-        document.addEventListener("keydown", (e) => {
-          if (e.key !== "Escape") return;
+        // swipe left/right to switch lookbook images
+        let lbTouchStartX = null;
+        lbImg?.addEventListener("touchstart", (e) => {
+          if (!e.touches || e.touches.length !== 1) return;
+          lbTouchStartX = e.touches[0].clientX;
+        }, { passive: true });
 
-          if (policyModal && policyModal.style.display === "block") return hidePolicy();
-          if (productPage?.classList.contains("active")) return ppClosePage();
-          if (lookbookPage?.classList.contains("active")) return lbClosePage();
-          if (cartSidebar?.classList.contains("active")) return closeCartPanel();
-        });
+        lbImg?.addEventListener("touchend", (e) => {
+          if (lbTouchStartX == null) return;
+          const endX = e.changedTouches?.[0]?.clientX ?? lbTouchStartX;
+          const diff = endX - lbTouchStartX;
+          lbTouchStartX = null;
+
+          if (Math.abs(diff) < 35) return;
+          if (diff < 0) openLookbookPageAt(lbIndex + 1, { push: true });
+          else openLookbookPageAt(lbIndex - 1, { push: true });
+        }, { passive: true });
+
+        /*************************************************************
+         * ✅ ROUTE HANDLING (hashchange) — enables back gesture
+         *************************************************************/
+        function applyRoute() {
+          const route = parseHash();
+
+          if (route.type === "anchor") {
+            closeAllFullPages();
+            scrollToSectionId(route.id);
+            setActive(route.id);
+            return;
+          }
+
+          if (route.type === "look") {
+            closeProductPage({ clearHash: false });
+            lbSet(route.index);
+            openLookbookPage(route.index, { push: false });
+            return;
+          }
+
+          if (route.type === "product") {
+            closeLookbookPage({ clearHash: false });
+
+            const wanted = route.index;
+            const el = Array.from(products).find(p => (parseInt(p.getAttribute("data-product-id") || "1", 10) - 1) === wanted) || products[0];
+            if (el) openProductPageFromElement(el, { push: false });
+            return;
+          }
+
+          // none
+          closeAllFullPages();
+        }
+
+        window.addEventListener("hashchange", applyRoute);
+
+        // on initial load
+        applyRoute();
       });
     </script>
 
