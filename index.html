@@ -1,89 +1,55 @@
 <!doctype html>
-<html lang="en" class="h-full">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="xHQMXeonHcUZ-NTHCrtvjlR9bojEkpwc8CzKChP7I9o" />
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>FAIDE® | Luxury Streetwear Brand</title>
-    <meta
-      name="description"
-      content="FAIDE® luxury streetwear. New drops, exclusive releases, and curated essentials. Designed with intention. Worn with purpose."
-    />
-    <meta name="robots" content="index,follow" />
-    <link rel="canonical" href="https://faide-website.vercel.app/" />
-    <meta name="theme-color" content="#000000" />
+  <title>FAIDE® | Luxury Streetwear</title>
+  <meta name="description" content="FAIDE® luxury streetwear. Designed with intention. Worn with purpose." />
 
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/styles.css" />
 
-    <!-- Faster connection + font loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+</head>
 
-    <!-- Preload critical images -->
-    <link rel="preload" as="image" href="/assets/images/hero.png" fetchpriority="high" />
-    <link rel="preload" as="image" href="/assets/images/faide-wordmark.png" fetchpriority="high" />
+<body>
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="FAIDE® | Luxury Streetwear Brand" />
-    <meta property="og:site_name" content="FAIDE®" />
-    <meta
-      property="og:description"
-      content="Luxury streetwear designed with intention. New drops, exclusive releases, and curated essentials."
-    />
-    <meta property="og:url" content="https://faide-website.vercel.app/" />
-    <meta property="og:image" content="https://faide-website.vercel.app/assets/images/hero.png" />
+  <!-- NAV -->
+  <header class="nav">
+    <div class="logo">FAIDE®</div>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </header>
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@faideclothing" />
-    <meta name="twitter:title" content="FAIDE® | Luxury Streetwear Brand" />
-    <meta
-      name="twitter:description"
-      content="Luxury streetwear designed with intention. New drops, exclusive releases, and curated essentials."
-    />
-    <meta name="twitter:image" content="https://faide-website.vercel.app/assets/images/hero.png" />
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Luxury Streetwear</h1>
+    <p>Designed with intention. Worn with purpose.</p>
+    <button class="btn">Shop Now</button>
+  </section>
 
-    <!-- Schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Brand",
-        "@id": "https://faide-website.vercel.app/#brand",
-        "name": "FAIDE",
-        "url": "https://faide-website.vercel.app/",
-        "logo": "https://faide-website.vercel.app/assets/images/faide-wordmark.png",
-        "description": "FAIDE is a luxury streetwear brand designed with intention and worn with purpose.",
-        "sameAs": [
-          "https://www.facebook.com/faideclothing",
-          "https://www.instagram.com/faideclothing",
-          "https://www.tiktok.com/@faideclothing",
-          "https://x.com/faideclothing"
-        ]
-      }
-    </script>
+  <!-- PRODUCTS -->
+  <section class="products">
+    <div class="product">
+      <img src="/images/tshirt.png" alt="T-Shirt">
+      <h3>FAIDE Tee</h3>
+      <p>R 799</p>
+    </div>
 
-    <script src="/_sdk/element_sdk.js" defer></script>
-    <script src="/_sdk/data_sdk.js" defer></script>
+    <div class="product">
+      <img src="/images/hoodie.png" alt="Hoodie">
+      <h3>FAIDE Hoodie</h3>
+      <p>R 1499</p>
+    </div>
+  </section>
 
-    <!-- Tailwind (optional) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 FAIDE®. All rights reserved.</p>
+  </footer>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Your separated CSS -->
-    <link rel="stylesheet" href="/assets/css/styles.css" />
-  </head>
-
-  <body class="h-full w-full">
-    <!-- ✅ paste your current BODY HTML here (nav, sections, modals, etc) -->
-
-    <!-- Your separated JS -->
-    <script src="/assets/js/app.js" defer></script>
-  </body>
+  <!-- JS -->
+  <script src="/assets/js/app.js" defer></script>
+</body>
 </html>
