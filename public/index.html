@@ -215,7 +215,7 @@
         gap: 18px;
       }
 
-      /* ✅ Navbar links (bigger tap target) */
+      /* ✅ Navbar links (desktop) — now BOLDER */
       .nav-links a {
         font-size: 0.7rem;
         letter-spacing: 1px;
@@ -227,6 +227,7 @@
         white-space: nowrap;
         padding: 12px 0;
         line-height: 1;
+        font-weight: 800; /* ✅ bolder on desktop */
       }
 
       /* ✅ REMOVE purple stripe/underline completely */
@@ -271,6 +272,105 @@
         scroll-margin-top: calc(var(--nav-h) + 18px);
       }
 
+      /* ✅ Mobile: search icon + hamburger, desktop links hidden */
+      .nav-mobile-actions {
+        display: none;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .nav-icon-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.03);
+        color: #fff;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease;
+        user-select: none;
+      }
+      .nav-icon-btn:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.24);
+        transform: translateY(-1px);
+      }
+      .nav-icon-btn:active {
+        transform: translateY(-2px);
+      }
+
+      .hamburger {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .hamburger span {
+        width: 18px;
+        height: 2px;
+        background: #fff;
+        border-radius: 999px;
+        display: block;
+      }
+
+      .nav-mobile-panel {
+        display: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(0, 0, 0, 0.98);
+        backdrop-filter: blur(10px);
+      }
+      .nav-mobile-panel.open {
+        display: block;
+      }
+
+      .nav-mobile-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        padding: 18px var(--px-sm) 20px;
+      }
+      .nav-mobile-menu a {
+        font-size: 0.92rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #d0d0d0;
+        text-decoration: none;
+        padding: 10px 0;
+      }
+      .nav-mobile-menu a:hover {
+        color: var(--secondary);
+      }
+      .nav-mobile-menu a.active {
+        color: var(--primary);
+      }
+
+      .nav-mobile-search {
+        padding: 14px var(--px-sm) 16px;
+      }
+      .nav-mobile-search input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        padding: 12px 14px;
+        color: #fff;
+        font-weight: 700;
+        outline: none;
+        transition: border-color 0.2s ease, background 0.2s ease;
+      }
+      .nav-mobile-search input::placeholder {
+        color: #777;
+        font-weight: 700;
+      }
+      .nav-mobile-search input:focus {
+        border-color: rgba(168, 85, 247, 0.7);
+        background: rgba(255, 255, 255, 0.045);
+      }
+
       @media (max-width: 768px) {
         .navbar {
           padding: 0 var(--px-sm);
@@ -279,21 +379,14 @@
           height: 22px;
         }
 
+        /* ✅ Hide desktop links on mobile */
         .nav-links {
-          gap: 12px;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-          scrollbar-width: none;
-          max-width: 68vw;
-        }
-        .nav-links::-webkit-scrollbar {
           display: none;
         }
-        .nav-links a {
-          font-size: 0.62rem;
-          letter-spacing: 0.8px;
-          color: #777;
-          padding: 12px 0;
+
+        /* ✅ Show mobile icons on mobile */
+        .nav-mobile-actions {
+          display: inline-flex;
         }
       }
 
@@ -309,8 +402,8 @@
       }
 
       .hero {
-        padding-top: calc(var(--nav-h) + 120px);
-        padding-bottom: 180px;
+        padding-top: calc(var(--nav-h) + 70px);
+        padding-bottom: 100px;
       }
 
       @media (max-width: 768px) {
@@ -322,8 +415,8 @@
           padding-bottom: var(--section-y-sm);
         }
         .hero {
-          padding-top: calc(var(--nav-h) + 80px);
-          padding-bottom: 100px;
+          padding-top: calc(var(--nav-h) + 44px);
+          padding-bottom: 70px;
         }
       }
 
@@ -1613,13 +1706,62 @@
         <img src="/images/faide-wordmark.png" alt="FAIDE" class="faide-wordmark-img" id="brand-wordmark" />
       </a>
 
-      <div class="nav-links">
-        <a href="/#drop">NEW DROP</a>
-        <a href="/#lookbook">LOOKBOOK</a>
-        <a href="/#shop">SHOP</a>
-        <a href="/#about">ABOUT</a>
+      <!-- Desktop Links (stay the same on desktop) -->
+      <div class="nav-links" aria-label="Primary navigation">
+        <a href="/#drop" data-nav-link="main">NEW DROP</a>
+        <a href="/#lookbook" data-nav-link="main">LOOKBOOK</a>
+        <a href="/#shop" data-nav-link="main">SHOP</a>
+        <a href="/#about" data-nav-link="main">ABOUT</a>
+      </div>
+
+      <!-- Mobile Icons (Search + Hamburger) -->
+      <div class="nav-mobile-actions" aria-label="Mobile navigation controls">
+        <button
+          id="mobile-search-btn"
+          class="nav-icon-btn"
+          type="button"
+          aria-label="Open search"
+          aria-expanded="false"
+          aria-controls="mobile-search-panel"
+        >
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M10 2a8 8 0 105.293 14.293l4.707 4.707a1 1 0 001.414-1.414l-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"
+            />
+          </svg>
+        </button>
+
+        <button
+          id="mobile-menu-btn"
+          class="nav-icon-btn"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu-panel"
+        >
+          <span class="hamburger" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
       </div>
     </nav>
+
+    <!-- Mobile Search Panel -->
+    <div id="mobile-search-panel" class="nav-mobile-panel" aria-hidden="true">
+      <div class="nav-mobile-search">
+        <input id="mobile-search-input" type="text" placeholder="Search FAIDE..." autocomplete="off" />
+      </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu-panel" class="nav-mobile-panel" aria-hidden="true">
+      <div class="nav-mobile-menu" aria-label="Mobile menu">
+        <a href="/#drop" data-nav-link="main">NEW DROP</a>
+        <a href="/#lookbook" data-nav-link="main">LOOKBOOK</a>
+        <a href="/#shop" data-nav-link="main">SHOP</a>
+        <a href="/#about" data-nav-link="main">ABOUT</a>
+      </div>
+    </div>
 
     <!-- ✅ ROUTE PAGE: LOOKBOOK (real page via ?page=lookbook&i=1) -->
     <main id="route-lookbook" class="route-page" aria-hidden="true">
@@ -2630,7 +2772,73 @@
         shopNowBtn?.addEventListener("click", () => scrollToSectionId("shop"));
 
         const navbar = document.querySelector(".navbar");
-        const navLinks = document.querySelectorAll(".nav-links a");
+        const navLinks = document.querySelectorAll('[data-nav-link="main"]');
+
+        /* ✅ Mobile Search + Menu toggles */
+        const searchBtn = document.getElementById("mobile-search-btn");
+        const menuBtn = document.getElementById("mobile-menu-btn");
+        const searchPanel = document.getElementById("mobile-search-panel");
+        const menuPanel = document.getElementById("mobile-menu-panel");
+        const searchInput = document.getElementById("mobile-search-input");
+
+        const closeMobilePanels = () => {
+          if (searchPanel) {
+            searchPanel.classList.remove("open");
+            searchPanel.setAttribute("aria-hidden", "true");
+          }
+          if (menuPanel) {
+            menuPanel.classList.remove("open");
+            menuPanel.setAttribute("aria-hidden", "true");
+          }
+          if (searchBtn) searchBtn.setAttribute("aria-expanded", "false");
+          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+        };
+
+        const openSearch = () => {
+          // close menu if open
+          if (menuPanel?.classList.contains("open")) {
+            menuPanel.classList.remove("open");
+            menuPanel.setAttribute("aria-hidden", "true");
+            menuBtn?.setAttribute("aria-expanded", "false");
+          }
+
+          const willOpen = !searchPanel?.classList.contains("open");
+          if (!searchPanel) return;
+
+          searchPanel.classList.toggle("open");
+          searchPanel.setAttribute("aria-hidden", willOpen ? "false" : "true");
+          searchBtn?.setAttribute("aria-expanded", willOpen ? "true" : "false");
+
+          if (willOpen) {
+            setTimeout(() => searchInput?.focus(), 60);
+          }
+        };
+
+        const openMenu = () => {
+          // close search if open
+          if (searchPanel?.classList.contains("open")) {
+            searchPanel.classList.remove("open");
+            searchPanel.setAttribute("aria-hidden", "true");
+            searchBtn?.setAttribute("aria-expanded", "false");
+          }
+
+          const willOpen = !menuPanel?.classList.contains("open");
+          if (!menuPanel) return;
+
+          menuPanel.classList.toggle("open");
+          menuPanel.setAttribute("aria-hidden", willOpen ? "false" : "true");
+          menuBtn?.setAttribute("aria-expanded", willOpen ? "true" : "false");
+        };
+
+        searchBtn?.addEventListener("click", openSearch);
+        menuBtn?.addEventListener("click", openMenu);
+
+        // Close panels when a nav link is tapped (mobile)
+        navLinks.forEach((a) => {
+          a.addEventListener("click", () => {
+            closeMobilePanels();
+          });
+        });
 
         function handleShrink() {
           if (!navbar) return;
@@ -3100,9 +3308,11 @@
               a.classList.remove("active");
               a.removeAttribute("aria-current");
             });
-            const activeLink = linkById.get(id);
-            activeLink?.classList.add("active");
-            activeLink?.setAttribute("aria-current", "page");
+            const activeLinks = Array.from(navLinks).filter((a) => (a.getAttribute("href") || "").endsWith(`#${id}`));
+            activeLinks.forEach((lnk) => {
+              lnk.classList.add("active");
+              lnk.setAttribute("aria-current", "page");
+            });
           }
 
           let navLock = false;
@@ -3211,6 +3421,12 @@
          *************************************************************/
         document.addEventListener("keydown", (e) => {
           if (e.key !== "Escape") return;
+
+          // close mobile panels first
+          if (searchPanel?.classList.contains("open") || menuPanel?.classList.contains("open")) {
+            closeMobilePanels();
+            return;
+          }
 
           if (policyModal && policyModal.style.display === "block") hidePolicy();
           if (cartSidebar?.classList.contains("active")) {
