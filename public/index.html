@@ -199,6 +199,7 @@
         padding: 0 var(--px);
         display: flex;
         align-items: center;
+        gap: 18px; /* ✅ allow spacing for search */
       }
 
       .faide-wordmark-img {
@@ -215,7 +216,7 @@
         gap: 18px;
       }
 
-      /* ✅ Navbar links (desktop) — now BOLDER */
+      /* ✅ Navbar links (bigger tap target) */
       .nav-links a {
         font-size: 0.7rem;
         letter-spacing: 1px;
@@ -227,7 +228,6 @@
         white-space: nowrap;
         padding: 12px 0;
         line-height: 1;
-        font-weight: 800; /* ✅ bolder on desktop */
       }
 
       /* ✅ REMOVE purple stripe/underline completely */
@@ -272,103 +272,98 @@
         scroll-margin-top: calc(var(--nav-h) + 18px);
       }
 
-      /* ✅ Mobile: search icon + hamburger, desktop links hidden */
-      .nav-mobile-actions {
-        display: none;
+      /* =========================================================
+         ✅ NAV SEARCH (WORKING PRODUCT SEARCH)
+      ========================================================= */
+      .nav-right {
+        margin-left: auto;
+        display: flex;
         align-items: center;
-        gap: 14px;
+        gap: 16px;
+        min-width: 0;
       }
 
-      .nav-icon-btn {
-        width: 42px;
+      .nav-search {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 260px;
+        max-width: 420px;
+        width: clamp(220px, 24vw, 420px);
+      }
+
+      .nav-search-input {
+        width: 100%;
         height: 42px;
         border-radius: 999px;
         border: 1px solid rgba(255, 255, 255, 0.14);
         background: rgba(255, 255, 255, 0.03);
         color: #fff;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease;
-        user-select: none;
-      }
-      .nav-icon-btn:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.24);
-        transform: translateY(-1px);
-      }
-      .nav-icon-btn:active {
-        transform: translateY(-2px);
-      }
-
-      .hamburger {
-        display: inline-flex;
-        flex-direction: column;
-        gap: 5px;
-      }
-      .hamburger span {
-        width: 18px;
-        height: 2px;
-        background: #fff;
-        border-radius: 999px;
-        display: block;
-      }
-
-      .nav-mobile-panel {
-        display: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        background: rgba(0, 0, 0, 0.98);
-        backdrop-filter: blur(10px);
-      }
-      .nav-mobile-panel.open {
-        display: block;
-      }
-
-      .nav-mobile-menu {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-        padding: 18px var(--px-sm) 20px;
-      }
-      .nav-mobile-menu a {
-        font-size: 0.92rem;
-        font-weight: 900;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #d0d0d0;
-        text-decoration: none;
-        padding: 10px 0;
-      }
-      .nav-mobile-menu a:hover {
-        color: var(--secondary);
-      }
-      .nav-mobile-menu a.active {
-        color: var(--primary);
-      }
-
-      .nav-mobile-search {
-        padding: 14px var(--px-sm) 16px;
-      }
-      .nav-mobile-search input {
-        width: 100%;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 999px;
-        padding: 12px 14px;
-        color: #fff;
-        font-weight: 700;
+        padding: 0 42px 0 42px;
+        font-weight: 800;
+        font-size: 0.9rem;
         outline: none;
-        transition: border-color 0.2s ease, background 0.2s ease;
+        transition: border-color 0.2s ease, background 0.2s ease, transform 0.16s ease;
       }
-      .nav-mobile-search input::placeholder {
+      .nav-search-input::placeholder {
         color: #777;
         font-weight: 700;
       }
-      .nav-mobile-search input:focus {
-        border-color: rgba(168, 85, 247, 0.7);
-        background: rgba(255, 255, 255, 0.045);
+      .nav-search-input:focus {
+        border-color: rgba(168, 85, 247, 0.6);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .nav-search-icon {
+        position: absolute;
+        left: 14px;
+        width: 18px;
+        height: 18px;
+        color: #8a8a8a;
+        pointer-events: none;
+      }
+
+      .nav-search-clear {
+        position: absolute;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.02);
+        color: #cfcfcf;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease;
+      }
+      .nav-search-clear:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.22);
+        transform: translateY(-1px);
+      }
+      .nav-search-clear:active {
+        transform: translateY(-2px);
+      }
+
+      .nav-search-help {
+        display: none;
+        color: #777;
+        font-size: 0.78rem;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 960px) {
+        .nav-search {
+          min-width: 210px;
+          width: clamp(180px, 28vw, 320px);
+        }
+        .nav-search-help {
+          display: none;
+        }
       }
 
       @media (max-width: 768px) {
@@ -379,14 +374,33 @@
           height: 22px;
         }
 
-        /* ✅ Hide desktop links on mobile */
         .nav-links {
+          gap: 12px;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          max-width: 54vw;
+        }
+        .nav-links::-webkit-scrollbar {
           display: none;
         }
+        .nav-links a {
+          font-size: 0.62rem;
+          letter-spacing: 0.8px;
+          color: #777;
+          padding: 12px 0;
+        }
 
-        /* ✅ Show mobile icons on mobile */
-        .nav-mobile-actions {
-          display: inline-flex;
+        .nav-search {
+          min-width: 0;
+          width: 44vw;
+          max-width: none;
+        }
+        .nav-search-input {
+          height: 40px;
+          font-size: 0.86rem;
+          padding-left: 40px;
+          padding-right: 38px;
         }
       }
 
@@ -402,8 +416,8 @@
       }
 
       .hero {
-        padding-top: calc(var(--nav-h) + 120px);
-        padding-bottom: 140px;
+        padding-top: calc(var(--nav-h) + 70px);
+        padding-bottom: 100px;
       }
 
       @media (max-width: 768px) {
@@ -1192,6 +1206,31 @@
       }
 
       /* =========================================================
+         ✅ SHOP SEARCH RESULT MESSAGE
+      ========================================================= */
+      .shop-results-meta {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 0 var(--px);
+        color: #8a8a8a;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .shop-results-meta strong {
+        color: #d0d0d0;
+        font-weight: 950;
+      }
+      @media (max-width: 768px) {
+        .shop-results-meta {
+          padding: 0 var(--px-sm);
+        }
+      }
+
+      /* =========================================================
          ABOUT
       ========================================================= */
       .about {
@@ -1706,62 +1745,42 @@
         <img src="/images/faide-wordmark.png" alt="FAIDE" class="faide-wordmark-img" id="brand-wordmark" />
       </a>
 
-      <!-- Desktop Links (stay the same on desktop) -->
-      <div class="nav-links" aria-label="Primary navigation">
-        <a href="/#drop" data-nav-link="main">NEW DROP</a>
-        <a href="/#lookbook" data-nav-link="main">LOOKBOOK</a>
-        <a href="/#shop" data-nav-link="main">SHOP</a>
-        <a href="/#about" data-nav-link="main">ABOUT</a>
+      <div class="nav-links">
+        <a href="/#drop">NEW DROP</a>
+        <a href="/#lookbook">LOOKBOOK</a>
+        <a href="/#shop">SHOP</a>
+        <a href="/#about">ABOUT</a>
       </div>
 
-      <!-- Mobile Icons (Search + Hamburger) -->
-      <div class="nav-mobile-actions" aria-label="Mobile navigation controls">
-        <button
-          id="mobile-search-btn"
-          class="nav-icon-btn"
-          type="button"
-          aria-label="Open search"
-          aria-expanded="false"
-          aria-controls="mobile-search-panel"
-        >
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <!-- ✅ WORKING SEARCH (filters Shop products live) -->
+      <div class="nav-right">
+        <div class="nav-search" aria-label="Search products">
+          <svg class="nav-search-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path
-              d="M10 2a8 8 0 105.293 14.293l4.707 4.707a1 1 0 001.414-1.414l-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"
+              d="M10 2a8 8 0 105.293 14.293l4.707 4.707a1 1 0 001.414-1.414l-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"
             />
           </svg>
-        </button>
 
-        <button
-          id="mobile-menu-btn"
-          class="nav-icon-btn"
-          type="button"
-          aria-label="Open menu"
-          aria-expanded="false"
-          aria-controls="mobile-menu-panel"
-        >
-          <span class="hamburger" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </span>
-        </button>
+          <input
+            id="shop-search"
+            class="nav-search-input"
+            type="search"
+            inputmode="search"
+            autocomplete="off"
+            placeholder="Search shop…"
+            aria-label="Search products in shop"
+          />
+
+          <button id="shop-search-clear" class="nav-search-clear" type="button" aria-label="Clear search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M18.3 5.7a1 1 0 0 1 0 1.4L13.4 12l4.9 4.9a1 1 0 1 1-1.4 1.4L12 13.4l-4.9 4.9a1 1 0 1 1-1.4-1.4l4.9-4.9-4.9-4.9a1 1 0 1 1 1.4-1.4L12 10.6l4.9-4.9a1 1 0 0 1 1.4 0z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </nav>
-
-    <!-- Mobile Search Panel -->
-    <div id="mobile-search-panel" class="nav-mobile-panel" aria-hidden="true">
-      <div class="nav-mobile-search">
-        <input id="mobile-search-input" type="text" placeholder="Search FAIDE..." autocomplete="off" />
-      </div>
-    </div>
-
-    <!-- Mobile Menu Panel -->
-    <div id="mobile-menu-panel" class="nav-mobile-panel" aria-hidden="true">
-      <div class="nav-mobile-menu" aria-label="Mobile menu">
-        <a href="/#drop" data-nav-link="main">NEW DROP</a>
-        <a href="/#lookbook" data-nav-link="main">LOOKBOOK</a>
-        <a href="/#shop" data-nav-link="main">SHOP</a>
-        <a href="/#about" data-nav-link="main">ABOUT</a>
-      </div>
-    </div>
 
     <!-- ✅ ROUTE PAGE: LOOKBOOK (real page via ?page=lookbook&i=1) -->
     <main id="route-lookbook" class="route-page" aria-hidden="true">
@@ -1769,7 +1788,9 @@
         <div class="route-topbar">
           <a class="route-back" href="/#lookbook" aria-label="Back to Lookbook">
             <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11H21a1 1 0 1 1 0 2H10.41l4.3 4.3a1 1 0 1 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0z"/>
+              <path
+                d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11H21a1 1 0 1 1 0 2H10.41l4.3 4.3a1 1 0 1 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0z"
+              />
             </svg>
             Back
           </a>
@@ -1794,7 +1815,9 @@
         <div class="route-topbar">
           <a class="route-back" href="/#shop" aria-label="Back to Shop">
             <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11H21a1 1 0 1 1 0 2H10.41l4.3 4.3a1 1 0 1 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0z"/>
+              <path
+                d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11H21a1 1 0 1 1 0 2H10.41l4.3 4.3a1 1 0 1 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0z"
+              />
             </svg>
             Back
           </a>
@@ -1816,10 +1839,15 @@
           </div>
 
           <div id="rpp-details" style="width:100%;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap: 12px; margin-bottom: 10px;">
+            <div
+              style="display:flex; justify-content:space-between; align-items:flex-start; gap: 12px; margin-bottom: 10px;"
+            >
               <div style="min-width:0;">
                 <div id="rpp-label" class="product-label" style="margin-bottom:8px;"></div>
-                <h3 id="rpp-name" style="font-size:1.2rem; font-weight:950; color:#fff; line-height:1.25; margin:0 0 6px;"></h3>
+                <h3
+                  id="rpp-name"
+                  style="font-size:1.2rem; font-weight:950; color:#fff; line-height:1.25; margin:0 0 6px;"
+                ></h3>
                 <div id="rpp-category" style="color:#9a9a9a; font-weight:800;"></div>
                 <div id="rpp-colors" style="color:#9a9a9a; font-weight:800; margin-top:6px;"></div>
               </div>
@@ -1891,13 +1919,7 @@
               </svg>
             </a>
 
-            <a
-              href="https://x.com/faideclothing"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-icon"
-              aria-label="X"
-            >
+            <a href="https://x.com/faideclothing" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                 <path
                   d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
@@ -1945,7 +1967,15 @@
       <section id="shop" class="shop">
         <h2 class="section-title purple-title aligned-title">Shop</h2>
 
-        <div class="horizontal-scroll">
+        <!-- ✅ Search results meta -->
+        <div id="shop-results-meta" class="shop-results-meta" aria-live="polite">
+          <div>
+            Results for <strong id="shop-results-q"></strong> • <strong id="shop-results-count">0</strong> item(s)
+          </div>
+          <div style="font-size:0.82rem; color:#777;">Tip: press <strong style="color:#bbb;">Esc</strong> to clear</div>
+        </div>
+
+        <div class="horizontal-scroll" id="shop-row">
           <!-- Tank-top -->
           <div class="product" data-name="FAIDE Essentials Tank" data-price="199.99">
             <div class="product-img-container">
@@ -2457,6 +2487,11 @@
       }
 
       /*************************************************************
+       * ✅ SHOP SEARCH MEMORY (sessionStorage)
+       *************************************************************/
+      const SEARCH_SESSION_KEY = "faide_shop_search_q";
+
+      /*************************************************************
        * CART + WHATSAPP CHECKOUT
        *************************************************************/
       const WHATSAPP_NUMBER = "27695603929";
@@ -2772,73 +2807,7 @@
         shopNowBtn?.addEventListener("click", () => scrollToSectionId("shop"));
 
         const navbar = document.querySelector(".navbar");
-        const navLinks = document.querySelectorAll('[data-nav-link="main"]');
-
-        /* ✅ Mobile Search + Menu toggles */
-        const searchBtn = document.getElementById("mobile-search-btn");
-        const menuBtn = document.getElementById("mobile-menu-btn");
-        const searchPanel = document.getElementById("mobile-search-panel");
-        const menuPanel = document.getElementById("mobile-menu-panel");
-        const searchInput = document.getElementById("mobile-search-input");
-
-        const closeMobilePanels = () => {
-          if (searchPanel) {
-            searchPanel.classList.remove("open");
-            searchPanel.setAttribute("aria-hidden", "true");
-          }
-          if (menuPanel) {
-            menuPanel.classList.remove("open");
-            menuPanel.setAttribute("aria-hidden", "true");
-          }
-          if (searchBtn) searchBtn.setAttribute("aria-expanded", "false");
-          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
-        };
-
-        const openSearch = () => {
-          // close menu if open
-          if (menuPanel?.classList.contains("open")) {
-            menuPanel.classList.remove("open");
-            menuPanel.setAttribute("aria-hidden", "true");
-            menuBtn?.setAttribute("aria-expanded", "false");
-          }
-
-          const willOpen = !searchPanel?.classList.contains("open");
-          if (!searchPanel) return;
-
-          searchPanel.classList.toggle("open");
-          searchPanel.setAttribute("aria-hidden", willOpen ? "false" : "true");
-          searchBtn?.setAttribute("aria-expanded", willOpen ? "true" : "false");
-
-          if (willOpen) {
-            setTimeout(() => searchInput?.focus(), 60);
-          }
-        };
-
-        const openMenu = () => {
-          // close search if open
-          if (searchPanel?.classList.contains("open")) {
-            searchPanel.classList.remove("open");
-            searchPanel.setAttribute("aria-hidden", "true");
-            searchBtn?.setAttribute("aria-expanded", "false");
-          }
-
-          const willOpen = !menuPanel?.classList.contains("open");
-          if (!menuPanel) return;
-
-          menuPanel.classList.toggle("open");
-          menuPanel.setAttribute("aria-hidden", willOpen ? "false" : "true");
-          menuBtn?.setAttribute("aria-expanded", willOpen ? "true" : "false");
-        };
-
-        searchBtn?.addEventListener("click", openSearch);
-        menuBtn?.addEventListener("click", openMenu);
-
-        // Close panels when a nav link is tapped (mobile)
-        navLinks.forEach((a) => {
-          a.addEventListener("click", () => {
-            closeMobilePanels();
-          });
-        });
+        const navLinks = document.querySelectorAll(".nav-links a");
 
         function handleShrink() {
           if (!navbar) return;
@@ -2848,9 +2817,127 @@
         window.addEventListener("scroll", handleShrink, { passive: true });
 
         /*************************************************************
+         * ✅ NAV SEARCH → FILTER SHOP PRODUCTS
+         *************************************************************/
+        const shopSearch = document.getElementById("shop-search");
+        const shopSearchClear = document.getElementById("shop-search-clear");
+        const shopResultsMeta = document.getElementById("shop-results-meta");
+        const shopResultsQ = document.getElementById("shop-results-q");
+        const shopResultsCount = document.getElementById("shop-results-count");
+
+        const products = document.querySelectorAll(".product");
+        const shopRow = document.getElementById("shop-row");
+        const params = new URLSearchParams(window.location.search);
+        const page = params.get("page");
+
+        function normalize(s) {
+          return String(s || "")
+            .toLowerCase()
+            .replace(/\s+/g, " ")
+            .trim();
+        }
+
+        function productText(p) {
+          const name = p.getAttribute("data-name") || "";
+          const label = p.querySelector(".product-label")?.textContent || "";
+          const category = p.querySelector(".product-category")?.textContent || "";
+          const colors = p.querySelector(".product-colors-count")?.textContent || "";
+          return normalize([name, label, category, colors].join(" "));
+        }
+
+        function setSearchUIState(q) {
+          const has = !!normalize(q);
+          if (shopSearchClear) shopSearchClear.style.display = has ? "inline-flex" : "none";
+          if (shopResultsMeta) shopResultsMeta.style.display = has ? "flex" : "none";
+          if (shopResultsQ) shopResultsQ.textContent = has ? `"${q.trim()}"` : "";
+        }
+
+        function applyShopFilter(q) {
+          const nq = normalize(q);
+          let shown = 0;
+
+          // If search happens while on a route page, send user home and apply the query there.
+          if ((page === "lookbook" || page === "product") && nq) {
+            try {
+              sessionStorage.setItem(SEARCH_SESSION_KEY, q);
+            } catch (_) {}
+            window.location.href = "/#shop";
+            return;
+          }
+
+          products.forEach((p) => {
+            const match = !nq || productText(p).includes(nq);
+            p.style.display = match ? "" : "none";
+            if (match) shown += 1;
+          });
+
+          setSearchUIState(q);
+          if (shopResultsCount) shopResultsCount.textContent = String(shown);
+
+          // If searching and user is not already near Shop, bring them there (soft)
+          if (nq) {
+            const shopEl = document.getElementById("shop");
+            const nearShop = shopEl ? Math.abs(shopEl.getBoundingClientRect().top) < 220 : false;
+            if (!nearShop) scrollToSectionId("shop");
+          }
+
+          // Horizontal scroll: if only 1 item left, stop snap weirdness by nudging to start.
+          if (shopRow && nq) {
+            shopRow.scrollTo({ left: 0, behavior: "smooth" });
+          }
+        }
+
+        function clearSearch({ focus = true } = {}) {
+          if (!shopSearch) return;
+          shopSearch.value = "";
+          applyShopFilter("");
+          try {
+            sessionStorage.removeItem(SEARCH_SESSION_KEY);
+          } catch (_) {}
+          if (focus) shopSearch.focus();
+        }
+
+        // Restore search from sessionStorage if we navigated from a route page
+        try {
+          const saved = sessionStorage.getItem(SEARCH_SESSION_KEY);
+          if (saved && shopSearch) {
+            shopSearch.value = saved;
+            // apply after a tiny delay so layout is ready
+            setTimeout(() => applyShopFilter(saved), 30);
+          }
+        } catch (_) {}
+
+        shopSearch?.addEventListener("input", () => {
+          applyShopFilter(shopSearch.value);
+        });
+
+        shopSearchClear?.addEventListener("click", (e) => {
+          e.preventDefault();
+          clearSearch({ focus: true });
+        });
+
+        // Esc clears search when search is focused (and also works globally below)
+        shopSearch?.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            e.preventDefault();
+            clearSearch({ focus: false });
+          }
+        });
+
+        // "/" focuses search (like modern sites)
+        document.addEventListener("keydown", (e) => {
+          const tag = document.activeElement?.tagName?.toLowerCase();
+          const isTypingField = tag === "input" || tag === "textarea" || document.activeElement?.isContentEditable;
+
+          if (!isTypingField && e.key === "/") {
+            e.preventDefault();
+            shopSearch?.focus();
+          }
+        });
+
+        /*************************************************************
          * CART
          *************************************************************/
-        const products = document.querySelectorAll(".product");
         const floatingCart = document.getElementById("floating-cart");
         const cartSidebar = document.getElementById("cart-sidebar");
         const cartOverlay = document.getElementById("cart-overlay");
@@ -3073,9 +3160,6 @@
         /*************************************************************
          * ✅ ROUTE PAGE RENDERING
          *************************************************************/
-        const params = new URLSearchParams(window.location.search);
-        const page = params.get("page");
-
         // Normal site behavior for nav-links:
         // If you're on a route page and click nav, go home + hash
         navLinks.forEach((a) => {
@@ -3308,11 +3392,9 @@
               a.classList.remove("active");
               a.removeAttribute("aria-current");
             });
-            const activeLinks = Array.from(navLinks).filter((a) => (a.getAttribute("href") || "").endsWith(`#${id}`));
-            activeLinks.forEach((lnk) => {
-              lnk.classList.add("active");
-              lnk.setAttribute("aria-current", "page");
-            });
+            const activeLink = linkById.get(id);
+            activeLink?.classList.add("active");
+            activeLink?.setAttribute("aria-current", "page");
           }
 
           let navLock = false;
@@ -3422,10 +3504,11 @@
         document.addEventListener("keydown", (e) => {
           if (e.key !== "Escape") return;
 
-          // close mobile panels first
-          if (searchPanel?.classList.contains("open") || menuPanel?.classList.contains("open")) {
-            closeMobilePanels();
-            return;
+          // ✅ Clear search if it has value
+          if (shopSearch && shopSearch.value.trim()) {
+            // don't prevent other ESC behaviors; just clear search quickly
+            shopSearch.value = "";
+            applyShopFilter("");
           }
 
           if (policyModal && policyModal.style.display === "block") hidePolicy();
