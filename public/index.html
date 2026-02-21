@@ -16,8 +16,14 @@
 
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="preload" as="image" href="/images/hero.png" />
-    <link rel="preload" as="image" href="/images/faide-wordmark.png" />
+
+    <!-- Faster connection + font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="/images/hero.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/faide-wordmark.png" fetchpriority="high" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="FAIDE® | Luxury Streetwear Brand" />
@@ -69,8 +75,6 @@
     <!-- Tailwind kept (you still have a few utility classes); remove if you want to fully CSS-only -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
       rel="stylesheet"
@@ -237,6 +241,10 @@
         justify-content: center;
         transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease;
         user-select: none;
+
+        /* remove outline */
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
       }
       .nav-icon-btn:hover {
         background: rgba(255, 255, 255, 0.08);
@@ -246,6 +254,12 @@
       .nav-icon-btn:active {
         transform: translateY(-2px);
       }
+      .nav-icon-btn:focus,
+      .nav-icon-btn:focus-visible {
+        outline: none;
+        box-shadow: none;
+      }
+
       .hamburger {
         display: inline-flex;
         flex-direction: column;
@@ -426,6 +440,14 @@
         margin: 0 8px;
         transition: transform 0.16s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         border: 1px solid #222;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .social-icon:focus,
+      .social-icon:focus-visible {
+        outline: none;
+        box-shadow: none;
       }
       .social-icon:hover {
         background: var(--secondary);
@@ -450,6 +472,14 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         font-size: 0.9rem;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .primary-btn:focus,
+      .primary-btn:focus-visible {
+        outline: none;
+        box-shadow: none;
       }
       .primary-btn:hover {
         filter: brightness(1.05);
@@ -569,6 +599,14 @@
         gap: 8px;
         text-decoration: none;
         user-select: none;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .route-back:focus,
+      .route-back:focus-visible {
+        outline: none;
+        box-shadow: none;
       }
       .route-back:hover {
         background: rgba(255, 255, 255, 0.08);
@@ -845,6 +883,14 @@
           background 0.18s ease;
         font-weight: 800;
         font-size: 0.95rem;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .size-btn:focus,
+      .size-btn:focus-visible {
+        outline: none;
+        box-shadow: none;
       }
       .size-btn:hover:not(.selected) {
         border-color: rgba(168, 85, 247, 0.4);
@@ -874,6 +920,14 @@
         transition: transform 0.16s ease, border-color 0.18s ease;
         border: 2px solid transparent;
         position: relative;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .color:focus,
+      .color:focus-visible {
+        outline: none;
+        box-shadow: none;
       }
       .color::after {
         content: "✓";
@@ -948,6 +1002,14 @@
         justify-content: center;
         user-select: none;
         transition: transform 0.16s ease, background 0.2s ease, border-color 0.2s ease;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .qty-stepper-ui .qty-btn-ui:focus,
+      .qty-stepper-ui .qty-btn-ui:focus-visible {
+        outline: none;
+        box-shadow: none;
       }
       .qty-stepper-ui .qty-btn-ui:hover {
         background: rgba(255, 255, 255, 0.06);
@@ -979,6 +1041,14 @@
         width: 100%;
         text-transform: uppercase;
         letter-spacing: 1px;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .secondary-btn:focus,
+      .secondary-btn:focus-visible {
+        outline: none;
+        box-shadow: none;
       }
       .secondary-btn:hover {
         transform: translateY(-1px);
@@ -1124,6 +1194,14 @@
         justify-content: center;
         z-index: 1500;
         transition: transform 0.16s ease, filter 0.2s ease;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .floating-cart:focus,
+      .floating-cart:focus-visible {
+        outline: none;
+        box-shadow: none;
       }
       .floating-cart:hover {
         transform: translateY(-1px) scale(1.02);
@@ -1203,6 +1281,14 @@
         justify-content: center;
         border-radius: 8px;
         transition: transform 0.16s ease, background 0.2s ease, color 0.2s ease;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .close-cart:focus,
+      .close-cart:focus-visible {
+        outline: none;
+        box-shadow: none;
       }
       .close-cart:hover {
         color: #fff;
@@ -1287,6 +1373,14 @@
         font-weight: 950;
         font-size: 1.05rem;
         line-height: 1;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .qty-btn:focus,
+      .qty-btn:focus-visible {
+        outline: none;
+        box-shadow: none;
       }
       .qty-btn:hover {
         background: rgba(255, 255, 255, 0.08);
@@ -1311,6 +1405,14 @@
         font-size: 0.85rem;
         font-weight: 700;
         transition: color 0.2s ease, transform 0.16s ease;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .remove-btn:focus,
+      .remove-btn:focus-visible {
+        outline: none;
+        box-shadow: none;
       }
       .remove-btn:hover {
         color: #ef4444;
@@ -1358,6 +1460,14 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         font-size: 0.9rem;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .checkout-btn:focus,
+      .checkout-btn:focus-visible {
+        outline: none;
+        box-shadow: none;
       }
       .checkout-btn:hover {
         transform: translateY(-1px);
@@ -1431,6 +1541,122 @@
         }
       }
 
+      /* Signup modal (Shop reached) */
+      .signup-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.72);
+        z-index: 3100;
+        padding: 28px 18px;
+        overflow-y: auto;
+      }
+      .signup-overlay.show {
+        display: block;
+      }
+      .signup-modal {
+        max-width: 560px;
+        margin: 0 auto;
+        background: #0a0a0a;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+      }
+      .signup-head {
+        background: var(--surface);
+        padding: 18px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        border-bottom: 1px solid var(--border);
+      }
+      .signup-title {
+        font-size: 1.1rem;
+        font-weight: 950;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: var(--primary);
+        margin: 0;
+      }
+      .signup-close {
+        background: transparent;
+        border: none;
+        color: #888;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 10px;
+        transition: transform 0.16s ease, background 0.2s ease, color 0.2s ease;
+
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .signup-close:focus,
+      .signup-close:focus-visible {
+        outline: none;
+        box-shadow: none;
+      }
+      .signup-close:hover {
+        color: #fff;
+        background: #141414;
+        transform: translateY(-1px);
+      }
+      .signup-close:active {
+        transform: translateY(-2px);
+      }
+      .signup-body {
+        padding: 18px 18px 20px;
+        color: #cfcfcf;
+        line-height: 1.7;
+      }
+      .signup-body p {
+        margin: 0 0 14px;
+        color: #bdbdbd;
+        font-weight: 650;
+      }
+      .signup-form {
+        display: grid;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .signup-input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        padding: 12px 14px;
+        color: #fff;
+        font-weight: 800;
+        outline: none;
+        transition: border-color 0.2s ease, background 0.2s ease;
+      }
+      .signup-input::placeholder {
+        color: #777;
+        font-weight: 800;
+      }
+      .signup-input:focus {
+        border-color: rgba(168, 85, 247, 0.7);
+        background: rgba(255, 255, 255, 0.045);
+      }
+      .signup-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      @media (max-width: 520px) {
+        .signup-actions {
+          grid-template-columns: 1fr;
+        }
+      }
+      .signup-note {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #777;
+        font-weight: 700;
+      }
+
       @view-transition {
         navigation: auto;
       }
@@ -1444,7 +1670,14 @@
         aria-label="FAIDE Home"
         style="display:flex; align-items:center; gap:10px; text-decoration:none;"
       >
-        <img src="/images/faide-wordmark.png" alt="FAIDE" class="faide-wordmark-img" id="brand-wordmark" />
+        <img
+          src="/images/faide-wordmark.png"
+          alt="FAIDE"
+          class="faide-wordmark-img"
+          id="brand-wordmark"
+          decoding="async"
+          fetchpriority="high"
+        />
       </a>
 
       <div class="nav-links" aria-label="Primary navigation">
@@ -1521,7 +1754,7 @@
         </div>
 
         <div class="lookbook-view">
-          <img id="rlb-img" alt="Lookbook image" src="" />
+          <img id="rlb-img" alt="Lookbook image" src="" decoding="async" />
         </div>
       </div>
     </main>
@@ -1549,7 +1782,7 @@
         <section class="product-page-grid">
           <div>
             <div class="pm-image-shell">
-              <img id="rpp-img" alt="Product image" src="" />
+              <img id="rpp-img" alt="Product image" src="" decoding="async" />
             </div>
             <div class="thumb-row" id="rpp-thumbs"></div>
           </div>
@@ -1631,7 +1864,13 @@
               </svg>
             </a>
 
-            <a href="https://x.com/faideclothing" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X">
+            <a
+              href="https://x.com/faideclothing"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon"
+              aria-label="X"
+            >
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
@@ -1663,11 +1902,23 @@
 
         <div class="vertical-list">
           <div class="lookbook-card" data-look="1" role="button" tabindex="0" aria-label="Open Lookbook 1">
-            <img src="/images/lookbook1.png" alt="FAIDE Lookbook 1" class="lookbook-img" />
+            <img
+              src="/images/lookbook1.png"
+              alt="FAIDE Lookbook 1"
+              class="lookbook-img"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           <div class="lookbook-card" data-look="2" role="button" tabindex="0" aria-label="Open Lookbook 2">
-            <img src="/images/lookbook2.png" alt="FAIDE Lookbook 2" class="lookbook-img" />
+            <img
+              src="/images/lookbook2.png"
+              alt="FAIDE Lookbook 2"
+              class="lookbook-img"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </section>
@@ -1678,7 +1929,13 @@
         <div class="horizontal-scroll">
           <div class="product" data-name="FAIDE Essentials Tank" data-price="199.99">
             <div class="product-img-container">
-              <img src="/images/tank-top.png" alt="FAIDE Essentials Tank" class="product-img" />
+              <img
+                src="/images/tank-top.png"
+                alt="FAIDE Essentials Tank"
+                class="product-img"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="thumb-row" data-thumb-row></div>
 
@@ -1724,7 +1981,13 @@
 
           <div class="product" data-name="FAIDE Signature Tee" data-price="349.99">
             <div class="product-img-container">
-              <img src="/images/tshirt.png" alt="FAIDE Signature Tee" class="product-img" />
+              <img
+                src="/images/tshirt.png"
+                alt="FAIDE Signature Tee"
+                class="product-img"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="thumb-row" data-thumb-row></div>
 
@@ -1771,7 +2034,13 @@
 
           <div class="product" data-name="FAIDE Long Sleeve" data-price="549.99">
             <div class="product-img-container">
-              <img src="/images/longsleeve.png" alt="FAIDE Long Sleeve" class="product-img" />
+              <img
+                src="/images/longsleeve.png"
+                alt="FAIDE Long Sleeve"
+                class="product-img"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="thumb-row" data-thumb-row></div>
 
@@ -1817,7 +2086,13 @@
 
           <div class="product" data-name="FAIDE Luxury Hoodie" data-price="699.99">
             <div class="product-img-container">
-              <img src="/images/hoodie.png" alt="FAIDE Luxury Hoodie" class="product-img" />
+              <img
+                src="/images/hoodie.png"
+                alt="FAIDE Luxury Hoodie"
+                class="product-img"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="thumb-row" data-thumb-row></div>
 
@@ -1900,6 +2175,7 @@
       </footer>
     </div>
 
+    <!-- Policy modal -->
     <div
       id="policy-modal"
       role="dialog"
@@ -1929,6 +2205,48 @@
       </div>
     </div>
 
+    <!-- Signup modal (shown when Shop reached) -->
+    <div id="signup-overlay" class="signup-overlay" role="dialog" aria-modal="true" aria-labelledby="signup-title" aria-hidden="true">
+      <div class="signup-modal">
+        <div class="signup-head">
+          <h3 class="signup-title" id="signup-title">Get drop alerts</h3>
+          <button class="signup-close" id="signup-close" type="button" aria-label="Close sign up">
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="signup-body">
+          <p>Be first to know about new drops, restocks, and exclusive releases.</p>
+
+          <form class="signup-form" id="signup-form" autocomplete="on">
+            <input
+              class="signup-input"
+              id="signup-email"
+              type="email"
+              inputmode="email"
+              placeholder="Enter your email"
+              required
+            />
+
+            <div class="signup-actions">
+              <button type="submit" class="secondary-btn" id="signup-submit">Sign Up</button>
+              <button type="button" class="secondary-btn" id="signup-skip" style="background:#222; border-color:rgba(255,255,255,0.08);">
+                Not now
+              </button>
+            </div>
+
+            <div class="signup-note">
+              No spam. Unsubscribe anytime. (This stores your email on your device + opens an email to FAIDE.)
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart -->
     <div id="cart-overlay" class="cart-overlay" aria-hidden="true"></div>
 
     <button id="floating-cart" class="floating-cart" aria-label="View shopping cart" type="button">
@@ -2038,11 +2356,23 @@
       function mapToCapabilities(config) {
         return {
           recolorables: [
-            { get: () => config.background_color || defaultConfig.background_color, set: (v) => window.elementSdk?.setConfig?.({ background_color: (config.background_color = v) }) },
-            { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => window.elementSdk?.setConfig?.({ surface_color: (config.surface_color = v) }) },
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (v) => window.elementSdk?.setConfig?.({ background_color: (config.background_color = v) }),
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (v) => window.elementSdk?.setConfig?.({ surface_color: (config.surface_color = v) }),
+            },
             { get: () => config.text_color || defaultConfig.text_color, set: (v) => window.elementSdk?.setConfig?.({ text_color: (config.text_color = v) }) },
-            { get: () => config.primary_accent || defaultConfig.primary_accent, set: (v) => window.elementSdk?.setConfig?.({ primary_accent: (config.primary_accent = v) }) },
-            { get: () => config.secondary_accent || defaultConfig.secondary_accent, set: (v) => window.elementSdk?.setConfig?.({ secondary_accent: (config.secondary_accent = v) }) },
+            {
+              get: () => config.primary_accent || defaultConfig.primary_accent,
+              set: (v) => window.elementSdk?.setConfig?.({ primary_accent: (config.primary_accent = v) }),
+            },
+            {
+              get: () => config.secondary_accent || defaultConfig.secondary_accent,
+              set: (v) => window.elementSdk?.setConfig?.({ secondary_accent: (config.secondary_accent = v) }),
+            },
           ],
           borderables: [],
           fontEditable: {
@@ -2160,6 +2490,79 @@
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
       }
 
+      /* Signup popup (Shop reached) */
+      const SIGNUP_SEEN_KEY = "faide_signup_seen_v1";
+      const SIGNUP_EMAIL_KEY = "faide_signup_email_v1";
+      const signupOverlay = document.getElementById("signup-overlay");
+      const signupClose = document.getElementById("signup-close");
+      const signupSkip = document.getElementById("signup-skip");
+      const signupForm = document.getElementById("signup-form");
+      const signupEmail = document.getElementById("signup-email");
+      const signupSubmit = document.getElementById("signup-submit");
+
+      function showSignup() {
+        if (!signupOverlay) return;
+        signupOverlay.classList.add("show");
+        signupOverlay.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lock-scroll");
+        setTimeout(() => signupEmail?.focus(), 60);
+      }
+      function hideSignup() {
+        if (!signupOverlay) return;
+        signupOverlay.classList.remove("show");
+        signupOverlay.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lock-scroll");
+      }
+
+      function markSignupSeen() {
+        try {
+          localStorage.setItem(SIGNUP_SEEN_KEY, "1");
+        } catch {}
+      }
+
+      function hasSeenSignup() {
+        try {
+          return localStorage.getItem(SIGNUP_SEEN_KEY) === "1";
+        } catch {
+          return false;
+        }
+      }
+
+      signupClose?.addEventListener("click", () => {
+        markSignupSeen();
+        hideSignup();
+      });
+      signupSkip?.addEventListener("click", () => {
+        markSignupSeen();
+        hideSignup();
+      });
+      signupOverlay?.addEventListener("click", (e) => {
+        if (e.target === signupOverlay) {
+          markSignupSeen();
+          hideSignup();
+        }
+      });
+
+      signupForm?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = (signupEmail?.value || "").trim();
+        if (!email) return;
+
+        try {
+          localStorage.setItem(SIGNUP_EMAIL_KEY, email);
+        } catch {}
+
+        // Opens a prefilled email to FAIDE (no backend needed)
+        const subject = encodeURIComponent("FAIDE Drop Alerts Signup");
+        const body = encodeURIComponent(`Hi FAIDE,\n\nPlease add me to drop alerts.\n\nEmail: ${email}\n\nThanks!`);
+        window.open(`mailto:faideclothingsa@gmail.com?subject=${subject}&body=${body}`, "_self");
+
+        showCartToast("Thanks! You're signed up.");
+        markSignupSeen();
+        hideSignup();
+      });
+
+      /* Policies */
       const policyModal = document.getElementById("policy-modal");
       const modalTitle = document.getElementById("modal-title");
       const modalContent = document.getElementById("modal-content");
@@ -2342,7 +2745,9 @@
 
           btn.addEventListener("mousedown", start);
           btn.addEventListener("touchstart", start, { passive: false });
-          ["mouseup", "mouseleave", "touchend", "touchcancel"].forEach((ev) => btn.addEventListener(ev, stopHold, { passive: true }));
+          ["mouseup", "mouseleave", "touchend", "touchcancel"].forEach((ev) =>
+            btn.addEventListener(ev, stopHold, { passive: true })
+          );
         };
 
         bindBtn(incBtn, +1);
@@ -2521,7 +2926,7 @@
             const li = document.createElement("li");
             li.className = "cart-item";
             li.innerHTML = `
-              <img class="cart-item-img" src="${item.image || ""}" alt="${item.name}" onerror="this.style.display='none';" />
+              <img class="cart-item-img" src="${item.image || ""}" alt="${item.name}" loading="lazy" decoding="async" onerror="this.style.display='none';" />
               <div class="cart-item-info">
                 <div class="cart-item-title">${item.name}</div>
                 <div class="cart-item-meta">Size: ${item.size} • Color: ${item.color}</div>
@@ -2777,7 +3182,7 @@
             btn.type = "button";
             btn.className = "thumb" + (i === rppIndex ? " active" : "");
             btn.setAttribute("aria-label", `View image ${i + 1}`);
-            btn.innerHTML = `<img src="${src}" alt="" loading="lazy" />`;
+            btn.innerHTML = `<img src="${src}" alt="" loading="lazy" decoding="async" />`;
             btn.addEventListener("click", (e) => {
               e.preventDefault();
               setRppImage(i);
@@ -2945,9 +3350,34 @@
           showCartToast(`Added ${quantity}x ${productName} (${size}) in ${colorName}`);
         });
 
+        /* Show signup popup when Shop section is reached (once) */
+        const shopSection = document.getElementById("shop");
+        if (shopSection && !hasSeenSignup()) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              const hit = entries.some((e) => e.isIntersecting);
+              if (!hit) return;
+              // Avoid showing on route pages where site is hidden
+              const params2 = new URLSearchParams(window.location.search);
+              const page2 = params2.get("page");
+              if (page2 === "lookbook" || page2 === "product") return;
+
+              markSignupSeen();
+              showSignup();
+              observer.disconnect();
+            },
+            { root: null, threshold: 0.35 }
+          );
+          observer.observe(shopSection);
+        }
+
         document.addEventListener("keydown", (e) => {
           if (e.key !== "Escape") return;
 
+          if (signupOverlay?.classList.contains("show")) {
+            hideSignup();
+            return;
+          }
           if (searchPanel?.classList.contains("open") || menuPanel?.classList.contains("open")) {
             closeMobilePanels();
             return;
