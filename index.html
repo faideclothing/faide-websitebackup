@@ -3,53 +3,177 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>FAIDE® | Luxury Streetwear</title>
   <meta name="description" content="FAIDE® luxury streetwear. Designed with intention. Worn with purpose." />
 
-  <!-- CSS -->
   <link rel="stylesheet" href="/assets/css/styles.css" />
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <header class="nav">
-    <div class="logo">FAIDE®</div>
-    <button class="menu-btn" id="menuBtn">☰</button>
-  </header>
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <img src="/images/faide-wordmark.png" class="logo" alt="FAIDE" />
+    <button class="icon-btn" id="menuBtn" aria-label="Open menu">
+      <span class="burger"></span>
+    </button>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
+<!-- MOBILE MENU -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="drawer-panel">
+    <div class="drawer-top">
+      <div class="drawer-title">FAIDE®</div>
+      <button class="icon-btn" id="closeDrawer" aria-label="Close menu">✕</button>
+    </div>
+
+    <nav class="drawer-links">
+      <a href="#shop" class="drawer-link">Shop</a>
+      <a href="#lookbook" class="drawer-link">Lookbook</a>
+      <a href="#about" class="drawer-link">About</a>
+      <a href="#contact" class="drawer-link">Contact</a>
+    </nav>
+
+    <button class="cart-btn" id="openCart">
+      Cart <span class="pill" id="cartCount">0</span>
+    </button>
+
+    <p class="drawer-note">Drops, curated essentials, and exclusives.</p>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="/images/hero.png" class="hero-img" alt="FAIDE hero" />
+  <div class="hero-overlay">
     <h1>Luxury Streetwear</h1>
     <p>Designed with intention. Worn with purpose.</p>
-    <button class="btn">Shop Now</button>
-  </section>
+    <button class="primary" id="shopNow">Shop Now</button>
+  </div>
+</section>
 
-  <!-- PRODUCTS -->
-  <section class="products">
-    <div class="product">
-      <img src="/images/tshirt.png" alt="T-Shirt">
-      <h3>FAIDE Tee</h3>
-      <p>R 799</p>
+<!-- SHOP -->
+<section class="section" id="shop">
+  <div class="section-head">
+    <h2>Shop</h2>
+    <p>Core pieces. Minimal. Heavyweight.</p>
+  </div>
+
+  <div class="products" id="productGrid">
+    <!-- JS fills this -->
+  </div>
+</section>
+
+<!-- LOOKBOOK -->
+<section class="section" id="lookbook">
+  <div class="section-head">
+    <h2>Lookbook</h2>
+    <p>Selected visuals from the latest drop.</p>
+  </div>
+
+  <div class="lookbook">
+    <img src="/images/lookbook1.png" alt="Lookbook 1" />
+    <img src="/images/lookbook2.png" alt="Lookbook 2" />
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-head">
+    <h2>About</h2>
+    <p>FAIDE® is built around intention and restraint—luxury streetwear without noise.</p>
+  </div>
+
+  <div class="about-card">
+    <div>
+      <h3>Designed with intention</h3>
+      <p>Clean silhouettes. Premium textures. Limited releases.</p>
+    </div>
+    <div>
+      <h3>Worn with purpose</h3>
+      <p>Made to last, styled to stand out quietly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-head">
+    <h2>Contact</h2>
+    <p>For orders, collabs, and stockists.</p>
+  </div>
+
+  <div class="contact">
+    <a class="contact-link" href="mailto:hello@faide.co">hello@faide.co</a>
+    <a class="contact-link" href="#" id="igLink">Instagram: @faideclothing</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <button class="cart-fab" id="cartFab" aria-label="Open cart">
+    🛒 <span class="pill" id="cartCount2">0</span>
+  </button>
+  <p>© 2026 FAIDE®. All rights reserved.</p>
+</footer>
+
+<!-- PRODUCT MODAL -->
+<div class="modal" id="productModal" aria-hidden="true">
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="modal-panel">
+    <div class="modal-top">
+      <div class="modal-title" id="modalTitle">Product</div>
+      <button class="icon-btn" id="closeModal" aria-label="Close">✕</button>
     </div>
 
-    <div class="product">
-      <img src="/images/hoodie.png" alt="Hoodie">
-      <h3>FAIDE Hoodie</h3>
-      <p>R 1499</p>
+    <div class="modal-body">
+      <div class="gallery">
+        <img id="modalImage" src="" alt="Product image" />
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+
+      <div class="info">
+        <div class="price" id="modalPrice">R 0</div>
+        <p class="muted" id="modalDesc"></p>
+
+        <div class="sizes">
+          <div class="label">Size</div>
+          <div class="size-row" id="sizeRow"></div>
+        </div>
+
+        <button class="primary full" id="addToCartBtn">Add to Cart</button>
+      </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>© 2026 FAIDE®. All rights reserved.</p>
-  </footer>
+<!-- CART MODAL -->
+<div class="modal" id="cartModal" aria-hidden="true">
+  <div class="modal-backdrop" id="cartBackdrop"></div>
+  <div class="modal-panel">
+    <div class="modal-top">
+      <div class="modal-title">Your Cart</div>
+      <button class="icon-btn" id="closeCart" aria-label="Close">✕</button>
+    </div>
 
-  <!-- JS -->
-  <script src="/assets/js/app.js" defer></script>
+    <div class="cart-body">
+      <div id="cartItems"></div>
+
+      <div class="cart-summary">
+        <div class="row">
+          <span class="muted">Subtotal</span>
+          <strong id="cartTotal">R 0</strong>
+        </div>
+        <button class="primary full" id="checkoutBtn">Checkout (Coming Soon)</button>
+        <button class="ghost full" id="clearCartBtn">Clear cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/app.js" defer></script>
 </body>
 </html>
