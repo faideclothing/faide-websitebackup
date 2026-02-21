@@ -126,6 +126,7 @@
         }
       }
 
+      /* Focus styling (so we don't get ugly default outlines) */
       :focus {
         outline: none;
       }
@@ -228,12 +229,14 @@
         scroll-margin-top: calc(var(--nav-h) + 18px);
       }
 
+      /* Mobile actions */
       .nav-mobile-actions {
         display: none;
         align-items: center;
         gap: 12px;
       }
 
+      /* Removed circular outline / ring look */
       .nav-icon-btn {
         width: 42px;
         height: 42px;
@@ -283,7 +286,7 @@
         }
       }
 
-      /* Off-canvas Mobile Menu */
+      /* Off-canvas Mobile Menu (Hamburger Slide Bar) */
       .offcanvas-overlay {
         position: fixed;
         inset: 0;
@@ -392,7 +395,7 @@
         margin: 8px 0;
       }
 
-      /* Search Overlay */
+      /* Search Overlay (Upgraded UI) */
       .search-overlay {
         position: fixed;
         inset: 0;
@@ -673,6 +676,7 @@
         transform: translateY(-2px);
       }
 
+      /* Titles */
       .section-title {
         font-size: var(--h2);
         margin-bottom: 22px;
@@ -696,6 +700,7 @@
         }
       }
 
+      /* Lookbook */
       .lookbook {
         padding-left: 0;
         padding-right: 0;
@@ -738,7 +743,7 @@
         }
       }
 
-      /* Modal Routes */
+      /* Modal Routes (Upgraded) */
       .route-page {
         display: none;
         position: fixed;
@@ -827,6 +832,7 @@
         width: 100px;
       }
 
+      /* Hide the "close/back" button on mobile (use back gesture / browser back) */
       @media (max-width: 768px) {
         .route-back {
           display: none !important;
@@ -860,6 +866,7 @@
         -webkit-user-drag: none;
       }
 
+      /* Product route */
       .product-page-grid {
         margin-top: 14px;
         display: grid;
@@ -1095,7 +1102,8 @@
         color: #b5b5b5;
         border: 1px solid rgba(255, 255, 255, 0.14);
         cursor: pointer;
-        transition: transform 0.16s ease, border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+        transition: transform 0.16s ease, border-color 0.18s ease, color 0.18s ease,
+          background 0.18s ease;
         font-weight: 800;
         font-size: 0.95rem;
       }
@@ -1167,6 +1175,7 @@
         background: #666;
       }
 
+      /* Qty stepper (shared) */
       .quantity-wrapper {
         display: flex;
         align-items: center;
@@ -1261,6 +1270,7 @@
         }
       }
 
+      /* About */
       .about {
         max-width: 900px;
         margin: 0 auto;
@@ -1307,6 +1317,7 @@
         }
       }
 
+      /* Signup */
       .signup {
         max-width: var(--container);
         margin: 0 auto;
@@ -1405,6 +1416,7 @@
         line-height: 1.5;
       }
 
+      /* Footer */
       footer a {
         transition: color 0.25s ease, transform 0.16s ease;
       }
@@ -1455,6 +1467,7 @@
         }
       }
 
+      /* Cart */
       .floating-cart {
         position: fixed;
         bottom: 32px;
@@ -1562,6 +1575,7 @@
         transform: translateY(-2px);
       }
 
+      /* Hide cart close button on mobile (use back gesture / overlay tap) */
       @media (max-width: 768px) {
         .close-cart {
           display: none !important;
@@ -1706,6 +1720,7 @@
         font-size: 1.35rem;
       }
 
+      /* Payment UI (Upgraded) */
       .pay-card {
         margin-top: 14px;
         background: rgba(0, 0, 0, 0.45);
@@ -1869,6 +1884,7 @@
         color: #ccc;
         line-height: 1.85;
       }
+      /* Hide policy close button on mobile */
       @media (max-width: 768px) {
         #close-modal {
           display: none !important;
@@ -1934,7 +1950,7 @@
       </div>
     </nav>
 
-    <!-- Search Overlay -->
+    <!-- Search Overlay (Upgraded) -->
     <div id="search-overlay" class="search-overlay" aria-hidden="true">
       <div class="search-card" role="dialog" aria-modal="true" aria-label="Search FAIDE">
         <div class="search-head">
@@ -1954,13 +1970,7 @@
                 d="M10 2a8 8 0 105.293 14.293l4.707 4.707a1 1 0 001.414-1.414l-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"
               />
             </svg>
-            <input
-              id="search-input"
-              class="search-input"
-              type="text"
-              placeholder="Search products, categories..."
-              autocomplete="off"
-            />
+            <input id="search-input" class="search-input" type="text" placeholder="Search products, categories..." autocomplete="off" />
           </div>
 
           <div id="search-results" class="search-results" aria-label="Search results"></div>
@@ -2057,10 +2067,7 @@
             <div class="thumb-row" id="rpp-thumbs"></div>
           </div>
 
-          <div
-            id="rpp-details"
-            style="width:100%; background: rgba(10,10,10,0.78); border:1px solid rgba(255,255,255,0.1); border-radius:18px; padding:16px; box-shadow: 0 18px 70px rgba(0,0,0,0.5);"
-          >
+          <div id="rpp-details" style="width:100%; background: rgba(10,10,10,0.78); border:1px solid rgba(255,255,255,0.1); border-radius:18px; padding:16px; box-shadow: 0 18px 70px rgba(0,0,0,0.5);">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:10px;">
               <div style="min-width:0;">
                 <div id="rpp-label" class="product-label" style="margin-bottom:8px;"></div>
@@ -2489,20 +2496,23 @@
           <span class="cart-total-value">R<span id="cart-total">0.00</span></span>
         </div>
 
+        <!-- Upgraded payment UI (WhatsApp removed) -->
         <div class="pay-card" aria-label="Payment options">
           <div class="pay-title">Payment</div>
           <div class="pay-sub">Choose a secure checkout option. Your total will be included automatically where possible.</div>
 
           <div class="pay-methods">
-            <button class="pay-btn primary" id="pay-paypal" type="button" disabled>Pay with PayPal</button>
-            <button class="pay-btn" id="pay-payfast" type="button" disabled>Pay with PayFast</button>
+            <button class="pay-btn primary" id="pay-paypal" type="button" disabled>
+              Pay with PayPal
+            </button>
+            <button class="pay-btn" id="pay-payfast" type="button" disabled>
+              Pay with PayFast
+            </button>
           </div>
 
           <div class="pay-sub" style="margin-top:10px; font-size:0.88rem;">
             Need help? Email
-            <a style="color:var(--primary); text-decoration:none; font-weight:900;" href="mailto:faideclothingsa@gmail.com"
-              >faideclothingsa@gmail.com</a
-            >
+            <a style="color:var(--primary); text-decoration:none; font-weight:900;" href="mailto:faideclothingsa@gmail.com">faideclothingsa@gmail.com</a>
           </div>
         </div>
       </div>
@@ -2580,26 +2590,11 @@
       function mapToCapabilities(config) {
         return {
           recolorables: [
-            {
-              get: () => config.background_color || defaultConfig.background_color,
-              set: (v) => window.elementSdk?.setConfig?.({ background_color: (config.background_color = v) }),
-            },
-            {
-              get: () => config.surface_color || defaultConfig.surface_color,
-              set: (v) => window.elementSdk?.setConfig?.({ surface_color: (config.surface_color = v) }),
-            },
-            {
-              get: () => config.text_color || defaultConfig.text_color,
-              set: (v) => window.elementSdk?.setConfig?.({ text_color: (config.text_color = v) }),
-            },
-            {
-              get: () => config.primary_accent || defaultConfig.primary_accent,
-              set: (v) => window.elementSdk?.setConfig?.({ primary_accent: (config.primary_accent = v) }),
-            },
-            {
-              get: () => config.secondary_accent || defaultConfig.secondary_accent,
-              set: (v) => window.elementSdk?.setConfig?.({ secondary_accent: (config.secondary_accent = v) }),
-            },
+            { get: () => config.background_color || defaultConfig.background_color, set: (v) => window.elementSdk?.setConfig?.({ background_color: (config.background_color = v) }) },
+            { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => window.elementSdk?.setConfig?.({ surface_color: (config.surface_color = v) }) },
+            { get: () => config.text_color || defaultConfig.text_color, set: (v) => window.elementSdk?.setConfig?.({ text_color: (config.text_color = v) }) },
+            { get: () => config.primary_accent || defaultConfig.primary_accent, set: (v) => window.elementSdk?.setConfig?.({ primary_accent: (config.primary_accent = v) }) },
+            { get: () => config.secondary_accent || defaultConfig.secondary_accent, set: (v) => window.elementSdk?.setConfig?.({ secondary_accent: (config.secondary_accent = v) }) },
           ],
           borderables: [],
           fontEditable: {
@@ -2685,7 +2680,10 @@
         } catch {}
       }
 
+      // PayPal link you provided
       const PAYPAL_ME = "https://www.paypal.me/faideClothing";
+
+      // PayFast needs merchant details to fully integrate; this button will currently open an email to request a PayFast link/invoice.
       const PAYFAST_SUPPORT_EMAIL = "faideclothingsa@gmail.com";
 
       let cart = [];
@@ -2700,6 +2698,7 @@
         window.__toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
       }
 
+      /* History helpers (for back gesture / browser back) */
       function getIsMobile() {
         return window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
       }
@@ -2776,9 +2775,7 @@
 
           btn.addEventListener("mousedown", start);
           btn.addEventListener("touchstart", start, { passive: false });
-          ["mouseup", "mouseleave", "touchend", "touchcancel"].forEach((ev) =>
-            btn.addEventListener(ev, stopHold, { passive: true })
-          );
+          ["mouseup", "mouseleave", "touchend", "touchcancel"].forEach((ev) => btn.addEventListener(ev, stopHold, { passive: true }));
         };
 
         bindBtn(incBtn, +1);
@@ -2799,9 +2796,14 @@
       }
 
       function pushUiState(stateObj, url) {
+        // Avoid duplicating identical state on stack
         const current = history.state || {};
         const same = JSON.stringify(current) === JSON.stringify(stateObj);
         if (!same) history.pushState(stateObj, "", url || window.location.href);
+      }
+
+      function replaceUiState(stateObj, url) {
+        history.replaceState(stateObj, "", url || window.location.href);
       }
 
       function showRoute(page) {
@@ -2831,6 +2833,7 @@
         }
       }
 
+      /* Cart open/close with back gesture support */
       function setCartOpen(open) {
         const cartSidebar = document.getElementById("cart-sidebar");
         const cartOverlay = document.getElementById("cart-overlay");
@@ -2840,6 +2843,8 @@
           cartSidebar.classList.add("active");
           cartOverlay.classList.add("active");
           document.body.classList.add("lock-scroll");
+
+          // push state so Android back closes it
           pushUiState({ ...(history.state || {}), modal: "cart" }, window.location.href);
         } else {
           cartSidebar.classList.remove("active");
@@ -2848,6 +2853,7 @@
         }
       }
 
+      /* Policy open/close with back gesture support */
       function setPolicyOpen(open, policyType) {
         const policyModal = document.getElementById("policy-modal");
         if (!policyModal) return;
@@ -2862,6 +2868,7 @@
         }
       }
 
+      /* Mobile offcanvas menu with back gesture support */
       function setMenuOpen(open) {
         const overlay = document.getElementById("offcanvas-overlay");
         const panel = document.getElementById("offcanvas");
@@ -2886,6 +2893,7 @@
         }
       }
 
+      /* Search overlay with back gesture support */
       function setSearchOpen(open) {
         const overlay = document.getElementById("search-overlay");
         const btn = document.getElementById("mobile-search-btn");
@@ -2907,6 +2915,7 @@
         }
       }
 
+      /* Router (SPA) for lookbook/product modals using query params */
       async function renderFromUrl(productsNodeList) {
         const params = new URLSearchParams(window.location.search);
         const page = params.get("page");
@@ -2956,4 +2965,463 @@
             btn.type = "button";
             btn.className = "size-btn";
             btn.textContent = s;
-            btn.add
+            btn.addEventListener("click", () => {
+              Array.from(rpp.sizes.querySelectorAll(".size-btn")).forEach((x) => x.classList.remove("selected"));
+              btn.classList.add("selected");
+              updateRppAddState();
+            });
+            rpp.sizes.appendChild(btn);
+          });
+        }
+
+        function renderColorsFromProduct(productEl) {
+          const original = Array.from(productEl.querySelectorAll(".color")).map((c) => ({
+            className: c.className,
+            colorName: c.getAttribute("data-color") || "Color",
+          }));
+
+          const colors = original.length
+            ? original
+            : [
+                { className: "color black", colorName: "Black" },
+                { className: "color white", colorName: "White" },
+              ];
+
+          rpp.colorsRow.innerHTML = "";
+          colors.forEach((c) => {
+            const div = document.createElement("div");
+            div.className = c.className;
+            div.setAttribute("role", "button");
+            div.setAttribute("tabindex", "0");
+            div.setAttribute("aria-label", c.colorName);
+            div.setAttribute("data-color", c.colorName);
+
+            const select = () => {
+              Array.from(rpp.colorsRow.querySelectorAll(".color")).forEach((x) => x.classList.remove("selected"));
+              div.classList.add("selected");
+              updateRppAddState();
+            };
+
+            div.addEventListener("click", (e) => {
+              e?.stopPropagation?.();
+              select();
+            });
+            clickOnEnterSpace(div, select);
+
+            rpp.colorsRow.appendChild(div);
+          });
+        }
+
+        function fillMeta(productEl) {
+          rpp.label.textContent = productEl.querySelector(".product-label")?.textContent?.trim() || "";
+          rpp.name.textContent = productEl.getAttribute("data-name") || "Item";
+          rpp.category.textContent = productEl.querySelector(".product-category")?.textContent?.trim() || "";
+          rpp.colorsCount.textContent = productEl.querySelector(".product-colors-count")?.textContent?.trim() || "";
+          rpp.price.textContent = productEl.querySelector(".price")?.textContent?.trim() || "";
+          rppStepper?.setQty?.(1);
+          rpp.add.disabled = true;
+        }
+
+        function updateRppAddState() {
+          const selectedSize = rpp.sizes.querySelector(".size-btn.selected");
+          const selectedColor = rpp.colorsRow.querySelector(".color.selected");
+          rpp.add.disabled = !(selectedSize && selectedColor);
+        }
+
+        let rppSources = [];
+        let rppIndex = 0;
+        let rppActiveProductEl = null;
+
+        function renderRppThumbs() {
+          if (!rpp.thumbs) return;
+          rpp.thumbs.innerHTML = "";
+          rppSources.slice(0, 4).forEach((src, i) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "thumb" + (i === rppIndex ? " active" : "");
+            btn.setAttribute("aria-label", `View image ${i + 1}`);
+            btn.innerHTML = `<img src="${src}" alt="" loading="lazy" />`;
+            btn.addEventListener("click", (e) => {
+              e.preventDefault();
+              setRppImage(i);
+            });
+            rpp.thumbs.appendChild(btn);
+          });
+        }
+
+        let __rppSwapToken = 0;
+        function setRppImage(i) {
+          if (!rppSources.length || !rpp.img) return;
+          const token = ++__rppSwapToken;
+
+          rppIndex = (i + rppSources.length) % rppSources.length;
+          const nextSrc = rppSources[rppIndex];
+
+          if (rpp.img.getAttribute("src") === nextSrc) {
+            rpp.subtitle.textContent = `${rppIndex + 1} / ${rppSources.length}`;
+            renderRppThumbs();
+            return;
+          }
+
+          rpp.img.style.opacity = "0.25";
+          requestAnimationFrame(() => {
+            if (token !== __rppSwapToken) return;
+            rpp.img.src = nextSrc;
+            rpp.subtitle.textContent = `${rppIndex + 1} / ${rppSources.length}`;
+            renderRppThumbs();
+            setTimeout(() => {
+              if (token !== __rppSwapToken) return;
+              rpp.img.style.opacity = "1";
+            }, 60);
+          });
+        }
+
+        async function renderProductRoute(id) {
+          const productEl = getProductElById(id);
+          if (!productEl) return;
+
+          rppActiveProductEl = productEl;
+          fillMeta(productEl);
+          renderSizesFromProduct(productEl);
+          renderColorsFromProduct(productEl);
+
+          rppSources = await buildImagesFromProduct(productEl);
+          setRppImage(0);
+
+          // Bind add button once (safe: remove old handler by replacing)
+          const newBtn = rpp.add.cloneNode(true);
+          rpp.add.parentNode.replaceChild(newBtn, rpp.add);
+          rpp.add = newBtn;
+
+          rpp.add.addEventListener("click", () => {
+            if (!rppActiveProductEl) return;
+
+            const productName = rppActiveProductEl.getAttribute("data-name") || "Item";
+            const price = parseFloat(rppActiveProductEl.getAttribute("data-price") || "0");
+
+            const selectedSize = rpp.sizes.querySelector(".size-btn.selected");
+            const selectedColor = rpp.colorsRow.querySelector(".color.selected");
+            if (!selectedSize) return showCartToast("Select a size first.");
+            if (!selectedColor) return showCartToast("Select a color first.");
+
+            let quantity = rppStepper?.getQty?.() ?? 1;
+            quantity = Math.max(1, Number.isFinite(quantity) ? quantity : 1);
+
+            const size = selectedSize.textContent.trim();
+            const colorName = selectedColor.getAttribute("data-color") || "Color";
+            const image =
+              rppSources[rppIndex] || (rppActiveProductEl.querySelector(".product-img")?.getAttribute("src") || "");
+
+            const itemKey = `${productName}-${size}-${colorName}`;
+            const existing = cart.find((item) => item.key === itemKey);
+
+            if (existing) existing.quantity += quantity;
+            else cart.push({ key: itemKey, name: productName, price, size, color: colorName, quantity, image });
+
+            updateCartUI();
+            showCartToast(`Added ${quantity}x ${productName} (${size}) in ${colorName}`);
+          });
+        }
+
+        function renderLookbookRoute(i) {
+          const idx = Math.max(1, parseInt(i || "1", 10));
+          const cards = Array.from(document.querySelectorAll(".lookbook-card"));
+          const total = cards.length || 1;
+          const safeIdx = Math.min(idx, total);
+
+          const card = cards[safeIdx - 1] || cards[0];
+          const src = card?.querySelector("img")?.getAttribute("src") || "";
+
+          if (rlbImg) rlbImg.src = src;
+          if (rlbCounter) rlbCounter.textContent = `${safeIdx} / ${total}`;
+        }
+
+        if (page === "lookbook") {
+          showRoute("lookbook");
+          renderLookbookRoute(params.get("i"));
+        } else if (page === "product") {
+          showRoute("product");
+          await renderProductRoute(params.get("id"));
+        } else {
+          showRoute(null);
+        }
+      }
+
+      function gotoLookbook(i) {
+        const url = toQueryUrl({ page: "lookbook", i });
+        pushUiState({ page: "lookbook", i: String(i || "1") }, url);
+        renderFromUrl(document.querySelectorAll(".product"));
+      }
+      function gotoProduct(id) {
+        const url = toQueryUrl({ page: "product", id });
+        pushUiState({ page: "product", id: String(id || "1") }, url);
+        renderFromUrl(document.querySelectorAll(".product"));
+      }
+      function closeRoute() {
+        const url = toQueryUrl({ page: null, i: null, id: null });
+        pushUiState({ page: null }, url);
+        renderFromUrl(document.querySelectorAll(".product"));
+      }
+
+      /* Search index */
+      function buildSearchIndex() {
+        const products = Array.from(document.querySelectorAll(".product")).map((p) => {
+          const name = p.getAttribute("data-name") || "";
+          const price = (p.querySelector(".price")?.textContent || "").trim();
+          const category = (p.querySelector(".product-category")?.textContent || "").trim();
+          const img = p.querySelector(".product-img")?.getAttribute("src") || "";
+          const id = p.getAttribute("data-product-id") || "1";
+          return { id, name, category, price, img };
+        });
+        return products;
+      }
+
+      function sanitizeText(t) {
+        return String(t || "").replace(/[<>&"]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;" }[c]));
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        document.getElementById("shop-now-btn")?.addEventListener("click", () => scrollToSectionId("shop"));
+
+        const navbar = document.querySelector(".navbar");
+        const navLinks = document.querySelectorAll('[data-nav-link="main"]');
+
+        function handleShrink() {
+          if (!navbar) return;
+          navbar.classList.toggle("shrink", window.scrollY > 20);
+        }
+        handleShrink();
+        window.addEventListener("scroll", handleShrink, { passive: true });
+
+        const products = document.querySelectorAll(".product");
+        products.forEach((p, i) => p.setAttribute("data-product-id", String(i + 1)));
+
+        /* Offcanvas menu */
+        const menuBtn = document.getElementById("mobile-menu-btn");
+        const offcanvasOverlay = document.getElementById("offcanvas-overlay");
+        const offcanvasClose = document.getElementById("offcanvas-close");
+        menuBtn?.addEventListener("click", () => setMenuOpen(true));
+        offcanvasClose?.addEventListener("click", () => setMenuOpen(false));
+        offcanvasOverlay?.addEventListener("click", () => setMenuOpen(false));
+
+        /* Search */
+        const searchBtn = document.getElementById("mobile-search-btn");
+        const searchOverlay = document.getElementById("search-overlay");
+        const searchClose = document.getElementById("search-close");
+        const searchInput = document.getElementById("search-input");
+        const searchResults = document.getElementById("search-results");
+        const searchEmpty = document.getElementById("search-empty");
+
+        const searchIndex = buildSearchIndex();
+
+        function renderSearchResults(q) {
+          const query = (q || "").trim().toLowerCase();
+          if (!searchResults || !searchEmpty) return;
+
+          searchResults.innerHTML = "";
+          if (!query) {
+            searchEmpty.style.display = "none";
+            const top = searchIndex.slice(0, 4);
+            top.forEach((p) => {
+              const item = document.createElement("div");
+              item.className = "search-item";
+              item.setAttribute("role", "button");
+              item.setAttribute("tabindex", "0");
+              item.innerHTML = `
+                <img class="search-thumb" src="${sanitizeText(p.img)}" alt="" onerror="this.style.display='none';" />
+                <div style="min-width:0;">
+                  <div class="search-item-title">${sanitizeText(p.name)}</div>
+                  <div class="search-item-sub">${sanitizeText(p.category)}</div>
+                </div>
+                <div class="search-item-price">${sanitizeText(p.price)}</div>
+              `;
+              const go = () => {
+                setSearchOpen(false);
+                gotoProduct(p.id);
+              };
+              item.addEventListener("click", go);
+              clickOnEnterSpace(item, go);
+              searchResults.appendChild(item);
+            });
+            return;
+          }
+
+          const matches = searchIndex.filter((p) => {
+            const hay = (p.name + " " + p.category).toLowerCase();
+            return hay.includes(query);
+          });
+
+          if (!matches.length) {
+            searchEmpty.style.display = "block";
+            return;
+          }
+          searchEmpty.style.display = "none";
+
+          matches.slice(0, 10).forEach((p) => {
+            const item = document.createElement("div");
+            item.className = "search-item";
+            item.setAttribute("role", "button");
+            item.setAttribute("tabindex", "0");
+            item.innerHTML = `
+              <img class="search-thumb" src="${sanitizeText(p.img)}" alt="" onerror="this.style.display='none';" />
+              <div style="min-width:0;">
+                <div class="search-item-title">${sanitizeText(p.name)}</div>
+                <div class="search-item-sub">${sanitizeText(p.category)}</div>
+              </div>
+              <div class="search-item-price">${sanitizeText(p.price)}</div>
+            `;
+            const go = () => {
+              setSearchOpen(false);
+              gotoProduct(p.id);
+            };
+            item.addEventListener("click", go);
+            clickOnEnterSpace(item, go);
+            searchResults.appendChild(item);
+          });
+        }
+
+        searchBtn?.addEventListener("click", () => {
+          setSearchOpen(true);
+          renderSearchResults("");
+        });
+        searchClose?.addEventListener("click", () => setSearchOpen(false));
+        searchOverlay?.addEventListener("click", (e) => {
+          if (e.target === searchOverlay) setSearchOpen(false);
+        });
+        searchInput?.addEventListener("input", (e) => renderSearchResults(e.target.value));
+
+        /* Cart + Payment */
+        const floatingCart = document.getElementById("floating-cart");
+        const cartOverlay = document.getElementById("cart-overlay");
+        const closeCart = document.getElementById("close-cart");
+        const cartItemsEl = document.getElementById("cart-items");
+        const cartTotalEl = document.getElementById("cart-total");
+        const cartCountEl = document.getElementById("cart-count");
+        const payPaypalBtn = document.getElementById("pay-paypal");
+        const payPayfastBtn = document.getElementById("pay-payfast");
+
+        cart = loadCartFromStorage();
+
+        floatingCart?.addEventListener("click", () => setCartOpen(true));
+        closeCart?.addEventListener("click", () => setCartOpen(false));
+        cartOverlay?.addEventListener("click", () => setCartOpen(false));
+
+        function setPaymentState() {
+          const empty = cart.length === 0;
+          if (payPaypalBtn) payPaypalBtn.disabled = empty;
+          if (payPayfastBtn) payPayfastBtn.disabled = empty;
+        }
+
+        function calcTotal() {
+          return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        }
+
+        function openPayPal() {
+          if (!cart.length) return showCartToast("Your cart is empty.");
+          const total = calcTotal();
+          const rounded = Math.max(0, total).toFixed(2);
+
+          // PayPal.me supports amount as /{amount}. Currency is typically based on PayPal account settings.
+          const url = `${PAYPAL_ME}/${encodeURIComponent(rounded)}`;
+          window.open(url, "_blank", "noopener,noreferrer");
+        }
+
+        function openPayFast() {
+          if (!cart.length) return showCartToast("Your cart is empty.");
+          const total = calcTotal();
+          const rounded = Math.max(0, total).toFixed(2);
+
+          const subject = encodeURIComponent("PayFast payment request - FAIDE");
+          const body = encodeURIComponent(
+            [
+              "Hi FAIDE,",
+              "",
+              "I want to pay via PayFast. Please send me a PayFast payment link / invoice.",
+              "",
+              `Total: R${rounded}`,
+              "",
+              "Order items:",
+              ...cart.map((it, i) => `${i + 1}) ${it.name} | Size: ${it.size} | Color: ${it.color} | Qty: ${it.quantity}`),
+              "",
+              "My name:",
+              "(Type here)",
+              "",
+              "My email:",
+              "(Type here)",
+            ].join("\n")
+          );
+
+          window.location.href = `mailto:${PAYFAST_SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
+        }
+
+        payPaypalBtn?.addEventListener("click", openPayPal);
+        payPayfastBtn?.addEventListener("click", openPayFast);
+
+        function updateCartUI() {
+          if (!cartItemsEl || !cartTotalEl || !cartCountEl) return;
+          saveCartToStorage(cart);
+
+          cartItemsEl.innerHTML = "";
+          let total = 0;
+          let itemCount = 0;
+
+          if (cart.length === 0) {
+            cartItemsEl.innerHTML =
+              '<li style="text-align:center;color:#666;border:none;background:transparent;padding:14px 0;font-weight:800;">Your cart is empty</li>';
+            cartTotalEl.textContent = "0.00";
+            cartCountEl.textContent = "0";
+            setPaymentState();
+            return;
+          }
+
+          cart.forEach((item, idx) => {
+            const lineTotal = item.price * item.quantity;
+            total += lineTotal;
+            itemCount += item.quantity;
+
+            const li = document.createElement("li");
+            li.className = "cart-item";
+            li.innerHTML = `
+              <img class="cart-item-img" src="${sanitizeText(item.image || "")}" alt="${sanitizeText(item.name)}" onerror="this.style.display='none';" />
+              <div class="cart-item-info">
+                <div class="cart-item-title">${sanitizeText(item.name)}</div>
+                <div class="cart-item-meta">Size: ${sanitizeText(item.size)} • Color: ${sanitizeText(item.color)}</div>
+                <div class="cart-item-price">R${lineTotal.toFixed(2)}</div>
+              </div>
+              <div class="cart-item-actions">
+                <div class="qty-stepper" aria-label="Quantity controls">
+                  <div class="qty-stepper-inner">
+                    <button type="button" class="qty-btn" data-action="dec" aria-label="Decrease quantity">−</button>
+                    <div class="qty-value" aria-label="Quantity">${item.quantity}</div>
+                    <button type="button" class="qty-btn" data-action="inc" aria-label="Increase quantity">+</button>
+                  </div>
+                </div>
+                <button type="button" class="remove-btn" data-action="remove" aria-label="Remove item">Remove</button>
+              </div>
+            `;
+
+            li.querySelector('[data-action="dec"]').addEventListener("click", () => {
+              item.quantity = Math.max(1, item.quantity - 1);
+              updateCartUI();
+            });
+            li.querySelector('[data-action="inc"]').addEventListener("click", () => {
+              item.quantity += 1;
+              updateCartUI();
+            });
+            li.querySelector('[data-action="remove"]').addEventListener("click", () => {
+              cart.splice(idx, 1);
+              updateCartUI();
+            });
+
+            cartItemsEl.appendChild(li);
+          });
+
+          cartTotalEl.textContent = total.toFixed(2);
+          cartCountEl.textContent = String(itemCount);
+          setPaymentState();
+        }
+
+        /* Product cards -> add to cart logic */
+        products.forEach((product) => {
+          const stepperRoot = product.querySelector('.qty-stepper-ui[data-qty-root="card"]');
+          const stepper = stepperRoot ? setupQtyStepper(stepperRoot) : null;
