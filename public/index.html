@@ -11,22 +11,14 @@
       content="FAIDE® luxury streetwear. New drops, exclusive releases, and curated essentials. Designed with intention. Worn with purpose."
     />
     <meta name="robots" content="index,follow" />
-
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://faide-website.vercel.app/" />
-
-    <!-- Mobile browser color -->
     <meta name="theme-color" content="#000000" />
 
-    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-    <!-- Preload key images (improves first paint) -->
     <link rel="preload" as="image" href="/images/hero.png" />
     <link rel="preload" as="image" href="/images/faide-wordmark.png" />
 
-    <!-- Open Graph / Social Preview -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="FAIDE® | Luxury Streetwear Brand" />
     <meta property="og:site_name" content="FAIDE®" />
@@ -43,7 +35,6 @@
     <meta property="og:image:type" content="image/png" />
     <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter / X Preview -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@faideclothing" />
     <meta name="twitter:title" content="FAIDE® | Luxury Streetwear Brand" />
@@ -54,7 +45,6 @@
     <meta name="twitter:image" content="https://faide-website.vercel.app/images/hero.png" />
     <meta name="twitter:image:alt" content="FAIDE luxury streetwear hero image" />
 
-    <!-- Brand Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -73,14 +63,12 @@
       }
     </script>
 
-    <!-- Element SDK -->
     <script src="/_sdk/element_sdk.js" defer></script>
-    <script src="/_sdk/data_sdk.js" type="text/javascript" defer></script>
+    <script src="/_sdk/data_sdk.js" defer></script>
 
-    <!-- Tailwind -->
+    <!-- Tailwind kept (you still have a few utility classes); remove if you want to fully CSS-only -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -90,13 +78,13 @@
 
     <style>
       :root {
-        --bg: #000000;
-        --surface: #111111;
-        --text: #ffffff;
+        --bg: #000;
+        --surface: #111;
+        --text: #fff;
         --primary: #a855f7;
         --secondary: #9333ea;
-        --muted: #888888;
-        --muted2: #777777;
+        --muted: #888;
+        --muted2: #777;
         --border: #1f1f1f;
 
         --nav-h: 86px;
@@ -109,9 +97,6 @@
 
         --h1: clamp(2.2rem, 6vw, 3.8rem);
         --h2: clamp(1.7rem, 4.4vw, 2.5rem);
-
-        --card-radius: 18px;
-        --img-radius: 14px;
       }
 
       * {
@@ -135,7 +120,6 @@
       body.lock-scroll {
         overflow: hidden;
       }
-
       @media (max-width: 768px) {
         html {
           font-size: 15px;
@@ -168,45 +152,35 @@
         opacity: 0;
       }
 
-      /* ✅ Click lift (no glow) */
-      .press-lift {
-        transition: transform 0.16s ease;
-      }
-      .press-lift:active {
-        transform: translateY(-2px);
-      }
-      @media (hover: hover) and (pointer: fine) {
-        .press-lift:hover {
-          transform: translateY(-1px);
-        }
-      }
-
-      /* =========================================================
-         NAVBAR
-      ========================================================= */
+      /* NAV */
       .navbar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
+        inset: 0 0 auto 0;
         height: var(--nav-h);
         background: rgba(0, 0, 0, 0.95);
         backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--border);
         z-index: 1000;
-        transition: all 0.25s ease;
+        transition: height 0.25s ease, background 0.25s ease, border-color 0.25s ease;
         padding: 0 var(--px);
         display: flex;
         align-items: center;
       }
-
+      .navbar.shrink {
+        height: 72px;
+        background: rgba(0, 0, 0, 0.98);
+        border-bottom-color: #2a2a2a;
+      }
       .faide-wordmark-img {
-        height: 65px;
+        height: 32px;
         width: auto;
         display: block;
         user-select: none;
         transition: transform 0.25s ease;
+      }
+      .navbar.shrink .faide-wordmark-img {
+        transform: scale(0.93);
+        transform-origin: left center;
       }
 
       .nav-links {
@@ -214,8 +188,6 @@
         align-items: center;
         gap: 18px;
       }
-
-      /* ✅ Navbar links (desktop) — now BOLDER */
       .nav-links a {
         font-size: 0.7rem;
         letter-spacing: 1px;
@@ -223,45 +195,19 @@
         color: var(--muted);
         text-decoration: none;
         transition: color 0.25s ease, transform 0.16s ease;
-        position: relative;
         white-space: nowrap;
         padding: 12px 0;
         line-height: 1;
-        font-weight: 800; /* ✅ bolder on desktop */
+        font-weight: 800;
       }
-
-      /* ✅ REMOVE purple stripe/underline completely */
-      .nav-links a::after {
-        content: none !important;
-      }
-      .nav-links a:hover::after {
-        content: none !important;
-      }
-      .nav-links a.active::after {
-        content: none !important;
-      }
-
-      /* ✅ Keep purple active state on click (no stripe) */
       .nav-links a:hover {
         color: var(--secondary);
       }
       .nav-links a.active {
         color: var(--primary);
       }
-
-      /* ✅ click lift */
       .nav-links a:active {
         transform: translateY(-2px);
-      }
-
-      .navbar.shrink {
-        height: 72px;
-        background: rgba(0, 0, 0, 0.98);
-        border-bottom-color: #2a2a2a;
-      }
-      .navbar.shrink .faide-wordmark-img {
-        transform: scale(0.93);
-        transform-origin: left center;
       }
 
       #drop,
@@ -272,16 +218,19 @@
         scroll-margin-top: calc(var(--nav-h) + 18px);
       }
 
-      /* ✅ Mobile: search icon + hamburger, desktop links hidden */
+      /* Mobile actions */
       .nav-mobile-actions {
         display: none;
         align-items: center;
         gap: 14px;
       }
-
       .nav-icon-btn {
         width: 42px;
         height: 42px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.03);
+        color: #fff;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
@@ -297,7 +246,6 @@
       .nav-icon-btn:active {
         transform: translateY(-2px);
       }
-
       .hamburger {
         display: inline-flex;
         flex-direction: column;
@@ -320,7 +268,6 @@
       .nav-mobile-panel.open {
         display: block;
       }
-
       .nav-mobile-menu {
         display: flex;
         flex-direction: column;
@@ -374,21 +321,15 @@
         .faide-wordmark-img {
           height: 22px;
         }
-
-        /* ✅ Hide desktop links on mobile */
         .nav-links {
           display: none;
         }
-
-        /* ✅ Show mobile icons on mobile */
         .nav-mobile-actions {
           display: inline-flex;
         }
       }
 
-      /* =========================================================
-         SECTION SPACING
-      ========================================================= */
+      /* Sections */
       .hero,
       .lookbook,
       .shop,
@@ -396,30 +337,9 @@
         padding-top: var(--section-y);
         padding-bottom: var(--section-y);
       }
-
       .hero {
         padding-top: calc(var(--nav-h) + 120px);
         padding-bottom: 140px;
-      }
-
-      @media (max-width: 768px) {
-        .hero,
-        .lookbook,
-        .shop,
-        .about {
-          padding-top: var(--section-y-sm);
-          padding-bottom: var(--section-y-sm);
-        }
-        .hero {
-          padding-top: calc(var(--nav-h) + 44px);
-          padding-bottom: 70px;
-        }
-      }
-
-      /* =========================================================
-         HERO
-      ========================================================= */
-      .hero {
         min-height: 76vh;
         display: flex;
         align-items: center;
@@ -431,8 +351,22 @@
         padding-left: var(--px);
         padding-right: var(--px);
       }
+      @media (max-width: 768px) {
+        .hero,
+        .lookbook,
+        .shop,
+        .about {
+          padding-top: var(--section-y-sm);
+          padding-bottom: var(--section-y-sm);
+        }
+        .hero {
+          padding-top: calc(var(--nav-h) + 44px);
+          padding-bottom: 70px;
+          padding-left: var(--px-sm);
+          padding-right: var(--px-sm);
+        }
+      }
 
-      /* ✅ Hero: full image background hero.png */
       .hero-bg {
         position: absolute;
         inset: 0;
@@ -441,7 +375,6 @@
         filter: saturate(1) contrast(1.02);
         pointer-events: none;
       }
-      /* ✅ Remove purple background glow on hero */
       .hero-bg::after {
         content: "";
         position: absolute;
@@ -453,30 +386,32 @@
           rgba(0, 0, 0, 0.92)
         );
       }
-
       .hero-content {
         max-width: 900px;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
       }
-
       .hero-title {
         font-size: var(--h1);
         font-weight: 800;
         color: var(--primary);
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        position: relative;
-        /* ✅ remove hero title glow */
         text-shadow: none;
         line-height: 1.05;
       }
-
       .hero-text {
         max-width: 58ch;
         margin: 18px auto 0;
         color: #aaa;
         line-height: 1.6;
         font-size: 1.05rem;
+      }
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2rem;
+        }
       }
 
       .social-icon {
@@ -492,57 +427,39 @@
         transition: transform 0.16s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         border: 1px solid #222;
       }
-
       .social-icon:hover {
         background: var(--secondary);
         color: #fff;
         transform: translateY(-1px) scale(1.02);
         border-color: var(--secondary);
-        box-shadow: none; /* ✅ no glow */
       }
       .social-icon:active {
         transform: translateY(-2px) scale(1.03);
-        box-shadow: none;
       }
 
       .primary-btn {
         background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
         border: none;
         padding: 18px 48px;
-        border-radius: 50px;
+        border-radius: 999px;
         color: #fff;
         font-weight: 700;
         cursor: pointer;
         margin-top: 28px;
-        transition: transform 0.16s ease, filter 0.2s ease, background 0.3s ease, color 0.3s ease;
+        transition: transform 0.16s ease, filter 0.2s ease;
         text-transform: uppercase;
         letter-spacing: 1px;
         font-size: 0.9rem;
-        box-shadow: none; /* ✅ remove glow */
       }
-
       .primary-btn:hover {
         filter: brightness(1.05);
         transform: translateY(-1px);
-        box-shadow: none;
       }
       .primary-btn:active {
         transform: translateY(-2px);
       }
 
-      @media (max-width: 768px) {
-        .hero {
-          padding-left: var(--px-sm);
-          padding-right: var(--px-sm);
-        }
-        .hero-title {
-          font-size: 2rem;
-        }
-      }
-
-      /* =========================================================
-         TITLES
-      ========================================================= */
+      /* Titles */
       .section-title {
         font-size: var(--h2);
         margin-bottom: 22px;
@@ -551,9 +468,8 @@
       }
       .purple-title {
         color: var(--primary);
-        text-shadow: none; /* ✅ no glow */
+        text-shadow: none;
       }
-
       .aligned-title {
         max-width: var(--container);
         margin: 0 auto;
@@ -567,23 +483,17 @@
         }
       }
 
-      /* =========================================================
-         LOOKBOOK
-      ========================================================= */
+      /* Lookbook */
       .lookbook {
         padding-left: 0;
         padding-right: 0;
       }
-
       .vertical-list {
-        max-width: none;
         margin: 26px 0 0;
-        padding: 0;
         display: flex;
         flex-direction: column;
         gap: 26px;
       }
-
       .lookbook-card {
         border-radius: 0;
         overflow: hidden;
@@ -591,11 +501,8 @@
         cursor: pointer;
         background: #000;
         height: 440px;
-        box-shadow: none;
-        transition: none;
         width: 100%;
       }
-
       .lookbook-card::before {
         content: "";
         position: absolute;
@@ -604,24 +511,14 @@
         z-index: 1;
         pointer-events: none;
       }
-
-      /* ✅ Remove "Look 1 / Look 2" text */
-      .lookbook-card-title {
-        display: none !important;
-      }
-
       .lookbook-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
-        filter: none;
-        border-radius: 0;
       }
-
       @media (max-width: 768px) {
         .vertical-list {
-          padding: 0;
           gap: 18px;
         }
         .lookbook-card {
@@ -629,10 +526,7 @@
         }
       }
 
-      /* =========================================================
-         ✅ ROUTE PAGES (Real navigation via ?page=...)
-         - These are NOT modals/popups. They are normal pages.
-      ========================================================= */
+      /* Route pages */
       .route-page {
         display: none;
         min-height: 100vh;
@@ -642,7 +536,6 @@
       .route-page.active {
         display: block;
       }
-
       .route-shell {
         max-width: 1100px;
         margin: 0 auto;
@@ -653,7 +546,6 @@
           padding: 0 var(--px-sm);
         }
       }
-
       .route-topbar {
         display: flex;
         align-items: center;
@@ -686,7 +578,6 @@
       .route-back:active {
         transform: translateY(-2px);
       }
-
       .route-title {
         font-weight: 950;
         color: var(--primary);
@@ -702,8 +593,6 @@
         text-align: center;
         margin-top: 6px;
       }
-
-      /* Lookbook route page */
       .lookbook-view {
         margin-top: 18px;
         width: 100%;
@@ -722,7 +611,7 @@
         -webkit-user-drag: none;
       }
 
-      /* Product route page */
+      /* Product route */
       .product-page-grid {
         margin-top: 18px;
         display: grid;
@@ -735,7 +624,6 @@
           grid-template-columns: 1fr;
         }
       }
-
       .pm-image-shell {
         height: min(56vh, 560px);
         overflow: hidden;
@@ -758,7 +646,6 @@
         margin-top: 12px;
         margin-bottom: 6px;
       }
-
       .thumb {
         height: 74px;
         border-radius: 0;
@@ -791,13 +678,7 @@
         border-color: rgba(168, 85, 247, 0.95);
       }
 
-      /* =========================================================
-         ✅ SHOP
-      ========================================================= */
-      .shop {
-        margin: 0;
-      }
-
+      /* Shop */
       .horizontal-scroll {
         max-width: var(--container);
         margin: 0 auto;
@@ -810,7 +691,6 @@
         scrollbar-width: thin;
         scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
       }
-
       .horizontal-scroll::-webkit-scrollbar {
         height: 6px;
       }
@@ -821,7 +701,6 @@
         background: rgba(255, 255, 255, 0.1);
         border-radius: 999px;
       }
-
       @media (max-width: 768px) {
         .horizontal-scroll {
           display: grid;
@@ -835,21 +714,15 @@
 
       .product {
         min-width: 420px;
-        padding: 0;
         color: #fff;
         text-align: left;
         display: flex;
         flex-direction: column;
         scroll-snap-align: center;
         cursor: pointer;
-        border-radius: 0;
-        position: relative;
         background: transparent;
         border: none;
-        box-shadow: none;
-        transition: none;
       }
-
       .product-img-container {
         width: 100%;
         height: 360px;
@@ -857,36 +730,21 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;
         margin-bottom: 14px;
-        border-radius: 0;
-        border: none;
-        background: transparent;
         touch-action: pan-y;
       }
-
       .product-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
-        padding: 0;
         transition: opacity 160ms ease;
-        filter: none;
         user-select: none;
         -webkit-user-drag: none;
-      }
-
-      .img-pager {
-        display: none !important;
-      }
-      .img-dot {
-        display: none !important;
       }
       .product [data-thumb-row] {
         display: none !important;
       }
-
       @media (max-width: 768px) {
         .product {
           min-width: 0;
@@ -899,7 +757,6 @@
       .product-info {
         padding: 10px 0 6px;
       }
-
       .product-label {
         font-size: 0.78rem;
         color: var(--primary);
@@ -908,9 +765,7 @@
         text-transform: uppercase;
         letter-spacing: 1.15px;
         opacity: 0.95;
-        text-shadow: none;
       }
-
       .product-header {
         display: flex;
         justify-content: space-between;
@@ -918,19 +773,16 @@
         margin-bottom: 10px;
         gap: 12px;
       }
-
       .product-name-wrapper {
         flex: 1;
       }
-
       .product h3 {
         font-size: 1.05rem;
-        margin: 0 0 6px 0;
         font-weight: 800;
         color: #fff;
         line-height: 1.35;
+        margin: 0 0 6px;
       }
-
       .product-category,
       .product-colors-count {
         font-size: 0.95rem;
@@ -938,7 +790,6 @@
         font-weight: 600;
         margin-bottom: 10px;
       }
-
       .price {
         font-size: 1.05rem;
         color: #fff;
@@ -949,20 +800,18 @@
       }
 
       .options {
-        margin: 16px 0 0 0;
+        margin-top: 16px;
         opacity: 0;
         max-height: 0;
         overflow: hidden;
         transform: translateY(-6px);
         transition: opacity 0.25s ease, max-height 0.35s ease, transform 0.25s ease;
       }
-
       .product.expanded .options {
         opacity: 1;
         max-height: 520px;
         transform: translateY(0);
       }
-
       @media (hover: none) and (pointer: coarse) {
         .options {
           display: none !important;
@@ -979,14 +828,12 @@
         margin-bottom: 10px;
         letter-spacing: 0.02em;
       }
-
       .sizes {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 8px;
         margin-bottom: 18px;
       }
-
       .size-btn {
         height: 42px;
         border-radius: 12px;
@@ -998,7 +845,6 @@
           background 0.18s ease;
         font-weight: 800;
         font-size: 0.95rem;
-        box-shadow: none;
       }
       .size-btn:hover:not(.selected) {
         border-color: rgba(168, 85, 247, 0.4);
@@ -1008,12 +854,10 @@
       .size-btn:active {
         transform: translateY(-2px);
       }
-
       .size-btn.selected {
         background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
         color: #fff;
         border-color: rgba(168, 85, 247, 0.85);
-        box-shadow: none; /* ✅ no glow */
         transform: translateY(-1px);
       }
 
@@ -1022,7 +866,6 @@
         gap: 10px;
         margin-bottom: 18px;
       }
-
       .color {
         width: 38px;
         height: 38px;
@@ -1032,7 +875,6 @@
         border: 2px solid transparent;
         position: relative;
       }
-
       .color::after {
         content: "✓";
         position: absolute;
@@ -1044,24 +886,19 @@
         font-size: 0.95rem;
         transition: transform 0.18s ease;
       }
-
       .color:hover {
         transform: translateY(-1px) scale(1.02);
-        box-shadow: none;
       }
       .color:active {
         transform: translateY(-2px) scale(1.03);
-        box-shadow: none;
       }
       .color.selected {
         border-color: rgba(168, 85, 247, 0.95);
         transform: scale(1.03);
-        box-shadow: none;
       }
       .color.selected::after {
         transform: translate(-50%, -50%) scale(1);
       }
-
       .color.black {
         background: #000;
         border: 2px solid rgba(255, 255, 255, 0.7);
@@ -1077,9 +914,13 @@
         background: #666;
       }
 
-      /* =========================================================
-         ✅ Quantity Stepper — PILL (no glow)
-      ========================================================= */
+      /* Qty stepper (shared) */
+      .quantity-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
       .qty-stepper-ui {
         display: flex;
         align-items: center;
@@ -1125,17 +966,6 @@
         user-select: none;
       }
 
-      .quantity-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 18px;
-      }
-
-      .quantity {
-        display: none !important;
-      }
-
       .secondary-btn {
         background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1149,32 +979,24 @@
         width: 100%;
         text-transform: uppercase;
         letter-spacing: 1px;
-        box-shadow: none; /* ✅ remove glow */
       }
-
       .secondary-btn:hover {
         transform: translateY(-1px);
         filter: brightness(1.05);
-        box-shadow: none;
       }
       .secondary-btn:active {
         transform: translateY(-2px);
       }
-
       .secondary-btn:disabled {
         opacity: 0.45;
         cursor: not-allowed;
         transform: none !important;
         filter: none !important;
-        box-shadow: none !important;
         background: #222 !important;
         color: #777 !important;
         border-color: rgba(255, 255, 255, 0.08) !important;
       }
 
-      /* =========================================================
-         DIVIDER (between Shop and About)
-      ========================================================= */
       .section-divider {
         height: 1px;
         background: rgba(255, 255, 255, 0.1);
@@ -1187,42 +1009,33 @@
         }
       }
 
-      /* =========================================================
-         ABOUT
-      ========================================================= */
+      /* About */
       .about {
-        max-width: 90vh;
+        max-width: 900px;
         margin: 0 auto;
         padding-left: var(--px);
         padding-right: var(--px);
       }
-
       .about p {
         color: #aaa;
         line-height: 1.8;
         font-size: 1.05rem;
         max-width: 70ch;
       }
-
       .about-contact {
         margin-top: 18px;
-        padding-top: 0;
-        border-top: none;
         display: grid;
         gap: 10px;
         max-width: 720px;
       }
-
       .about-contact h4 {
         color: var(--primary);
         font-size: 0.95rem;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin: 0 0 6px 0;
-        text-shadow: none;
+        margin: 0 0 6px;
       }
-
       .about-contact a {
         color: var(--muted);
         text-decoration: none;
@@ -1236,7 +1049,6 @@
       .about-contact a:active {
         transform: translateY(-2px);
       }
-
       @media (max-width: 768px) {
         .about {
           padding-left: var(--px-sm);
@@ -1244,9 +1056,7 @@
         }
       }
 
-      /* =========================================================
-         FOOTER
-      ========================================================= */
+      /* Footer */
       footer a {
         transition: color 0.25s ease, transform 0.16s ease;
       }
@@ -1257,41 +1067,33 @@
       footer a:active {
         transform: translateY(-2px);
       }
-
       .footer-legal {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 14px;
-        padding-top: 0;
-        border-top: none;
       }
-
       .footer-legal-top {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
         text-align: center;
-        gap: 0; /* ✅ keep no gap */
-        line-height: 1.25; /* ✅ readable */
-        row-gap: 10px; /* ✅ nicer wrap on mobile */
+        gap: 0;
+        line-height: 1.25;
+        row-gap: 10px;
       }
-
       .footer-legal-link {
         color: var(--muted2);
         font-size: 0.95rem;
         text-decoration: none;
-        padding: 0 2px; /* ✅ tighten spacing */
+        padding: 0 2px;
       }
-
       .footer-sep {
         color: #666;
-        padding: 0 6px; /* ✅ reduced spacing */
+        padding: 0 6px;
         user-select: none;
       }
-
-      /* ✅ Footer: decrease width on mobile */
       @media (max-width: 768px) {
         footer#footer {
           padding-left: var(--px-sm) !important;
@@ -1305,9 +1107,7 @@
         }
       }
 
-      /* =========================================================
-         FLOATING CART
-      ========================================================= */
+      /* Cart */
       .floating-cart {
         position: fixed;
         bottom: 32px;
@@ -1319,23 +1119,19 @@
         color: #fff;
         border: none;
         cursor: pointer;
-        box-shadow: none; /* ✅ no glow */
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 1500;
         transition: transform 0.16s ease, filter 0.2s ease;
       }
-
       .floating-cart:hover {
         transform: translateY(-1px) scale(1.02);
         filter: brightness(1.05);
-        box-shadow: none;
       }
       .floating-cart:active {
         transform: translateY(-2px) scale(1.03);
       }
-
       .cart-count {
         position: absolute;
         top: 0;
@@ -1352,7 +1148,6 @@
         font-weight: 700;
         border: 2px solid #000;
       }
-
       .cart-overlay {
         position: fixed;
         inset: 0;
@@ -1366,7 +1161,6 @@
         opacity: 1;
         pointer-events: auto;
       }
-
       .cart-sidebar {
         position: fixed;
         top: 0;
@@ -1374,17 +1168,16 @@
         width: 400px;
         height: 100%;
         background: #0a0a0a;
-        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
         z-index: 2000;
         transition: right 0.4s ease;
         display: flex;
         flex-direction: column;
         border-left: 1px solid var(--border);
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
       }
       .cart-sidebar.active {
         right: 0;
       }
-
       .cart-header {
         display: flex;
         justify-content: space-between;
@@ -1393,25 +1186,23 @@
         border-bottom: 1px solid var(--border);
         background: var(--surface);
       }
-
       .cart-header h2 {
         font-size: 1.5rem;
         font-weight: 700;
         color: var(--primary);
         margin: 0;
       }
-
       .close-cart {
         background: transparent;
         border: none;
         color: #888;
         cursor: pointer;
         padding: 8px;
-        transition: transform 0.16s ease, background 0.3s ease, color 0.3s ease;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 8px;
+        transition: transform 0.16s ease, background 0.2s ease, color 0.2s ease;
       }
       .close-cart:hover {
         color: #fff;
@@ -1421,33 +1212,28 @@
       .close-cart:active {
         transform: translateY(-2px);
       }
-
       .cart-items {
         flex: 1;
         overflow-y: auto;
         padding: 24px;
         list-style: none;
       }
-
       .cart-item {
         background: var(--surface);
         padding: 14px;
         margin-bottom: 12px;
         border-radius: 14px;
-        color: #fff;
         border: 1px solid var(--border);
         display: grid;
         grid-template-columns: 66px 1fr auto;
         gap: 12px;
         align-items: center;
-        transition: all 0.25s ease;
+        transition: background 0.25s ease, border-color 0.25s ease;
       }
-
       .cart-item:hover {
         border-color: rgba(255, 255, 255, 0.14);
         background: #141414;
       }
-
       .cart-item-img {
         width: 66px;
         height: 66px;
@@ -1455,22 +1241,18 @@
         border: 1px solid rgba(255, 255, 255, 0.08);
         background: rgba(255, 255, 255, 0.02);
         object-fit: cover;
-        padding: 0;
       }
-
       .cart-item-title {
         font-weight: 800;
         font-size: 0.95rem;
         line-height: 1.2;
         margin-bottom: 6px;
       }
-
       .cart-item-meta {
         font-size: 0.84rem;
         color: #9a9a9a;
         line-height: 1.25;
       }
-
       .cart-item-actions {
         display: flex;
         flex-direction: column;
@@ -1478,14 +1260,12 @@
         align-items: flex-end;
         justify-content: center;
       }
-
       .qty-stepper {
         display: inline-flex;
         align-items: center;
         border-radius: 999px;
         padding: 1px;
         background: rgba(255, 255, 255, 0.04);
-        box-shadow: none;
         border: 1px solid rgba(255, 255, 255, 0.14);
       }
       .qty-stepper-inner {
@@ -1523,13 +1303,6 @@
         color: #fff;
         user-select: none;
       }
-
-      .qty-stepper .qty-btn:focus,
-      .qty-stepper .qty-btn:focus-visible {
-        outline: none;
-        box-shadow: none;
-      }
-
       .remove-btn {
         border: none;
         background: transparent;
@@ -1546,30 +1319,16 @@
       .remove-btn:active {
         transform: translateY(-2px);
       }
-
       .cart-item-price {
         font-weight: 900;
         color: var(--primary);
         font-size: 0.95rem;
       }
-
-      .cart-items::-webkit-scrollbar {
-        width: 6px;
-      }
-      .cart-items::-webkit-scrollbar-track {
-        background: var(--surface);
-      }
-      .cart-items::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.12);
-        border-radius: 10px;
-      }
-
       .cart-footer {
         padding: 24px;
         border-top: 1px solid var(--border);
         background: var(--surface);
       }
-
       .cart-total-row {
         display: flex;
         justify-content: space-between;
@@ -1577,24 +1336,21 @@
         margin-bottom: 20px;
         font-size: 1.3rem;
       }
-
       .cart-total-label {
         font-weight: 700;
         color: #888;
       }
-
       .cart-total-value {
         font-weight: 700;
         color: var(--primary);
         font-size: 1.5rem;
       }
-
       .checkout-btn {
         width: 100%;
         background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
         border: none;
         padding: 16px;
-        border-radius: 50px;
+        border-radius: 999px;
         color: #fff;
         font-weight: 700;
         cursor: pointer;
@@ -1602,9 +1358,7 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         font-size: 0.9rem;
-        box-shadow: none;
       }
-
       .checkout-btn:hover {
         transform: translateY(-1px);
         filter: brightness(1.05);
@@ -1612,7 +1366,6 @@
       .checkout-btn:active {
         transform: translateY(-2px);
       }
-
       .checkout-btn:disabled {
         opacity: 0.45;
         cursor: not-allowed;
@@ -1620,7 +1373,6 @@
         background: #222 !important;
         color: #777 !important;
       }
-
       .cart-toast {
         position: fixed;
         bottom: 110px;
@@ -1629,7 +1381,6 @@
         color: #fff;
         padding: 16px 24px;
         border-radius: 12px;
-        box-shadow: none; /* ✅ no glow */
         transform: translateY(200px);
         transition: transform 0.4s ease;
         z-index: 2200;
@@ -1641,7 +1392,6 @@
       .cart-toast.show {
         transform: translateY(0);
       }
-
       @media (max-width: 768px) {
         .cart-sidebar {
           width: 100%;
@@ -1653,14 +1403,12 @@
           width: 56px;
           height: 56px;
         }
-
         .cart-toast {
           bottom: 100px;
           right: 24px;
           left: 24px;
           max-width: calc(100% - 48px);
         }
-
         .cart-item {
           grid-template-columns: 58px 1fr;
           grid-template-areas:
@@ -1682,9 +1430,7 @@
           justify-content: space-between;
         }
       }
-    </style>
 
-    <style>
       @view-transition {
         navigation: auto;
       }
@@ -1692,7 +1438,6 @@
   </head>
 
   <body class="h-full w-full">
-    <!-- NAVBAR -->
     <nav class="navbar flex justify-between items-center">
       <a
         href="/#drop"
@@ -1702,7 +1447,6 @@
         <img src="/images/faide-wordmark.png" alt="FAIDE" class="faide-wordmark-img" id="brand-wordmark" />
       </a>
 
-      <!-- Desktop Links (stay the same on desktop) -->
       <div class="nav-links" aria-label="Primary navigation">
         <a href="/#drop" data-nav-link="main">NEW DROP</a>
         <a href="/#lookbook" data-nav-link="main">LOOKBOOK</a>
@@ -1710,7 +1454,6 @@
         <a href="/#about" data-nav-link="main">ABOUT</a>
       </div>
 
-      <!-- Mobile Icons (Search + Hamburger) -->
       <div class="nav-mobile-actions" aria-label="Mobile navigation controls">
         <button
           id="mobile-search-btn"
@@ -1742,14 +1485,12 @@
       </div>
     </nav>
 
-    <!-- Mobile Search Panel -->
     <div id="mobile-search-panel" class="nav-mobile-panel" aria-hidden="true">
       <div class="nav-mobile-search">
         <input id="mobile-search-input" type="text" placeholder="Search FAIDE..." autocomplete="off" />
       </div>
     </div>
 
-    <!-- Mobile Menu Panel -->
     <div id="mobile-menu-panel" class="nav-mobile-panel" aria-hidden="true">
       <div class="nav-mobile-menu" aria-label="Mobile menu">
         <a href="/#drop" data-nav-link="main">NEW DROP</a>
@@ -1759,13 +1500,14 @@
       </div>
     </div>
 
-    <!-- ✅ ROUTE PAGE: LOOKBOOK (real page via ?page=lookbook&i=1) -->
     <main id="route-lookbook" class="route-page" aria-hidden="true">
       <div class="route-shell">
         <div class="route-topbar">
           <a class="route-back" href="/#lookbook" aria-label="Back to Lookbook">
             <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11H21a1 1 0 1 1 0 2H10.41l4.3 4.3a1 1 0 1 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0z"/>
+              <path
+                d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11H21a1 1 0 1 1 0 2H10.41l4.3 4.3a1 1 0 1 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0z"
+              />
             </svg>
             Back
           </a>
@@ -1784,13 +1526,14 @@
       </div>
     </main>
 
-    <!-- ✅ ROUTE PAGE: PRODUCT (real page via ?page=product&id=1) -->
     <main id="route-product" class="route-page" aria-hidden="true">
       <div class="route-shell">
         <div class="route-topbar">
           <a class="route-back" href="/#shop" aria-label="Back to Shop">
             <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11H21a1 1 0 1 1 0 2H10.41l4.3 4.3a1 1 0 1 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0z"/>
+              <path
+                d="M14.7 5.3a1 1 0 0 1 0 1.4L10.41 11H21a1 1 0 1 1 0 2H10.41l4.3 4.3a1 1 0 1 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.41 0z"
+              />
             </svg>
             Back
           </a>
@@ -1812,10 +1555,13 @@
           </div>
 
           <div id="rpp-details" style="width:100%;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap: 12px; margin-bottom: 10px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:10px;">
               <div style="min-width:0;">
                 <div id="rpp-label" class="product-label" style="margin-bottom:8px;"></div>
-                <h3 id="rpp-name" style="font-size:1.2rem; font-weight:950; color:#fff; line-height:1.25; margin:0 0 6px;"></h3>
+                <h3
+                  id="rpp-name"
+                  style="font-size:1.2rem; font-weight:950; color:#fff; line-height:1.25; margin:0 0 6px;"
+                ></h3>
                 <div id="rpp-category" style="color:#9a9a9a; font-weight:800;"></div>
                 <div id="rpp-colors" style="color:#9a9a9a; font-weight:800; margin-top:6px;"></div>
               </div>
@@ -1838,7 +1584,7 @@
 
             <button type="button" class="secondary-btn" id="rpp-add" disabled>Add to Bag</button>
 
-            <div style="color:#777; text-align:left; padding: 16px 0 0; font-size: 0.9rem;">
+            <div style="color:#777; text-align:left; padding-top:16px; font-size:0.9rem;">
               Tap thumbnails • Select size &amp; color • Add to Bag
             </div>
           </div>
@@ -1846,19 +1592,17 @@
       </div>
     </main>
 
-    <!-- ✅ MAIN SITE CONTENT (hidden when route pages are active) -->
     <div id="site-content">
-      <!-- HERO -->
       <section id="drop" class="hero">
         <div class="hero-bg" aria-hidden="true"></div>
 
-        <div class="hero-content" style="position: relative; z-index: 1;">
-          <h2 class="hero-title fade-in-up delay-1" id="hero-title">NEW DROPS</h2>
+        <div class="hero-content">
+          <h2 class="hero-title fade-in-up delay-1" id="hero-title">NEW DROP</h2>
           <p class="hero-text fade-in-up delay-2" id="hero-description">
             New drops, exclusive releases, and updates are announced on our social platforms.
           </p>
 
-          <div class="hero-social-icons fade-in-up delay-2" style="margin: 32px 0;">
+          <div class="hero-social-icons fade-in-up delay-2" style="margin:32px 0;">
             <a
               href="https://www.instagram.com/faideclothing"
               target="_blank"
@@ -1866,7 +1610,7 @@
               class="social-icon"
               aria-label="Instagram"
             >
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
                 />
@@ -1880,21 +1624,15 @@
               class="social-icon"
               aria-label="Facebook"
             >
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
                 />
               </svg>
             </a>
 
-            <a
-              href="https://x.com/faideclothing"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-icon"
-              aria-label="X"
-            >
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <a href="https://x.com/faideclothing" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
                 />
@@ -1908,7 +1646,7 @@
               class="social-icon"
               aria-label="TikTok"
             >
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
                 />
@@ -1920,32 +1658,27 @@
         </div>
       </section>
 
-      <!-- LOOKBOOK -->
       <section id="lookbook" class="lookbook">
         <h2 class="section-title purple-title aligned-title">Lookbook</h2>
 
         <div class="vertical-list">
           <div class="lookbook-card" data-look="1" role="button" tabindex="0" aria-label="Open Lookbook 1">
             <img src="/images/lookbook1.png" alt="FAIDE Lookbook 1" class="lookbook-img" />
-            <h3 class="lookbook-card-title">Look 1</h3>
           </div>
 
           <div class="lookbook-card" data-look="2" role="button" tabindex="0" aria-label="Open Lookbook 2">
             <img src="/images/lookbook2.png" alt="FAIDE Lookbook 2" class="lookbook-img" />
-            <h3 class="lookbook-card-title">Look 2</h3>
           </div>
         </div>
       </section>
 
-      <!-- SHOP -->
       <section id="shop" class="shop">
         <h2 class="section-title purple-title aligned-title">Shop</h2>
 
         <div class="horizontal-scroll">
-          <!-- Tank-top -->
           <div class="product" data-name="FAIDE Essentials Tank" data-price="199.99">
             <div class="product-img-container">
-              <img src="/images/Tank-top.png" alt="FAIDE Essentials Tank" class="product-img" />
+              <img src="/images/tank-top.png" alt="FAIDE Essentials Tank" class="product-img" />
             </div>
             <div class="thumb-row" data-thumb-row></div>
 
@@ -1989,7 +1722,6 @@
             </div>
           </div>
 
-          <!-- T-shirt -->
           <div class="product" data-name="FAIDE Signature Tee" data-price="349.99">
             <div class="product-img-container">
               <img src="/images/tshirt.png" alt="FAIDE Signature Tee" class="product-img" />
@@ -2037,7 +1769,6 @@
             </div>
           </div>
 
-          <!-- Long Sleeve -->
           <div class="product" data-name="FAIDE Long Sleeve" data-price="549.99">
             <div class="product-img-container">
               <img src="/images/longsleeve.png" alt="FAIDE Long Sleeve" class="product-img" />
@@ -2084,7 +1815,6 @@
             </div>
           </div>
 
-          <!-- Hoodie -->
           <div class="product" data-name="FAIDE Luxury Hoodie" data-price="699.99">
             <div class="product-img-container">
               <img src="/images/hoodie.png" alt="FAIDE Luxury Hoodie" class="product-img" />
@@ -2133,10 +1863,8 @@
         </div>
       </section>
 
-      <!-- ✅ Divider between Shop and About -->
       <div class="section-divider" aria-hidden="true"></div>
 
-      <!-- ABOUT -->
       <section id="about" class="about">
         <h2 class="section-title purple-title" id="about-title">About FAIDE</h2>
         <p id="about-description">
@@ -2151,9 +1879,8 @@
         </div>
       </section>
 
-      <!-- FOOTER -->
-      <footer id="footer" style="background:#0a0a0a; border-top:1px solid var(--border); padding: 42px 32px 40px;">
-        <div style="max-width: 1200px; margin: 0 auto;">
+      <footer id="footer" style="background:#0a0a0a; border-top:1px solid var(--border); padding:42px 32px 40px;">
+        <div style="max-width:1200px; margin:0 auto;">
           <div class="footer-legal">
             <div class="footer-legal-top" aria-label="Policies">
               <a href="#" id="privacy-link" class="footer-legal-link">Privacy Policy</a>
@@ -2165,7 +1892,7 @@
               <a href="#" id="returns-link" class="footer-legal-link">Return and exchange</a>
             </div>
 
-            <p style="color:#666; font-size:0.95rem; margin: 6px 0 0; text-align:center;">
+            <p style="color:#666; font-size:0.95rem; margin-top:6px; text-align:center;">
               © 2026 FAIDE. All rights reserved.
             </p>
           </div>
@@ -2173,17 +1900,14 @@
       </footer>
     </div>
 
-    <!-- Policy Modal (kept as-is) -->
     <div
       id="policy-modal"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:3000; overflow-y:auto; padding:40px 20px;"
+      style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:3000; overflow-y:auto; padding:40px 20px;"
     >
-      <div
-        style="max-width:800px; margin:0 auto; background:#0a0a0a; border-radius:20px; border:1px solid var(--border); overflow:hidden;"
-      >
+      <div style="max-width:800px; margin:0 auto; background:#0a0a0a; border-radius:20px; border:1px solid var(--border); overflow:hidden;">
         <div
           style="background:var(--surface); padding:24px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border);"
         >
@@ -2192,8 +1916,9 @@
             id="close-modal"
             type="button"
             style="background:transparent; border:none; color:#888; cursor:pointer; padding:8px; display:flex; align-items:center; justify-content:center; border-radius:8px; transition:all 0.3s ease;"
+            aria-label="Close policy"
           >
-            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"
               />
@@ -2204,12 +1929,10 @@
       </div>
     </div>
 
-    <!-- Cart overlay -->
     <div id="cart-overlay" class="cart-overlay" aria-hidden="true"></div>
 
-    <!-- Floating Cart Button -->
     <button id="floating-cart" class="floating-cart" aria-label="View shopping cart" type="button">
-      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path
           d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.304-15l-3.431 12h-2.102l2.542-9h-16.813l4.615 11h13.239l3.474-12h1.929l.743-2h-4.196z"
         />
@@ -2217,12 +1940,11 @@
       <span id="cart-count" class="cart-count">0</span>
     </button>
 
-    <!-- Cart Sidebar -->
     <div id="cart-sidebar" class="cart-sidebar" aria-label="Shopping cart">
       <div class="cart-header">
         <h2>Your Cart</h2>
         <button id="close-cart" class="close-cart" aria-label="Close cart" type="button">
-          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path
               d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"
             />
@@ -2244,9 +1966,8 @@
       </div>
     </div>
 
-    <!-- Cart Toast -->
     <div class="cart-toast" id="cartToast" role="status" aria-live="polite">
-      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path
           d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.304-15l-3.431 12h-2.102l2.542-9h-16.813l4.615 11h13.239l3.474-12h1.929l.743-2h-4.196z"
         />
@@ -2255,9 +1976,6 @@
     </div>
 
     <script>
-      /*************************************************************
-       * ✅ SINGLE shared helper (removed duplicate)
-       *************************************************************/
       function clickOnEnterSpace(el, fn) {
         el.addEventListener("keydown", (e) => {
           if (e.key === "Enter" || e.key === " ") {
@@ -2267,14 +1985,10 @@
         });
       }
 
-      /*************************************************************
-       * CONFIG (Element SDK)
-       *************************************************************/
       const defaultConfig = {
         brand_name: "FAIDE",
         hero_title: "NEW DROP",
-        hero_description:
-          "New drops, exclusive releases, and updates are announced on our social platforms.",
+        hero_description: "New drops, exclusive releases, and updates are announced on our social platforms.",
         about_headline: "About FAIDE",
         about_description:
           "FAIDE is a luxury streetwear brand built for those who move in silence. Designed with intention. Worn with purpose.",
@@ -2295,16 +2009,8 @@
       async function onConfigChange(config) {
         const heroTitle = config.hero_title || defaultConfig.hero_title;
         const heroDescription = config.hero_description || defaultConfig.hero_description;
-
         const aboutHeadline = config.about_headline || defaultConfig.about_headline;
         const aboutDescription = config.about_description || defaultConfig.about_description;
-
-        const backgroundColor = config.background_color || defaultConfig.background_color;
-        const surfaceColor = config.surface_color || defaultConfig.surface_color;
-        const textColor = config.text_color || defaultConfig.text_color;
-        const primaryAccent = config.primary_accent || defaultConfig.primary_accent;
-        const secondaryAccent = config.secondary_accent || defaultConfig.secondary_accent;
-        const customFont = config.font_family || defaultConfig.font_family;
 
         const heroTitleEl = document.getElementById("hero-title");
         const heroDescEl = document.getElementById("hero-description");
@@ -2316,15 +2022,15 @@
         if (aboutTitleEl) aboutTitleEl.textContent = aboutHeadline;
         if (aboutDescEl) aboutDescEl.textContent = aboutDescription;
 
-        setCSSVar("--bg", backgroundColor);
-        setCSSVar("--surface", surfaceColor);
-        setCSSVar("--text", textColor);
-        setCSSVar("--primary", primaryAccent);
-        setCSSVar("--secondary", secondaryAccent);
+        setCSSVar("--bg", config.background_color || defaultConfig.background_color);
+        setCSSVar("--surface", config.surface_color || defaultConfig.surface_color);
+        setCSSVar("--text", config.text_color || defaultConfig.text_color);
+        setCSSVar("--primary", config.primary_accent || defaultConfig.primary_accent);
+        setCSSVar("--secondary", config.secondary_accent || defaultConfig.secondary_accent);
 
+        const customFont = config.font_family || defaultConfig.font_family;
         document.body.style.fontFamily = `${customFont}, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
 
-        /* ✅ Remove hero title glow (keep as is) */
         const heroTitleNode = document.querySelector(".hero-title");
         if (heroTitleNode) heroTitleNode.style.textShadow = "none";
       }
@@ -2332,26 +2038,11 @@
       function mapToCapabilities(config) {
         return {
           recolorables: [
-            {
-              get: () => config.background_color || defaultConfig.background_color,
-              set: (v) => window.elementSdk?.setConfig?.({ background_color: (config.background_color = v) }),
-            },
-            {
-              get: () => config.surface_color || defaultConfig.surface_color,
-              set: (v) => window.elementSdk?.setConfig?.({ surface_color: (config.surface_color = v) }),
-            },
-            {
-              get: () => config.text_color || defaultConfig.text_color,
-              set: (v) => window.elementSdk?.setConfig?.({ text_color: (config.text_color = v) }),
-            },
-            {
-              get: () => config.primary_accent || defaultConfig.primary_accent,
-              set: (v) => window.elementSdk?.setConfig?.({ primary_accent: (config.primary_accent = v) }),
-            },
-            {
-              get: () => config.secondary_accent || defaultConfig.secondary_accent,
-              set: (v) => window.elementSdk?.setConfig?.({ secondary_accent: (config.secondary_accent = v) }),
-            },
+            { get: () => config.background_color || defaultConfig.background_color, set: (v) => window.elementSdk?.setConfig?.({ background_color: (config.background_color = v) }) },
+            { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => window.elementSdk?.setConfig?.({ surface_color: (config.surface_color = v) }) },
+            { get: () => config.text_color || defaultConfig.text_color, set: (v) => window.elementSdk?.setConfig?.({ text_color: (config.text_color = v) }) },
+            { get: () => config.primary_accent || defaultConfig.primary_accent, set: (v) => window.elementSdk?.setConfig?.({ primary_accent: (config.primary_accent = v) }) },
+            { get: () => config.secondary_accent || defaultConfig.secondary_accent, set: (v) => window.elementSdk?.setConfig?.({ secondary_accent: (config.secondary_accent = v) }) },
           ],
           borderables: [],
           fontEditable: {
@@ -2386,41 +2077,29 @@
 
       (async () => {
         const ready = await waitForElementSdk();
-        if (ready) {
-          window.elementSdk.init({ defaultConfig, onConfigChange, mapToCapabilities, mapToEditPanelValues });
-        } else {
-          onConfigChange({ ...defaultConfig });
-        }
+        if (ready) window.elementSdk.init({ defaultConfig, onConfigChange, mapToCapabilities, mapToEditPanelValues });
+        else onConfigChange({ ...defaultConfig });
       })();
 
-      /*************************************************************
-       * ✅ PRODUCT ALT IMAGES (used by Product Page)
-       *************************************************************/
       function buildVariantSrc(baseSrc, n) {
         const qIndex = baseSrc.indexOf("?");
         const clean = qIndex >= 0 ? baseSrc.slice(0, qIndex) : baseSrc;
         const query = qIndex >= 0 ? baseSrc.slice(qIndex) : "";
-
         const dot = clean.lastIndexOf(".");
         if (dot < 0) return baseSrc;
-        const left = clean.slice(0, dot);
-        const ext = clean.slice(dot);
-        return `${left}${n}${ext}${query}`;
+        return `${clean.slice(0, dot)}${n}${clean.slice(dot)}${query}`;
       }
 
       function imageExists(src, timeoutMs = 900) {
         return new Promise((resolve) => {
           const img = new Image();
           let done = false;
-
           const finish = (ok) => {
             if (done) return;
             done = true;
             resolve(ok);
           };
-
           const t = setTimeout(() => finish(false), timeoutMs);
-
           img.onload = () => {
             clearTimeout(t);
             finish(true);
@@ -2433,28 +2112,22 @@
         });
       }
 
-      /*************************************************************
-       * ✅ CART MEMORY (localStorage)
-       *************************************************************/
       const CART_STORAGE_KEY = "faide_cart_v1";
       function loadCartFromStorage() {
         try {
           const raw = localStorage.getItem(CART_STORAGE_KEY);
           const parsed = raw ? JSON.parse(raw) : [];
           return Array.isArray(parsed) ? parsed : [];
-        } catch (_) {
+        } catch {
           return [];
         }
       }
       function saveCartToStorage(nextCart) {
         try {
           localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(nextCart || []));
-        } catch (_) {}
+        } catch {}
       }
 
-      /*************************************************************
-       * CART + WHATSAPP CHECKOUT
-       *************************************************************/
       const WHATSAPP_NUMBER = "27695603929";
       let cart = [];
 
@@ -2470,39 +2143,23 @@
 
       function checkoutOnWhatsApp() {
         if (!cart || cart.length === 0) return showCartToast("Your cart is empty.");
-
-        const lines = [];
-        lines.push("Hi FAIDE, I want to place an order:");
-        lines.push("");
-
+        const lines = ["Hi FAIDE, I want to place an order:", ""];
         let total = 0;
 
         cart.forEach((item, i) => {
           const lineTotal = item.price * item.quantity;
           total += lineTotal;
           lines.push(
-            `${i + 1}) ${item.name} | Size: ${item.size} | Color: ${item.color} | Qty: ${
-              item.quantity
-            } | R${lineTotal.toFixed(2)}`
+            `${i + 1}) ${item.name} | Size: ${item.size} | Color: ${item.color} | Qty: ${item.quantity} | R${lineTotal.toFixed(
+              2
+            )}`
           );
         });
 
-        lines.push("");
-        lines.push(`TOTAL: R${total.toFixed(2)}`);
-        lines.push("");
-        lines.push("Name:");
-        lines.push("(Type here)");
-        lines.push("");
-        lines.push("Delivery address:");
-        lines.push("(Type here)");
-
-        const message = encodeURIComponent(lines.join("\n"));
-        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank", "noopener,noreferrer");
+        lines.push("", `TOTAL: R${total.toFixed(2)}`, "", "Name:", "(Type here)", "", "Delivery address:", "(Type here)");
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
       }
 
-      /*************************************************************
-       * POLICY MODAL
-       *************************************************************/
       const policyModal = document.getElementById("policy-modal");
       const modalTitle = document.getElementById("modal-title");
       const modalContent = document.getElementById("modal-content");
@@ -2580,20 +2237,16 @@
       };
 
       let lastFocusedEl = null;
-
       function showPolicy(policyType) {
         const policy = policies[policyType];
         if (!policy) return;
         lastFocusedEl = document.activeElement;
-
         if (modalTitle) modalTitle.textContent = policy.title;
         if (modalContent) modalContent.innerHTML = policy.content;
         if (policyModal) policyModal.style.display = "block";
-
         document.body.classList.add("lock-scroll");
         setTimeout(() => closeModal?.focus(), 0);
       }
-
       function hidePolicy() {
         if (policyModal) policyModal.style.display = "none";
         document.body.classList.remove("lock-scroll");
@@ -2608,20 +2261,15 @@
           fn();
         });
       }
-
       onClick("privacy-link", () => showPolicy("privacy"));
       onClick("terms-link", () => showPolicy("terms"));
       onClick("returns-link", () => showPolicy("returns"));
       onClick("shipping-link", () => showPolicy("shipping"));
-
       closeModal?.addEventListener("click", hidePolicy);
       policyModal?.addEventListener("click", (e) => {
         if (e.target === policyModal) hidePolicy();
       });
 
-      /*************************************************************
-       * ✅ Helpers: Nav scroll + active state
-       *************************************************************/
       function getNavOffsetPx() {
         const nav = document.querySelector(".navbar");
         const navH =
@@ -2630,7 +2278,6 @@
           86;
         return Math.round(navH + 18);
       }
-
       function scrollToSectionId(id) {
         const el = document.getElementById(id);
         if (!el) return;
@@ -2638,9 +2285,6 @@
         window.scrollTo({ top, behavior: "smooth" });
       }
 
-      /*************************************************************
-       * ✅ Qty stepper
-       *************************************************************/
       function setupQtyStepper(rootEl, { onChange } = {}) {
         const valueEl = rootEl.querySelector("[data-qty-value]");
         const incBtn = rootEl.querySelector('[data-qty-btn="inc"]');
@@ -2698,10 +2342,7 @@
 
           btn.addEventListener("mousedown", start);
           btn.addEventListener("touchstart", start, { passive: false });
-
-          ["mouseup", "mouseleave", "touchend", "touchcancel"].forEach((ev) => {
-            btn.addEventListener(ev, stopHold, { passive: true });
-          });
+          ["mouseup", "mouseleave", "touchend", "touchcancel"].forEach((ev) => btn.addEventListener(ev, stopHold, { passive: true }));
         };
 
         bindBtn(incBtn, +1);
@@ -2710,24 +2351,16 @@
         return { getQty: () => qty, setQty };
       }
 
-      /*************************************************************
-       * ✅ ROUTE NAVIGATION (Real pages, not popups)
-       * - Lookbook: ?page=lookbook&i=1
-       * - Product:  ?page=product&id=1
-       *************************************************************/
       function toQueryUrl(params) {
         const url = new URL(window.location.href);
-        // clear hash to avoid anchor conflicts when routing
         url.hash = "";
         Object.keys(params).forEach((k) => {
           if (params[k] == null || params[k] === "") url.searchParams.delete(k);
           else url.searchParams.set(k, String(params[k]));
         });
-
         const qs = url.searchParams.toString();
         return qs ? url.pathname + "?" + qs : url.pathname;
       }
-
       function gotoLookbook(i) {
         window.location.href = toQueryUrl({ page: "lookbook", i });
       }
@@ -2740,7 +2373,6 @@
         const rlb = document.getElementById("route-lookbook");
         const rpp = document.getElementById("route-product");
 
-        // reset
         rlb?.classList.remove("active");
         rpp?.classList.remove("active");
         rlb?.setAttribute("aria-hidden", "true");
@@ -2752,7 +2384,6 @@
           rlb?.classList.add("active");
           rlb?.setAttribute("aria-hidden", "false");
         }
-
         if (page === "product") {
           if (site) site.style.display = "none";
           rpp?.classList.add("active");
@@ -2760,17 +2391,12 @@
         }
       }
 
-      /*************************************************************
-       * MAIN DOM READY
-       *************************************************************/
       document.addEventListener("DOMContentLoaded", async () => {
-        const shopNowBtn = document.getElementById("shop-now-btn");
-        shopNowBtn?.addEventListener("click", () => scrollToSectionId("shop"));
+        document.getElementById("shop-now-btn")?.addEventListener("click", () => scrollToSectionId("shop"));
 
         const navbar = document.querySelector(".navbar");
         const navLinks = document.querySelectorAll('[data-nav-link="main"]');
 
-        /* ✅ Mobile Search + Menu toggles */
         const searchBtn = document.getElementById("mobile-search-btn");
         const menuBtn = document.getElementById("mobile-menu-btn");
         const searchPanel = document.getElementById("mobile-search-panel");
@@ -2786,41 +2412,32 @@
             menuPanel.classList.remove("open");
             menuPanel.setAttribute("aria-hidden", "true");
           }
-          if (searchBtn) searchBtn.setAttribute("aria-expanded", "false");
-          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+          searchBtn?.setAttribute("aria-expanded", "false");
+          menuBtn?.setAttribute("aria-expanded", "false");
         };
 
         const openSearch = () => {
-          // close menu if open
           if (menuPanel?.classList.contains("open")) {
             menuPanel.classList.remove("open");
             menuPanel.setAttribute("aria-hidden", "true");
             menuBtn?.setAttribute("aria-expanded", "false");
           }
-
-          const willOpen = !searchPanel?.classList.contains("open");
           if (!searchPanel) return;
-
+          const willOpen = !searchPanel.classList.contains("open");
           searchPanel.classList.toggle("open");
           searchPanel.setAttribute("aria-hidden", willOpen ? "false" : "true");
           searchBtn?.setAttribute("aria-expanded", willOpen ? "true" : "false");
-
-          if (willOpen) {
-            setTimeout(() => searchInput?.focus(), 60);
-          }
+          if (willOpen) setTimeout(() => searchInput?.focus(), 60);
         };
 
         const openMenu = () => {
-          // close search if open
           if (searchPanel?.classList.contains("open")) {
             searchPanel.classList.remove("open");
             searchPanel.setAttribute("aria-hidden", "true");
             searchBtn?.setAttribute("aria-expanded", "false");
           }
-
-          const willOpen = !menuPanel?.classList.contains("open");
           if (!menuPanel) return;
-
+          const willOpen = !menuPanel.classList.contains("open");
           menuPanel.classList.toggle("open");
           menuPanel.setAttribute("aria-hidden", willOpen ? "false" : "true");
           menuBtn?.setAttribute("aria-expanded", willOpen ? "true" : "false");
@@ -2828,13 +2445,7 @@
 
         searchBtn?.addEventListener("click", openSearch);
         menuBtn?.addEventListener("click", openMenu);
-
-        // Close panels when a nav link is tapped (mobile)
-        navLinks.forEach((a) => {
-          a.addEventListener("click", () => {
-            closeMobilePanels();
-          });
-        });
+        navLinks.forEach((a) => a.addEventListener("click", () => closeMobilePanels()));
 
         function handleShrink() {
           if (!navbar) return;
@@ -2843,9 +2454,6 @@
         handleShrink();
         window.addEventListener("scroll", handleShrink, { passive: true });
 
-        /*************************************************************
-         * CART
-         *************************************************************/
         const products = document.querySelectorAll(".product");
         const floatingCart = document.getElementById("floating-cart");
         const cartSidebar = document.getElementById("cart-sidebar");
@@ -2863,7 +2471,6 @@
           cartOverlay?.classList.add("active");
           document.body.classList.add("lock-scroll");
         }
-
         function closeCartPanel() {
           cartSidebar?.classList.remove("active");
           cartOverlay?.classList.remove("active");
@@ -2891,7 +2498,6 @@
 
         function updateCartUI() {
           if (!cartItemsEl || !cartTotalEl || !cartCountEl) return;
-
           saveCartToStorage(cart);
 
           cartItemsEl.innerHTML = "";
@@ -2914,7 +2520,6 @@
 
             const li = document.createElement("li");
             li.className = "cart-item";
-
             li.innerHTML = `
               <img class="cart-item-img" src="${item.image || ""}" alt="${item.name}" onerror="this.style.display='none';" />
               <div class="cart-item-info">
@@ -2938,12 +2543,10 @@
               item.quantity = Math.max(1, item.quantity - 1);
               updateCartUI();
             });
-
             li.querySelector('[data-action="inc"]').addEventListener("click", () => {
               item.quantity += 1;
               updateCartUI();
             });
-
             li.querySelector('[data-action="remove"]').addEventListener("click", () => {
               cart.splice(idx, 1);
               updateCartUI();
@@ -2954,14 +2557,11 @@
 
           cartTotalEl.textContent = total.toFixed(2);
           cartCountEl.textContent = String(itemCount);
-
           setCheckoutState();
         }
 
-        // assign stable product ids for routing
         products.forEach((p, i) => p.setAttribute("data-product-id", String(i + 1)));
 
-        // card-level steppers + add to cart
         products.forEach((product) => {
           const stepperRoot = product.querySelector('.qty-stepper-ui[data-qty-root="card"]');
           const stepper = stepperRoot ? setupQtyStepper(stepperRoot) : null;
@@ -3001,96 +2601,70 @@
 
           updateAddBtn();
 
-          if (addToCartBtn) {
-            addToCartBtn.addEventListener("click", (e) => {
-              e.preventDefault();
-              e.stopPropagation();
+          addToCartBtn?.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
 
-              const productName = product.getAttribute("data-name") || "Item";
-              const price = parseFloat(product.getAttribute("data-price") || "0");
+            const productName = product.getAttribute("data-name") || "Item";
+            const price = parseFloat(product.getAttribute("data-price") || "0");
 
-              const selectedSize = product.querySelector(".size-btn.selected");
-              const selectedColor = product.querySelector(".color.selected");
+            const selectedSize = product.querySelector(".size-btn.selected");
+            const selectedColor = product.querySelector(".color.selected");
+            if (!selectedSize) return showCartToast("Select a size first.");
+            if (!selectedColor) return showCartToast("Select a color first.");
 
-              if (!selectedSize) return showCartToast("Select a size first.");
-              if (!selectedColor) return showCartToast("Select a color first.");
+            let quantity = stepper?.getQty?.() ?? 1;
+            quantity = Math.max(1, Number.isFinite(quantity) ? quantity : 1);
 
-              let quantity = stepper?.getQty?.() ?? 1;
-              quantity = Math.max(1, Number.isFinite(quantity) ? quantity : 1);
+            const size = selectedSize.textContent.trim();
+            const colorName = selectedColor.getAttribute("data-color") || "Color";
+            const image = product.querySelector(".product-img")?.getAttribute("src") || "";
 
-              const size = selectedSize.textContent.trim();
-              const colorName = selectedColor.getAttribute("data-color") || "Color";
+            const itemKey = `${productName}-${size}-${colorName}`;
+            const existing = cart.find((item) => item.key === itemKey);
 
-              const imgEl = product.querySelector(".product-img");
-              const image = imgEl?.getAttribute("src") || "";
+            if (existing) existing.quantity += quantity;
+            else cart.push({ key: itemKey, name: productName, price, size, color: colorName, quantity, image });
 
-              const itemKey = `${productName}-${size}-${colorName}`;
-              const existing = cart.find((item) => item.key === itemKey);
-
-              if (existing) existing.quantity += quantity;
-              else cart.push({ key: itemKey, name: productName, price, size, color: colorName, quantity, image });
-
-              updateCartUI();
-              showCartToast(`Added ${quantity}x ${productName} (${size}) in ${colorName}`);
-
-              stepper?.setQty?.(1);
-            });
-          }
+            updateCartUI();
+            showCartToast(`Added ${quantity}x ${productName} (${size}) in ${colorName}`);
+            stepper?.setQty?.(1);
+          });
         });
 
         updateCartUI();
 
-        /*************************************************************
-         * ✅ LOOKBOOK CARD CLICK → REAL PAGE
-         *************************************************************/
-        const lookbookCards = Array.from(document.querySelectorAll(".lookbook-card"));
-        lookbookCards.forEach((card) => {
-          const go = () => {
-            const i = card.getAttribute("data-look") || "1";
-            gotoLookbook(i);
-          };
+        Array.from(document.querySelectorAll(".lookbook-card")).forEach((card) => {
+          const go = () => gotoLookbook(card.getAttribute("data-look") || "1");
           card.addEventListener("click", go);
           clickOnEnterSpace(card, go);
         });
 
-        /*************************************************************
-         * ✅ PRODUCT CARD CLICK → REAL PAGE
-         * (only when user clicks the card, not buttons/colors/sizes)
-         *************************************************************/
         products.forEach((productEl) => {
           productEl.addEventListener("click", (e) => {
             const interactive = e.target.closest("button, input, .color, a, .sizes, .colors, .options, .thumb-row");
             if (interactive) return;
-            const id = productEl.getAttribute("data-product-id") || "1";
-            gotoProduct(id);
+            gotoProduct(productEl.getAttribute("data-product-id") || "1");
           });
         });
 
-        /*************************************************************
-         * ✅ ROUTE PAGE RENDERING
-         *************************************************************/
         const params = new URLSearchParams(window.location.search);
         const page = params.get("page");
 
-        // Normal site behavior for nav-links:
-        // If you're on a route page and click nav, go home + hash
         navLinks.forEach((a) => {
           a.addEventListener("click", (e) => {
             const href = a.getAttribute("href") || "";
             if (!href.includes("#")) return;
             if (page === "lookbook" || page === "product") {
               e.preventDefault();
-              // go to home section
               window.location.href = href;
             }
           });
         });
 
-        // Lookbook route
         const rlbImg = document.getElementById("rlb-img");
         const rlbCounter = document.getElementById("rlb-counter");
 
-        // Product route
         const rpp = {
           img: document.getElementById("rpp-img"),
           thumbs: document.getElementById("rpp-thumbs"),
@@ -3115,20 +2689,16 @@
         }
 
         async function buildImagesFromProduct(productEl) {
-          const imgEl = productEl.querySelector(".product-img");
-          const base = imgEl?.getAttribute("src") || "";
+          const base = productEl.querySelector(".product-img")?.getAttribute("src") || "";
           if (!base) return [""];
           const candidates = [base, buildVariantSrc(base, 2), buildVariantSrc(base, 3), buildVariantSrc(base, 4)];
-          const checks = await Promise.all(
-            candidates.map((s, i) => (i === 0 ? Promise.resolve(true) : imageExists(s)))
-          );
+          const checks = await Promise.all(candidates.map((s, i) => (i === 0 ? true : imageExists(s))));
           return candidates.filter((_, i) => checks[i]).slice(0, 4);
         }
 
         function renderSizesFromProduct(productEl) {
           const original = Array.from(productEl.querySelectorAll(".size-btn")).map((b) => b.textContent.trim());
           const sizes = original.length ? original : ["S", "M", "L", "XL"];
-
           rpp.sizes.innerHTML = "";
           sizes.forEach((s) => {
             const btn = document.createElement("button");
@@ -3150,13 +2720,12 @@
             colorName: c.getAttribute("data-color") || "Color",
           }));
 
-          const colors =
-            original.length
-              ? original
-              : [
-                  { className: "color black", colorName: "Black" },
-                  { className: "color white", colorName: "White" },
-                ];
+          const colors = original.length
+            ? original
+            : [
+                { className: "color black", colorName: "Black" },
+                { className: "color white", colorName: "White" },
+              ];
 
           rpp.colorsRow.innerHTML = "";
           colors.forEach((c) => {
@@ -3181,18 +2750,11 @@
         }
 
         function fillMeta(productEl) {
-          const name = productEl.getAttribute("data-name") || "Item";
-          const price = productEl.querySelector(".price")?.textContent?.trim() || "";
-          const label = productEl.querySelector(".product-label")?.textContent?.trim() || "";
-          const category = productEl.querySelector(".product-category")?.textContent?.trim() || "";
-          const colorsCount = productEl.querySelector(".product-colors-count")?.textContent?.trim() || "";
-
-          rpp.label.textContent = label;
-          rpp.name.textContent = name;
-          rpp.category.textContent = category;
-          rpp.colorsCount.textContent = colorsCount;
-          rpp.price.textContent = price;
-
+          rpp.label.textContent = productEl.querySelector(".product-label")?.textContent?.trim() || "";
+          rpp.name.textContent = productEl.getAttribute("data-name") || "Item";
+          rpp.category.textContent = productEl.querySelector(".product-category")?.textContent?.trim() || "";
+          rpp.colorsCount.textContent = productEl.querySelector(".product-colors-count")?.textContent?.trim() || "";
+          rpp.price.textContent = productEl.querySelector(".price")?.textContent?.trim() || "";
           rppStepper?.setQty?.(1);
           rpp.add.disabled = true;
         }
@@ -3203,7 +2765,6 @@
           rpp.add.disabled = !(selectedSize && selectedColor);
         }
 
-        // thumbs + image swap
         let rppSources = [];
         let rppIndex = 0;
         let rppActiveProductEl = null;
@@ -3234,7 +2795,7 @@
           const nextSrc = rppSources[rppIndex];
 
           if (rpp.img.getAttribute("src") === nextSrc) {
-            if (rpp.subtitle) rpp.subtitle.textContent = `${rppIndex + 1} / ${rppSources.length}`;
+            rpp.subtitle.textContent = `${rppIndex + 1} / ${rppSources.length}`;
             renderRppThumbs();
             return;
           }
@@ -3243,7 +2804,7 @@
           requestAnimationFrame(() => {
             if (token !== __rppSwapToken) return;
             rpp.img.src = nextSrc;
-            if (rpp.subtitle) rpp.subtitle.textContent = `${rppIndex + 1} / ${rppSources.length}`;
+            rpp.subtitle.textContent = `${rppIndex + 1} / ${rppSources.length}`;
             renderRppThumbs();
             setTimeout(() => {
               if (token !== __rppSwapToken) return;
@@ -3272,14 +2833,12 @@
           const safeIdx = Math.min(idx, total);
 
           const card = cards[safeIdx - 1] || cards[0];
-          const img = card?.querySelector("img");
-          const src = img?.getAttribute("src") || "";
+          const src = card?.querySelector("img")?.getAttribute("src") || "";
 
           if (rlbImg) rlbImg.src = src;
           if (rlbCounter) rlbCounter.textContent = `${safeIdx} / ${total}`;
         }
 
-        // Activate route pages
         if (page === "lookbook") {
           showRoute("lookbook");
           renderLookbookRoute(params.get("i"));
@@ -3289,26 +2848,20 @@
         } else {
           showRoute(null);
 
-          // active nav highlight on main site only
           const sectionIds = ["drop", "lookbook", "shop", "about"];
           const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
-
-          const linkById = new Map();
-          navLinks.forEach((a) => {
-            const href = a.getAttribute("href") || "";
-            if (href.includes("#")) linkById.set(href.split("#")[1], a);
-          });
 
           function setActive(id) {
             navLinks.forEach((a) => {
               a.classList.remove("active");
               a.removeAttribute("aria-current");
             });
-            const activeLinks = Array.from(navLinks).filter((a) => (a.getAttribute("href") || "").endsWith(`#${id}`));
-            activeLinks.forEach((lnk) => {
-              lnk.classList.add("active");
-              lnk.setAttribute("aria-current", "page");
-            });
+            Array.from(navLinks)
+              .filter((a) => (a.getAttribute("href") || "").endsWith(`#${id}`))
+              .forEach((lnk) => {
+                lnk.classList.add("active");
+                lnk.setAttribute("aria-current", "page");
+              });
           }
 
           let navLock = false;
@@ -3328,48 +2881,32 @@
               setActive(id);
               scrollToSectionId(id);
 
-              navUnlockTimer = setTimeout(() => {
-                navLock = false;
-              }, 650);
-
-              // keep the hash updated (avoid hard-coded "/")
+              navUnlockTimer = setTimeout(() => (navLock = false), 650);
               history.replaceState(null, "", `${location.pathname}#${id}`);
             });
           });
 
           let raf = null;
-          function updateActiveFromScroll() {
+          const updateActiveFromScroll = () => {
             if (navLock) return;
-
             const refY = window.scrollY + getNavOffsetPx() + 10;
             let current = sections[0]?.id || "drop";
-
-            for (const sec of sections) {
-              if (!sec) continue;
-              const top = sec.offsetTop;
-              if (top <= refY) current = sec.id;
-            }
+            for (const sec of sections) if (sec && sec.offsetTop <= refY) current = sec.id;
             setActive(current);
-          }
+          };
 
-          function onScroll() {
+          const onScroll = () => {
             if (raf) return;
             raf = requestAnimationFrame(() => {
               raf = null;
               updateActiveFromScroll();
             });
-          }
+          };
+
           updateActiveFromScroll();
           window.addEventListener("scroll", onScroll, { passive: true });
-          window.addEventListener(
-            "resize",
-            () => {
-              updateActiveFromScroll();
-            },
-            { passive: true }
-          );
+          window.addEventListener("resize", updateActiveFromScroll, { passive: true });
 
-          // if landing with a hash on main site, scroll properly
           const hashId = (location.hash || "").replace("#", "");
           if (hashId && ["drop", "lookbook", "shop", "about", "footer"].includes(hashId)) {
             setTimeout(() => {
@@ -3379,9 +2916,6 @@
           }
         }
 
-        /*************************************************************
-         * ✅ PRODUCT ROUTE: Add to bag
-         *************************************************************/
         rpp.add?.addEventListener("click", () => {
           if (!rppActiveProductEl) return;
 
@@ -3390,7 +2924,6 @@
 
           const selectedSize = rpp.sizes.querySelector(".size-btn.selected");
           const selectedColor = rpp.colorsRow.querySelector(".color.selected");
-
           if (!selectedSize) return showCartToast("Select a size first.");
           if (!selectedColor) return showCartToast("Select a color first.");
 
@@ -3412,29 +2945,19 @@
           showCartToast(`Added ${quantity}x ${productName} (${size}) in ${colorName}`);
         });
 
-        /*************************************************************
-         * ESC key handling
-         *************************************************************/
         document.addEventListener("keydown", (e) => {
           if (e.key !== "Escape") return;
 
-          // close mobile panels first
           if (searchPanel?.classList.contains("open") || menuPanel?.classList.contains("open")) {
             closeMobilePanels();
             return;
           }
-
           if (policyModal && policyModal.style.display === "block") hidePolicy();
-          if (cartSidebar?.classList.contains("active")) {
-            cartSidebar?.classList.remove("active");
-            cartOverlay?.classList.remove("active");
-            document.body.classList.remove("lock-scroll");
-          }
+          if (cartSidebar?.classList.contains("active")) closeCartPanel();
         });
       });
     </script>
 
-    <!-- Cloudflare snippet (kept as-is) -->
     <script>
       (function () {
         function c() {
