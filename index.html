@@ -1,179 +1,161 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAIDE® | Luxury Streetwear</title>
-  <meta name="description" content="FAIDE® luxury streetwear. Designed with intention. Worn with purpose." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="/assets/css/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-</head>
+    <title>FAIDE® | Luxury Streetwear</title>
+    <meta name="description" content="FAIDE® luxury streetwear. Designed with intention. Worn with purpose." />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#000000" />
 
-<body>
+    <!-- Open Graph -->
+    <meta property="og:title" content="FAIDE® | Luxury Streetwear" />
+    <meta property="og:description" content="Designed with intention. Worn with purpose." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="images/hero.png" />
 
-<!-- NAV -->
-<header class="nav">
-  <div class="nav-inner">
-    <img src="/images/faide-wordmark.png" class="logo" alt="FAIDE" />
-    <button class="icon-btn" id="menuBtn" aria-label="Open menu">
-      <span class="burger"></span>
-    </button>
-  </div>
-</header>
+    <!-- Icons (keep your favicon in /public or root as you prefer) -->
+    <link rel="icon" href="/favicon.ico" />
 
-<!-- MOBILE MENU -->
-<div class="drawer" id="drawer" aria-hidden="true">
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <div class="drawer-panel">
-    <div class="drawer-top">
-      <div class="drawer-title">FAIDE®</div>
-      <button class="icon-btn" id="closeDrawer" aria-label="Close menu">✕</button>
-    </div>
+    <link rel="preload" as="image" href="images/hero.png" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
 
-    <nav class="drawer-links">
-      <a href="#shop" class="drawer-link">Shop</a>
-      <a href="#lookbook" class="drawer-link">Lookbook</a>
-      <a href="#about" class="drawer-link">About</a>
-      <a href="#contact" class="drawer-link">Contact</a>
-    </nav>
+  <body>
+    <!-- Top Nav -->
+    <header class="nav">
+      <a class="brand" href="#top" aria-label="FAIDE home">
+        <img src="images/faide-wordmark.png" alt="FAIDE" />
+      </a>
 
-    <button class="cart-btn" id="openCart">
-      Cart <span class="pill" id="cartCount">0</span>
-    </button>
+      <button class="icon-btn" id="menuBtn" aria-label="Open menu">
+        <span class="icon-lines"></span>
+      </button>
+    </header>
 
-    <p class="drawer-note">Drops, curated essentials, and exclusives.</p>
-  </div>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <img src="/images/hero.png" class="hero-img" alt="FAIDE hero" />
-  <div class="hero-overlay">
-    <h1>Luxury Streetwear</h1>
-    <p>Designed with intention. Worn with purpose.</p>
-    <button class="primary" id="shopNow">Shop Now</button>
-  </div>
-</section>
-
-<!-- SHOP -->
-<section class="section" id="shop">
-  <div class="section-head">
-    <h2>Shop</h2>
-    <p>Core pieces. Minimal. Heavyweight.</p>
-  </div>
-
-  <div class="products" id="productGrid">
-    <!-- JS fills this -->
-  </div>
-</section>
-
-<!-- LOOKBOOK -->
-<section class="section" id="lookbook">
-  <div class="section-head">
-    <h2>Lookbook</h2>
-    <p>Selected visuals from the latest drop.</p>
-  </div>
-
-  <div class="lookbook">
-    <img src="/images/lookbook1.png" alt="Lookbook 1" />
-    <img src="/images/lookbook2.png" alt="Lookbook 2" />
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="section-head">
-    <h2>About</h2>
-    <p>FAIDE® is built around intention and restraint—luxury streetwear without noise.</p>
-  </div>
-
-  <div class="about-card">
-    <div>
-      <h3>Designed with intention</h3>
-      <p>Clean silhouettes. Premium textures. Limited releases.</p>
-    </div>
-    <div>
-      <h3>Worn with purpose</h3>
-      <p>Made to last, styled to stand out quietly.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="section" id="contact">
-  <div class="section-head">
-    <h2>Contact</h2>
-    <p>For orders, collabs, and stockists.</p>
-  </div>
-
-  <div class="contact">
-    <a class="contact-link" href="mailto:hello@faide.co">hello@faide.co</a>
-    <a class="contact-link" href="#" id="igLink">Instagram: @faideclothing</a>
-  </div>
-</section>
-
-<footer class="footer">
-  <button class="cart-fab" id="cartFab" aria-label="Open cart">
-    🛒 <span class="pill" id="cartCount2">0</span>
-  </button>
-  <p>© 2026 FAIDE®. All rights reserved.</p>
-</footer>
-
-<!-- PRODUCT MODAL -->
-<div class="modal" id="productModal" aria-hidden="true">
-  <div class="modal-backdrop" id="modalBackdrop"></div>
-  <div class="modal-panel">
-    <div class="modal-top">
-      <div class="modal-title" id="modalTitle">Product</div>
-      <button class="icon-btn" id="closeModal" aria-label="Close">✕</button>
-    </div>
-
-    <div class="modal-body">
-      <div class="gallery">
-        <img id="modalImage" src="" alt="Product image" />
-        <div class="thumbs" id="thumbs"></div>
-      </div>
-
-      <div class="info">
-        <div class="price" id="modalPrice">R 0</div>
-        <p class="muted" id="modalDesc"></p>
-
-        <div class="sizes">
-          <div class="label">Size</div>
-          <div class="size-row" id="sizeRow"></div>
+    <!-- Menu Overlay -->
+    <div class="overlay" id="menuOverlay" aria-hidden="true">
+      <div class="overlay-card">
+        <div class="overlay-top">
+          <div class="overlay-brand">FAIDE®</div>
+          <button class="icon-btn close" id="menuClose" aria-label="Close menu">✕</button>
         </div>
 
-        <button class="primary full" id="addToCartBtn">Add to Cart</button>
+        <nav class="overlay-nav">
+          <a href="#shop" class="pill" data-close-menu>Shop</a>
+          <a href="#lookbook" class="pill" data-close-menu>Lookbook</a>
+          <a href="#about" class="pill" data-close-menu>About</a>
+          <a href="#contact" class="pill" data-close-menu>Contact</a>
+
+          <button class="pill pill-white" id="openCartFromMenu">
+            Cart <span class="badge" id="menuCartCount">0</span>
+          </button>
+        </nav>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- CART MODAL -->
-<div class="modal" id="cartModal" aria-hidden="true">
-  <div class="modal-backdrop" id="cartBackdrop"></div>
-  <div class="modal-panel">
-    <div class="modal-top">
-      <div class="modal-title">Your Cart</div>
-      <button class="icon-btn" id="closeCart" aria-label="Close">✕</button>
-    </div>
-
-    <div class="cart-body">
-      <div id="cartItems"></div>
-
-      <div class="cart-summary">
-        <div class="row">
-          <span class="muted">Subtotal</span>
-          <strong id="cartTotal">R 0</strong>
+    <!-- Page -->
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-inner">
+          <h1>Luxury<br />Streetwear</h1>
+          <p>Designed with intention. Worn with purpose.</p>
+          <a class="cta" href="#shop">Shop Now</a>
         </div>
-        <button class="primary full" id="checkoutBtn">Checkout (Coming Soon)</button>
-        <button class="ghost full" id="clearCartBtn">Clear cart</button>
+      </section>
+
+      <!-- Shop -->
+      <section class="section" id="shop">
+        <div class="section-head">
+          <h2>Shop</h2>
+          <p>Core pieces. Minimal. Heavyweight.</p>
+        </div>
+
+        <div class="grid" id="productGrid"></div>
+      </section>
+
+      <!-- Lookbook -->
+      <section class="section" id="lookbook">
+        <div class="section-head">
+          <h2>Lookbook</h2>
+          <p>Selected visuals from the latest drop.</p>
+        </div>
+
+        <div class="lookbook">
+          <a class="look-card" href="images/lookbook1.png" target="_blank" rel="noreferrer">
+            <img src="images/lookbook1.png" alt="Lookbook 1" />
+            <div class="look-label">Lookbook 1</div>
+          </a>
+
+          <a class="look-card" href="images/lookbook2.png" target="_blank" rel="noreferrer">
+            <img src="images/lookbook2.png" alt="Lookbook 2" />
+            <div class="look-label">Lookbook 2</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="section" id="about">
+        <div class="section-head">
+          <h2>About</h2>
+          <p>FAIDE® is built around intention and restraint— luxury streetwear without noise.</p>
+        </div>
+
+        <div class="card">
+          <h3>Designed with intention</h3>
+          <p>Clean silhouettes. Premium textures. Limited releases.</p>
+          <div class="spacer"></div>
+          <h3>Worn with purpose</h3>
+          <p>Made to last, styled to stand out quietly.</p>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="section" id="contact">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p>For orders, collabs, and stockists.</p>
+        </div>
+
+        <div class="stack">
+          <a class="input-like" href="mailto:hello@faide.co">hello@faide.co</a>
+          <a class="input-like" href="https://instagram.com/faideclothing" target="_blank" rel="noreferrer">
+            Instagram: @faideclothing
+          </a>
+        </div>
+      </section>
+
+      <footer class="footer">© <span id="year"></span> FAIDE®. All rights reserved.</footer>
+    </main>
+
+    <!-- Floating Cart Button -->
+    <button class="fab" id="fabCart" aria-label="Open cart">
+      <span class="fab-icon">🛒</span>
+      <span class="fab-badge" id="fabCount">0</span>
+    </button>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-label="Cart">
+        <div class="modal-head">
+          <div class="modal-title">Your Cart</div>
+          <button class="icon-btn close" id="cartClose" aria-label="Close cart">✕</button>
+        </div>
+
+        <div class="cart-items" id="cartItems"></div>
+
+        <div class="cart-summary">
+          <div class="muted">Subtotal</div>
+          <div class="sum" id="cartSubtotal">R 0</div>
+        </div>
+
+        <button class="cta full" id="checkoutBtn">Checkout (Coming Soon)</button>
+        <button class="ghost" id="clearCartBtn">Clear cart</button>
       </div>
     </div>
-  </div>
-</div>
 
-<script src="/assets/js/app.js" defer></script>
-</body>
+    <script src="assets/js/app.js"></script>
+  </body>
 </html>
