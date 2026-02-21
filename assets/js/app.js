@@ -1,35 +1,41 @@
-// FAIDE Store - simple frontend cart (no payments)
 document.addEventListener("DOMContentLoaded", () => {
   const money = (n) => `R ${Number(n).toLocaleString("en-ZA")}`;
 
-  // Products using YOUR image names
+  // --- IMAGE PATH FIX (tries /images first, then /public/images) ---
+  const img = (file) => `/images/${file}`;
+  const imgAlt = (file) => `/public/images/${file}`;
+  const setImgFallback = (el, file) => {
+    el.src = img(file);
+    el.onerror = () => { el.src = imgAlt(file); };
+  };
+
   const PRODUCTS = [
     {
       id: "tee",
       name: "FAIDE Tee",
       price: 799,
-      images: ["/images/tshirt.png", "/images/tshirt1.png", "/images/tshirt2.png", "/images/tshirt3.png"],
+      images: ["tshirt.png", "tshirt1.png", "tshirt2.png", "tshirt3.png"],
       desc: "Premium cotton tee. Clean fit. Built for daily wear."
     },
     {
       id: "hoodie",
       name: "FAIDE Hoodie",
       price: 1499,
-      images: ["/images/hoodie.png", "/images/hoodie1.png", "/images/hoodie2.png", "/images/hoodie3.png"],
+      images: ["hoodie.png", "hoodie1.png", "hoodie2.png", "hoodie3.png"],
       desc: "Heavyweight hoodie. Soft handfeel. Minimal branding."
     },
     {
       id: "longsleeve",
       name: "FAIDE Long Sleeve",
       price: 999,
-      images: ["/images/longsleeve.png", "/images/longsleeve1.png", "/images/longsleeve2.png", "/images/longsleeve3.png"],
+      images: ["longsleeve.png", "longsleeve1.png", "longsleeve2.png", "longsleeve3.png"],
       desc: "Long sleeve essential. Clean lines. Premium feel."
     },
     {
       id: "tank",
       name: "FAIDE Tank",
       price: 699,
-      images: ["/images/tank-top.png", "/images/tank-top1.png", "/images/tank-top2.png", "/images/tank-top3.png"],
+      images: ["tank-top.png", "tank-top1.png", "tank-top2.png", "tank-top3.png"],
       desc: "Summer cut tank. Lightweight. Street-ready."
     }
   ];
@@ -84,9 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let cart = JSON.parse(localStorage.getItem("faide_cart") || "[]");
 
   const saveCart = () => localStorage.setItem("faide_cart", JSON.stringify(cart));
-
   const cartQty = () => cart.reduce((sum, i) => sum + i.qty, 0);
-
   const cartSum = () => cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
 
   const updateCartBadge = () => {
@@ -98,16 +102,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // Build products
   function renderProducts() {
     productGrid.innerHTML = "";
-    PRODUCTS.forEach(p => {
+    PRODUCTS.forEach((p) => {
       const card = document.createElement("div");
       card.className = "product";
+
       card.innerHTML = `
-        <div class="img"><img src="${p.images[0]}" alt="${p.name}"></div>
+        <div class="img"><img alt="${p.name}"></div>
         <div class="meta">
           <h3>${p.name}</h3>
           <div class="p">${money(p.price)}</div>
         </div>
       `;
+
+      const imgEl = card.querySelector("img");
+      setImgFallback(imgEl, p.images[0]);
+
       card.addEventListener("click", () => openProduct(p));
       productGrid.appendChild(card);
     });
@@ -122,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
   drawerBackdrop.addEventListener("click", hideDrawer);
 
   // Smooth scroll for menu links
-  drawer.querySelectorAll('a[href^="#"]').forEach(a => {
+  drawer.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", () => hideDrawer());
   });
 
@@ -141,24 +150,26 @@ document.addEventListener("DOMContentLoaded", () => {
   function openProduct(p) {
     selectedProduct = p;
     selectedSize = "M";
+
     modalTitle.textContent = p.name;
     modalPrice.textContent = money(p.price);
     modalDesc.textContent = p.desc;
 
-    // Main image
-    modalImage.src = p.images[0];
+    setImgFallback(modalImage, p.images[0]);
 
-    // Thumbnails
     thumbs.innerHTML = "";
-    p.images.forEach((src) => {
+    p.images.forEach((file) => {
       const t = document.createElement("button");
       t.className = "thumb";
-      t.innerHTML = `<img src="${src}" alt="thumb">`;
-      t.addEventListener("click", () => (modalImage.src = src));
+      t.innerHTML = `<img alt="thumb">`;
+
+      const tImg = t.querySelector("img");
+      setImgFallback(tImg, file);
+
+      t.addEventListener("click", () => setImgFallback(modalImage, file));
       thumbs.appendChild(t);
     });
 
-    // Sizes
     sizeRow.innerHTML = "";
     SIZES.forEach((s) => {
       const b = document.createElement("button");
@@ -166,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
       b.textContent = s;
       b.addEventListener("click", () => {
         selectedSize = s;
-        sizeRow.querySelectorAll(".size").forEach(x => x.classList.remove("active"));
+        sizeRow.querySelectorAll(".size").forEach((x) => x.classList.remove("active"));
         b.classList.add("active");
       });
       sizeRow.appendChild(b);
@@ -179,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!selectedProduct) return;
 
     const key = `${selectedProduct.id}_${selectedSize}`;
-    const existing = cart.find(i => i.key === key);
+    const existing = cart.find((i) => i.key === key);
 
     if (existing) existing.qty += 1;
     else {
@@ -189,7 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
         name: selectedProduct.name,
         size: selectedSize,
         price: selectedProduct.price,
-        image: selectedProduct.images[0],
+        image: img(selectedProduct.images[0]),
         qty: 1
       });
     }
@@ -222,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const row = document.createElement("div");
       row.className = "cart-item";
       row.innerHTML = `
-        <img src="${item.image}" alt="${item.name}">
+        <img alt="${item.name}">
         <div>
           <h4>${item.name}</h4>
           <div class="small">Size: ${item.size}</div>
@@ -237,9 +248,14 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
+      const cartImg = row.querySelector("img");
+      // If item.image already saved with /images/... we use it, but keep fallback
+      cartImg.src = item.image;
+      cartImg.onerror = () => { cartImg.src = item.image.replace("/images/", "/public/images/"); };
+
       row.querySelector('[data-act="minus"]').addEventListener("click", () => {
         item.qty -= 1;
-        if (item.qty <= 0) cart = cart.filter(x => x.key !== item.key);
+        if (item.qty <= 0) cart = cart.filter((x) => x.key !== item.key);
         saveCart();
         updateCartBadge();
         renderCart();
@@ -269,7 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("Checkout coming soon 🔥 Next we can add PayFast / Stripe.");
   });
 
-  // Init
   renderProducts();
   updateCartBadge();
 });
